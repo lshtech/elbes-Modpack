@@ -71,11 +71,23 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/Steamopollys/Steamodded/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1209564621644505158) [Authors](https://github.com/Steamopollys/Steamodded/graphs/contributors)
 
+- [__Ankh__](https://github.com/MathIsFun0/Ankh) (latest release)
+
+  By Mathisfun_
+
+  [Download](https://github.com/MathIsFun0/Ankh/releases) [Discord](https://discord.com/channels/1116389027176787968/1209916317604511814)
+
 - [__Ante Scaling Slower__](https://www.nexusmods.com/balatro/mods/7) (latest release)
 
   By Infarctus
 
   [Download](https://www.nexusmods.com/balatro/mods/7?tab=files) [Discord](https://discord.com/channels/1116389027176787968/1219418031546040351)
+
+- [__Aura__](https://github.com/MathIsFun0/Aura) (latest main code)
+
+  By Mathisfun_
+
+  [Download](https://github.com/MathIsFun0/Aura/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1249486500811378718)
 
 - [__Balatro Safety__](https://github.com/Zei33/balatro-safety-steamodded) (latest release)
 
@@ -107,6 +119,12 @@ git submodule update --remote --recursive --merge
   By Justin Crow-Person 
 
   [Download](https://github.com/JustinBanzon/Bird-Jokers/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1255003757213778002)
+
+- [__Bonus Blinds__](https://github.com/Mathguy23/BonusBlinds) (latest main code)
+
+  By Mathguy
+
+  [Download](https://github.com/Mathguy23/BonusBlinds/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1257366048382914580)
 
 - [__Boss Blind Jokers__](https://github.com/KilledByLava/BossJokers) (latest main code)
 
@@ -298,6 +316,12 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/batabata3/balatro-pampa-joker-pack/releases) [Discord](https://discord.com/channels/1116389027176787968/1224352378871087104)
 
+- [__Phantom Thieves Jokers__](https://github.com/cerloCasa/Balatro_PhantomThievesJokers) (latest release)
+
+  By PT_Cerlo
+
+  [Download](https://github.com/cerloCasa/Balatro_PhantomThievesJokers/releases) [Discord](https://discord.com/channels/1116389027176787968/1249801316616765560)
+
 - [__RO-Balatro__](https://github.com/AlexZGreat/Ro-Balatro) (latest release)
 
   By AlexZGreat
@@ -354,3 +378,9 @@ git submodule update --remote --recursive --merge
   By Mathisfun_
 
   [Download](https://github.com/MathIsFun0/Trance/releases) [Discord](https://discord.com/channels/1116389027176787968/1248865517112918016)
+
+- [__xChips__](https://github.com/cerloCasa/xChips) (latest release)
+
+  By PT_Cerlo
+
+  [Download](https://github.com/cerloCasa/xChips/releases) [Discord](https://discord.com/channels/1116389027176787968/1257660889520144446)
