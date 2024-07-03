@@ -115,9 +115,6 @@
 [submodule "Mods/Aura"]
 	path = Mods/Aura
 	url = https://github.com/MathIsFun0/Aura
-[submodule "Mods/xChips"]
-	path = Mods/xChips
-	url = https://github.com/cerloCasa/xChips
 [submodule "Mods/Brainstorm"]
 	path = Mods/Brainstorm
 	url = https://github.com/OceanRamen/Brainstorm
@@ -133,3 +130,6 @@
 [submodule "Mods/DX-Tarots"]
 	path = Mods/DX-Tarots
 	url = https://github.com/Dimserene/DX-Tarots
+[submodule "Mods/Easier-Scoring"]
+	path = Mods/Easier-Scoring
+	url = https://github.com/cerloCasa/Easier-Scoring
