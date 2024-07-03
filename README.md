@@ -134,6 +134,12 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/KilledByLava/BossJokers/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1239704177584771080)
 
+- [__Brainstorm__](https://github.com/OceanRamen/Brainstorm) (latest release)
+
+  By OceanRamen
+
+  [Download](https://github.com/OceanRamen/Brainstorm/releases) [Discord](https://discord.com/channels/1116389027176787968/1242974974701080617)
+
 - [__Bunco__](https://github.com/Firch/Bunco/tree/main) (latest main code)
 
   By Firch, RENREN, Peas, minichibis, J.D., Guwahavel, Ciirulean, ejwu
@@ -163,6 +169,12 @@ git submodule update --remote --recursive --merge
   By Mathisfun_
 
   [Download](https://github.com/MathIsFun0/Cryptid/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1219749193204371456)
+
+- [__Custom Fonts__](https://discord.com/channels/1116389027176787968/1210101577550008390) (latest release)
+
+  By Mathisfun_, AutumnMood
+
+  [Discord](https://discord.com/channels/1116389027176787968/1210101577550008390)
  
 - [__D6 Jokers__](https://github.com/GauntletGames-2086/D6-Jokers) (latest main code)
 
@@ -232,11 +244,23 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/art-muncher/Jimbo-s-Pack/releases) [Discord](https://discord.com/channels/1116389027176787968/1248287850512781452)
 
+- [__Joker Display__](https://github.com/nh6574/JokerDisplay) (latest release)
+
+  By nh6574
+
+  [Download](https://github.com/nh6574/JokerDisplay/releases) [Discord](https://discord.com/channels/1116389027176787968/1241580123766128761)
+
 - [__Joker Evolution__](https://github.com/SDM0/Joker-Evolution) (latest release)
 
   By SDM_0
 
   [Download](https://github.com/SDM0/Joker-Evolution/releases) [Discord](https://discord.com/channels/1116389027176787968/1249450412143153266)
+
+- [__Joker Sell Value__](https://github.com/OppositeWolf770/JokerSellValue) (latest release)
+
+  By OppositeWolf770
+
+  [Download](https://github.com/OppositeWolf770/JokerSellValue/releases) [Discord](https://discord.com/channels/1116389027176787968/1247768604879884349)
 
 - [__Lobotomy Corporation__](https://github.com/Mysthaps/LobotomyCorp) (latest release)
 
