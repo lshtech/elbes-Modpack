@@ -312,7 +312,7 @@ git submodule update --remote --recursive --merge
   
   [Download](https://github.com/kjossul/NeowBlessings/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1217892947119308933)
 
-- [__Nopeus__](https://github.com/cubeanimataz/Nopeus) (latest build)
+- [__Nopeus__](https://github.com/cubeanimataz/Nopeus) (latest release)
 
   [Download](https://github.com/cubeanimataz/Nopeus/releases) [Discord](https://discord.com/channels/1116389027176787968/1258019898244993096)
 
