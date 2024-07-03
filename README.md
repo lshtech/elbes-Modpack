@@ -190,6 +190,12 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/JeffVi/DX-Tarots/releases) [Discord](https://discord.com/channels/1116389027176787968/1226210957253017691)
 
+- [__Easier Scoring__](https://github.com/cerloCasa/Easier-Scoring) (latest release)
+
+  By PT_Cerlo
+
+  [Download](https://github.com/cerloCasa/Easier-Scoring/releases) [Discord](https://discord.com/channels/1116389027176787968/1257660889520144446)
+
 - [__Escape Exit Button__](https://github.com/Steamopollys/Steamodded/blob/main/example_mods/Mods/EscapeExitButton.lua#L13) (latest build)
 
   - One of the example mods by Steamopollys
@@ -396,9 +402,3 @@ git submodule update --remote --recursive --merge
   By Mathisfun_
 
   [Download](https://github.com/MathIsFun0/Trance/releases) [Discord](https://discord.com/channels/1116389027176787968/1248865517112918016)
-
-- [__xChips__](https://github.com/cerloCasa/xChips) (latest release)
-
-  By PT_Cerlo
-
-  [Download](https://github.com/cerloCasa/xChips/releases) [Discord](https://discord.com/channels/1116389027176787968/1257660889520144446)
