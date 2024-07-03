@@ -121,3 +121,12 @@
 [submodule "Mods/xChips"]
 	path = Mods/xChips
 	url = https://github.com/cerloCasa/xChips
+[submodule "Mods/Brainstorm"]
+	path = Mods/Brainstorm
+	url = https://github.com/OceanRamen/Brainstorm
+[submodule "Mods/JokerSellValue"]
+	path = Mods/JokerSellValue
+	url = https://github.com/OppositeWolf770/JokerSellValue
+[submodule "Mods/JokerDisplay"]
+	path = Mods/JokerDisplay
+	url = https://github.com/nh6574/JokerDisplay
