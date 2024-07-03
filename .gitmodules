@@ -118,3 +118,6 @@
 [submodule "Mods/Aura"]
 	path = Mods/Aura
 	url = https://github.com/MathIsFun0/Aura
+[submodule "xChips"]
+	path = xChips
+	url = https://github.com/cerloCasa/xChips
