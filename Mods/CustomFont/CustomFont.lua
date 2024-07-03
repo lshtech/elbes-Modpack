@@ -11,7 +11,7 @@ if NFS.read(customfont_mod.path.."font.ttf") ~= nil then
     local file = NFS.read(customfont_mod.path.."font.ttf")
     love.filesystem.write("temp-font.ttf", file)
     G.LANG.font.FONT = love.graphics.newFont("temp-font.ttf", G.TILESIZE * 10)
-    G.LANG.font.FONTSCALE = 1.2 --Can be configured to adjust text size
+    G.LANG.font.FONTSCALE = 0.11 --Can be configured to adjust text size
     love.filesystem.remove("temp-font.ttf")
 end
 ----------------------------------------------
