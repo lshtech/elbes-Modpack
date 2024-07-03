@@ -7,4 +7,6 @@ function initSpeedrunTimer()
     local settings_file = STR_UNPACK(nativefs.read(lovely.mod_dir.."/MathIsFun0-Ankh/settings.lua"))
     if settings_file ~= nil then Speedrun.SETTINGS = settings_file end
   end
+  assert(load(nativefs.read(lovely.mod_dir.."/MathIsFun0-Ankh/logging.lua")))()
+  assert(load(nativefs.read(lovely.mod_dir.."/MathIsFun0-Ankh/replay.lua")))()
 end

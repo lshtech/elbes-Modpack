@@ -14,7 +14,7 @@ Speedrun.TIMERS = {
 }
 G.PROFILES["Official Mode*"] = {}
 G.PROFILES["Official Mode*"].name = "Official Mode"
-Speedrun.VER = "Ankh v1.0.4"
+Speedrun.VER = "Ankh v1.1.0-beta"
 Speedrun.C_SATURATION = 0.42
 Speedrun.C_VALUE = 0.89
 Speedrun.SETTINGS = {
@@ -23,6 +23,9 @@ Speedrun.SETTINGS = {
   timerEndScreen = true,
   selectedCategory = "Single Run",
   selectedCategoryID = 1,
+  replaySpeedID = 2,
+  timerColor = "White",
+  selectedColorID = 1,
   includeMenuing = true
 }
 Speedrun.RUN_INFO = {
@@ -38,38 +41,6 @@ Speedrun.RUN_INFO = {
 Speedrun.LIVESPLIT = io.open("//./pipe/LiveSplit", 'a')
 local profile_temp = G.SETTINGS.profile
 G.SETTINGS.profile = "//"
-local g_default = {}
-function g_default:save_progress()
-  return nil
-end
-function g_default:compress()
-  return nil
-end
-if SMODS then
-  local smsprite = SMODS.injectSprites
-  function SMODS.injectSprites() if G.SETTINGS.profile ~= "//" then return smsprite() end end
-  local smdeck = SMODS.injectDecks
-  function SMODS.injectDecks() if G.SETTINGS.profile ~= "//" then return smdeck() end end
-  local smjoker = SMODS.injectJokers
-  function SMODS.injectJokers() if G.SETTINGS.profile ~= "//" then return smjoker() end end
-  local smtarot = SMODS.injectTarots
-  function SMODS.injectTarots() if G.SETTINGS.profile ~= "//" then return smtarot() end end
-  local smplanet = SMODS.injectPlanets
-  function SMODS.injectPlanets() if G.SETTINGS.profile ~= "//" then return smplanet() end end
-  local smspectral = SMODS.injectSpectrals
-  function SMODS.injectSpectrals() if G.SETTINGS.profile ~= "//" then return smspectral() end end
-  local smvoucher = SMODS.injectVouchers
-  function SMODS.injectVouchers() if G.SETTINGS.profile ~= "//" then return smvoucher() end end
-  local smblind = SMODS.injectBlinds
-  function SMODS.injectBlinds() if G.SETTINGS.profile ~= "//" then return smblind() end end
-  local smseal = SMODS.injectSeals
-  function SMODS.injectSeals() if G.SETTINGS.profile ~= "//" then return smseal() end end
-  local smloc = SMODS.LOAD_LOC
-  function SMODS.LOAD_LOC() if G.SETTINGS.profile ~= "//" then return smloc() end end
-  local smsave = SMODS.SAVE_UNLOCKS
-  function SMODS.SAVE_UNLOCKS() if G.SETTINGS.profile ~= "//" then return smsave() end end
-end
-Game.init_item_prototypes(g_default)
 function copy(obj, seen)
   if type(obj) ~= 'table' then return obj end
   if seen and seen[obj] then return seen[obj] end
@@ -79,23 +50,39 @@ function copy(obj, seen)
   for k, v in pairs(obj) do res[copy(k, s)] = copy(v, s) end
   return res
 end
-Speedrun.P_CENTERS = copy(g_default.P_CENTERS);
-Speedrun.P_TAGS = copy(g_default.P_TAGS);
-Speedrun.P_BLINDS = copy(g_default.P_BLINDS);
-G.SETTINGS.profile = profile_temp
-g_default = nil;
-for _, v in pairs(Speedrun.P_CENTERS) do
+local iip = Game.init_item_prototypes
+function Game:init_item_prototypes()
+  local ret = iip(self)
+  Speedrun.P_CENTERS = copy(self.P_CENTERS);
+  Speedrun.P_TAGS = copy(self.P_TAGS);
+  Speedrun.P_BLINDS = copy(self.P_BLINDS);
+  return ret;
+end
+for _, v in pairs(G.P_CENTERS) do
   if not v.omit then 
     if v.set and v.set == 'Back' then
       Speedrun.RUN_INFO.deckWins[v.name] = false
     end
   end
 end
+G.SETTINGS.profile = profile_temp
 for _, v in pairs(G.CHALLENGES) do
   Speedrun.RUN_INFO.challengeWins[v.id] = false
 end
 Speedrun.TIMER_POS_LIST = {"Disabled", "Top Left", "Right"}
 Speedrun.CATEGORY_LIST = {"Single Run", "3 Decks", "7 Decks", "All Decks", "All Challenges", "All Unlocks", "Collect All", "All Gold Stickers"};
+Speedrun.REPLAY_SPEED_LIST = {0, 0.25, 0.5, 1, 2, 4}
+Speedrun.COLORS_LIST = {"White", "Green", "Red", "Blue", "Orange", "Gold", "Purple", "Animated"}
+Speedrun.COLORS = {
+  ["White"] = G.C.WHITE,
+  ["Green"] = G.C.GREEN,
+  ["Red"] = G.C.RED,
+  ["Blue"] = G.C.BLUE,
+  ["Orange"] = G.C.ORANGE,
+  ["Gold"] = G.C.GOLD,
+  ["Purple"] = G.C.PURPLE,
+  ["Animated"] = G.C.EDITION,
+}
 Speedrun.CATEGORIES = {
   ["Single Run"] = {
     unlocked = true,
@@ -143,10 +130,10 @@ Speedrun.CATEGORIES = {
 }
 for _ in pairs(G.P_CENTER_POOLS.Back) do Speedrun.CATEGORIES["All Decks"].condition_value = Speedrun.CATEGORIES["All Decks"].condition_value + 1 end
 for _ in pairs(G.CHALLENGES) do Speedrun.CATEGORIES["All Challenges"].condition_value = Speedrun.CATEGORIES["All Challenges"].condition_value + 1 end
-for _, v in pairs(Speedrun.P_CENTERS) do
+for _, v in pairs(G.P_CENTERS) do
   if not v.omit then 
     if v.set and ((v.set == 'Joker') or v.consumeable or (v.set == 'Edition') or (v.set == 'Voucher') or (v.set == 'Booster') or (v.set == 'Back')) then
-      if not (v.unlocked == nil or v.unlocked == true or (v.set == 'Joker' and v.rarity == 4)) then 
+      if v.unlock_condition and v.unlock_condition.type ~= '' and v.name ~= 'Dusk' and v.name ~= 'Ride the Bus' then 
         Speedrun.CATEGORIES["All Unlocks"].condition_value = Speedrun.CATEGORIES["All Unlocks"].condition_value + 1
       end
     end
@@ -176,34 +163,10 @@ G.FUNCS.options = function(e)
   nativefs.write(lovely.mod_dir.."/MathIsFun0-Ankh/settings.lua", STR_PACK(Speedrun.SETTINGS))
   if (G.STAGE ~= G.STAGES.RUN) then Speedrun.initRunInfo() end
 end
-function create_UIBox_settings()
-  local tabs = {}
-  tabs[#tabs+1] = {
-    label = localize('b_set_game'),
-    chosen = true,
-    tab_definition_function = G.UIDEF.settings_tab,
-    tab_definition_function_args = 'Game'
-  }
-  if G.F_VIDEO_SETTINGS then   tabs[#tabs+1] = {
-      label = localize('b_set_video'),
-      tab_definition_function = G.UIDEF.settings_tab,
-      tab_definition_function_args = 'Video'
-    }
-  end
-  tabs[#tabs+1] = {
-    label = localize('b_set_graphics'),
-    tab_definition_function = G.UIDEF.settings_tab,
-    tab_definition_function_args = 'Graphics'
-  }
-  tabs[#tabs+1] = {
-    label = localize('b_set_audio'),
-    tab_definition_function = G.UIDEF.settings_tab,
-    tab_definition_function_args = 'Audio'
-  }
-  categoryNode = nil
+Ankh_tab = {}
   if G.SETTINGS.profile == "Official Mode*" then
     if (G.STAGE == G.STAGES.RUN) then
-      tabs[#tabs+1] = {
+      Ankh_tab = {
         label = "Ankh",
         tab_definition_function = function()return {
           n = G.UIT.ROOT,
@@ -232,12 +195,12 @@ function create_UIBox_settings()
               {n=G.UIT.R, config={align = "cm"}, nodes={
                 {n=G.UIT.O, config={object = DynaText({string = "Category cannot be changed during a run.", colours = {G.C.WHITE}, shadow = true, scale = 0.4})}},
               }},
-              UIBox_button{ label = {"Connect to LiveSplit Server"}, button = "startLiveSplitServer", minw = 5, minh = 0.7, scale = 1}
+              UIBox_button{ label = {"Connect to LiveSplit Server"}, button = "startLiveSplitServer", minw = 5, minh = 0.7, scale = 1},
           }
       }end
     }
   else
-    tabs[#tabs+1] = {
+    Ankh_tab = {
       label = "Ankh",
       tab_definition_function = function()return {
         n = G.UIT.ROOT,
@@ -271,14 +234,14 @@ function create_UIBox_settings()
               opt_callback = 'change_category',
               current_option = Speedrun.SETTINGS.selectedCategoryID,
             }),
-            UIBox_button{ label = {"Connect to LiveSplit Server"}, button = "startLiveSplitServer", minw = 5, minh = 0.7, scale = 1}
+            UIBox_button{ label = {"Connect to LiveSplit Server"}, button = "startLiveSplitServer", minw = 5, minh = 0.7, scale = 1},
         }
     }end
   }
     end
   else
     if (G.STAGE == G.STAGES.RUN) then
-      tabs[#tabs+1] = {
+      Ankh_tab = {
         label = "Ankh",
         tab_definition_function = function()return {
           n = G.UIT.ROOT,
@@ -310,7 +273,7 @@ function create_UIBox_settings()
       }end
     }
   else
-    tabs[#tabs+1] = {
+    Ankh_tab = {
       label = "Ankh",
       tab_definition_function = function()return {
         n = G.UIT.ROOT,
@@ -342,20 +305,137 @@ function create_UIBox_settings()
               opt_callback = 'change_category',
               current_option = Speedrun.SETTINGS.selectedCategoryID,
             }),
-            UIBox_button{ label = {"Connect to LiveSplit Server"}, button = "startLiveSplitServer", minw = 5, minh = 0.7, scale = 1}
+            UIBox_button{ label = {"Connect to LiveSplit Server"}, button = "startLiveSplitServer", minw = 5, minh = 0.7, scale = 1},
         }
     }end
   }
   end
   end
-
-  local t = create_UIBox_generic_options({back_func = 'options',contents = {create_tabs(
-    {tabs = tabs,
-    tab_h = 7.05,
-    tab_alignment = 'tm',
-    snap_to_nav = true}
-    )}})
-return t
+if not SpectralPack then
+  SpectralPack = {}
+  local ct = create_tabs
+  function create_tabs(args)
+      if args and args.tab_h == 7.05 then
+          args.tabs[#args.tabs+1] = {
+              label = "Spectral Pack",
+              tab_definition_function = function() return {
+                  n = G.UIT.ROOT,
+                  config = {
+                      emboss = 0.05,
+                      minh = 6,
+                      r = 0.1,
+                      minw = 10,
+                      align = "cm",
+                      padding = 0.2,
+                      colour = G.C.BLACK
+                  },
+                  nodes = SpectralPack
+              } end
+          }
+      end
+      return ct(args)
+  end
+end
+SpectralPack[#SpectralPack+1] = UIBox_button{ label = {"Ankh"}, button = "ankhMenu", colour = G.C.GREEN, minw = 5, minh = 0.7, scale = 0.6}
+G.FUNCS.ankhMenu = function(e)
+  local tabs = create_tabs({
+      snap_to_nav = true,
+      tabs = {
+          {
+              label = "Speedrun",
+              tab_definition_function = function()
+                local tab = {
+                  n = G.UIT.ROOT,
+                  config = {
+                      emboss = 0.05,
+                      minh = 6,
+                      r = 0.1,
+                      minw = 10,
+                      align = "cm",
+                      padding = 0.2,
+                      colour = G.C.BLACK
+                  },
+                  nodes = {
+                      create_option_cycle({
+                        label = "Timer Position",
+                        scale = 0.8,
+                        w = 4,
+                        options = Speedrun.TIMER_POS_LIST,
+                        opt_callback = 'change_timer_pos',
+                        current_option = Speedrun.SETTINGS.timerDuringRunID,
+                      }),
+                      create_toggle({label = "Show Timer in End Screen", ref_table = Speedrun.SETTINGS, ref_value = 'timerEndScreen'}),
+                      create_toggle({label = "Include Time Between Runs", ref_table = Speedrun.SETTINGS, ref_value = 'includeMenuing'}),
+                      create_option_cycle({
+                        label = "Category",
+                        scale = 0.8,
+                        w = 4,
+                        options = Speedrun.CATEGORY_LIST,
+                        opt_callback = 'change_category',
+                        current_option = Speedrun.SETTINGS.selectedCategoryID,
+                      }),
+                      create_option_cycle({
+                        label = "Timer Color",
+                        scale = 0.8,
+                        w = 4,
+                        options = Speedrun.COLORS_LIST,
+                        opt_callback = 'change_timer_color',
+                        current_option = Speedrun.SETTINGS.selectedColorID,
+                      }),
+                      UIBox_button{ label = {"Connect to LiveSplit Server"}, button = "startLiveSplitServer", minw = 5, minh = 0.7, scale = 1},
+                  }
+                }
+              if G.STAGE == G.STAGES.RUN then
+                tab.nodes[4] = {n=G.UIT.R, config={align = "cm"}, nodes={
+                  {n=G.UIT.O, config={object = DynaText({string = "Category cannot be changed during a run.", colours = {G.C.WHITE}, shadow = true, scale = 0.4})}},
+                }}
+              end
+              if G.SETTINGS.profile == "Official Mode*" then
+                tab.nodes[3] = {n=G.UIT.R, config={align = "cm"}, nodes={
+                  {n=G.UIT.O, config={object = DynaText({string = "Time between runs is included in Official Mode.", colours = {G.C.WHITE}, shadow = true, scale = 0.4})}},
+                }}
+              end
+              return tab
+            end
+          },
+          {
+              label = "Replays",
+              chosen = true,
+              tab_definition_function = function()
+                local tab = {
+                  n = G.UIT.ROOT,
+                  config = {
+                      emboss = 0.05,
+                      minh = 6,
+                      r = 0.1,
+                      minw = 10,
+                      align = "cm",
+                      padding = 0.2,
+                      colour = G.C.BLACK
+                  },
+                  nodes = {
+                    create_option_cycle({
+                      label = "Input Delay (seconds)",
+                      scale = 0.8,
+                      w = 4,
+                      options = Speedrun.REPLAY_SPEED_LIST,
+                      opt_callback = 'change_replay_speed',
+                      current_option = Speedrun.SETTINGS.replaySpeedID,
+                    }),  
+                    UIBox_button{ label = {"View a Replay"}, button = "viewReplay", minw = 5, minh = 0.7, scale = 0.6},
+                  }
+                }
+              return tab
+            end
+          },
+      }})
+  G.FUNCS.overlay_menu{
+          definition = create_UIBox_generic_options({
+              back_func = "settings",
+              contents = {tabs}
+          }),
+      config = {offset = {x=0,y=10}}
+  }
 end
 G.FUNCS.startLiveSplitServer = function()
   Speedrun.LIVESPLIT = io.open("//./pipe/LiveSplit", 'a')
@@ -375,6 +455,14 @@ end
 G.FUNCS.change_timer_pos = function(x)
   Speedrun.SETTINGS.timerDuringRunID = x.to_key
   Speedrun.SETTINGS.timerDuringRun = x.to_val
+end
+G.FUNCS.change_replay_speed = function(x)
+  Speedrun.SETTINGS.replaySpeedID = x.to_key
+  DejaVu.DELAY_TIME = x.to_val
+end
+G.FUNCS.change_timer_color = function(x)
+  Speedrun.SETTINGS.selectedColorID = x.to_key
+  Speedrun.SETTINGS.timerColor = x.to_val
 end
 function Speedrun.formatTime(seconds)
   if seconds < 3600 then
@@ -458,7 +546,7 @@ function Speedrun.initRunInfo()
       set_discover_tallies()
     end
   end
-  for _, v in pairs(Speedrun.P_CENTERS) do
+  for _, v in pairs(G.P_CENTERS) do
     if not v.omit then 
       if v.set and v.set == 'Back' then
         Speedrun.RUN_INFO.deckWins[v.name] = false
@@ -475,14 +563,14 @@ function Speedrun.initRunInfo()
     if not v.omit then 
       if v.set and ((v.set == 'Joker') or v.consumeable or (v.set == 'Edition') or (v.set == 'Voucher') or (v.set == 'Booster')) then
         Speedrun.RUN_INFO.unlocksTotal=Speedrun.RUN_INFO.unlocksTotal+1
-        if v.unlocked == true or v.unlocked == nil or (v.set == 'Joker' and v.rarity == 4) then Speedrun.RUN_INFO.unlocksFound=Speedrun.RUN_INFO.unlocksFound+1 end
+        if v.unlocked == true or v.unlocked == nil or v.unlock_condition and v.unlock_condition.type == '' then Speedrun.RUN_INFO.unlocksFound=Speedrun.RUN_INFO.unlocksFound+1 end
       end
     end
   end
-  for _, v in pairs(Speedrun.P_CENTERS) do
+  for _, v in pairs(G.P_CENTERS) do
     if not v.omit then 
       if v.set and ((v.set == 'Joker') or v.consumeable or (v.set == 'Edition') or (v.set == 'Voucher') or (v.set == 'Booster')) then
-        if v.unlocked == nil or v.unlocked == true or (v.set == 'Joker' and v.rarity == 4) then 
+        if not v.unlock_condition or v.unlock_condition.type == '' or v.name == 'Dusk' or v.name == 'Ride the Bus' then 
           Speedrun.RUN_INFO.unlocksFound=Speedrun.RUN_INFO.unlocksFound-1
           Speedrun.RUN_INFO.unlocksTotal=Speedrun.RUN_INFO.unlocksTotal-1
         end
@@ -498,11 +586,11 @@ function create_UIBox_HUD()
     if not Speedrun.CATEGORIES[Speedrun.SETTINGS.selectedCategory].hide_condition then
       hud.nodes[1].nodes[1].nodes[1].nodes[#hud.nodes[1].nodes[1].nodes[1].nodes+1] = 
         {n=G.UIT.R, config={align = "cm"}, nodes={
-          {n=G.UIT.O, config={object = DynaText({string = {{ref_table = Speedrun.TIMERS, ref_value = 'UNLOCK_DISP'}}, colours = {G.C.WHITE}, shadow = true, bump = true, scale = 0.4, pop_in = 0.5, maxw = 5, silent = true}), id = 'timer'}}
+          {n=G.UIT.O, config={object = DynaText({string = {{ref_table = Speedrun.TIMERS, ref_value = 'UNLOCK_DISP'}}, colours = {Speedrun.COLORS[Speedrun.SETTINGS.timerColor]}, shadow = true, bump = true, scale = 0.4, pop_in = 0.5, maxw = 5, silent = true}), id = 'timer'}}
         }} end
   hud.nodes[1].nodes[1].nodes[1].nodes[#hud.nodes[1].nodes[1].nodes[1].nodes+1] = 
   {n=G.UIT.R, config={align = "cm"}, nodes={
-    {n=G.UIT.O, config={object = DynaText({string = {{ref_table = Speedrun.TIMERS, ref_value = 'SPEEDRUN_DISP'}}, colours = {G.C.WHITE}, shadow = true, bump = true, scale = 0.7, pop_in = 0.5, maxw = 5, silent = true}), id = 'timer'}}
+    {n=G.UIT.O, config={object = DynaText({string = {{ref_table = Speedrun.TIMERS, ref_value = 'SPEEDRUN_DISP'}}, colours = {Speedrun.COLORS[Speedrun.SETTINGS.timerColor]}, shadow = true, bump = true, scale = 0.7, pop_in = 0.5, maxw = 5, silent = true}), id = 'timer'}}
   }} end
   return hud
 end
@@ -568,14 +656,14 @@ function Speedrun.update(dt)
     for _, v in pairs(G.P_CENTERS) do
       if not v.omit then 
         if v.set and ((v.set == 'Joker') or v.consumeable or (v.set == 'Edition') or (v.set == 'Voucher') or (v.set == 'Booster') or (v.set == 'Back')) then
-          if v.unlocked == true or v.unlocked == nil or (v.set == 'Joker' and v.rarity == 4) then Speedrun.RUN_INFO.condition_value=Speedrun.RUN_INFO.condition_value+1 end
+          if v.unlocked == true or v.unlocked == nil or v.unlock_condition and v.unlock_condition.type == '' then Speedrun.RUN_INFO.condition_value=Speedrun.RUN_INFO.condition_value+1 end
         end
       end
     end
-    for _, v in pairs(Speedrun.P_CENTERS) do
+    for _, v in pairs(G.P_CENTERS) do
       if not v.omit then 
         if v.set and ((v.set == 'Joker') or v.consumeable or (v.set == 'Edition') or (v.set == 'Voucher') or (v.set == 'Booster') or (v.set == 'Back')) then
-          if v.unlocked == nil or v.unlocked == true or (v.set == 'Joker' and v.rarity == 4) then 
+          if not v.unlock_condition or v.unlock_condition.type == '' or v.name == 'Dusk' or v.name == 'Ride the Bus' then 
             Speedrun.RUN_INFO.condition_value=Speedrun.RUN_INFO.condition_value-1
           end
         end
@@ -832,12 +920,12 @@ function G.UIDEF.profile_select()
                 tab_definition_function = G.UIDEF.profile_option,
                 tab_definition_function_args = 3
             },
-            {
+            --[[{
                 label = "Official Mode",
                 chosen = G.focused_profile == "Official Mode*",
                 tab_definition_function = Speedrun.official_mode_option,
                 tab_definition_function_args = "Official Mode*"
-            }
+            }--]] --disabled this because the checks haven't been updated
         },
         snap_to_nav = true}),
       }},
@@ -1338,12 +1426,12 @@ function create_UIBox_SpeedrunTimer()
 			{n=G.UIT.R, config={align = "cm", colour = G.C.DYN_UI.BOSS_DARK, r=0.1, minw = 1.5, padding = 0.08}, nodes={
 				{n=G.UIT.R, config={align = "cm", minh = 0.0}, nodes={}},
 				{n=G.UIT.R, config={id = 'speedrun_timer_right', align = "cm", padding = 0.05, minw = 1.45, emboss = 0.05, r = 0.1}, nodes=not Speedrun.CATEGORIES[Speedrun.SETTINGS.selectedCategory].hide_condition and {{n=G.UIT.R, config={align = "cm"}, nodes={
-                {n=G.UIT.O, config={object = DynaText({string = {{ref_table = Speedrun.TIMERS, ref_value = 'UNLOCK_DISP'}}, colours = {G.C.WHITE}, shadow = true, bump = true, scale = 0.4, pop_in = 0.5, maxw = 5, silent = true}), id = 'timer'}}
+                {n=G.UIT.O, config={object = DynaText({string = {{ref_table = Speedrun.TIMERS, ref_value = 'UNLOCK_DISP'}}, colours = {Speedrun.COLORS[Speedrun.SETTINGS.timerColor]}, shadow = true, bump = true, scale = 0.4, pop_in = 0.5, maxw = 5, silent = true}), id = 'timer'}}
               }},
               {n=G.UIT.R, config={align = "cm"}, nodes={
-                {n=G.UIT.O, config={object = DynaText({string = {{ref_table = Speedrun.TIMERS, ref_value = 'SPEEDRUN_DISP'}}, colours = {G.C.WHITE}, shadow = true, bump = true, scale = 0.6, pop_in = 0.5, maxw = 5, silent = true}), id = 'timer'}}
+                {n=G.UIT.O, config={object = DynaText({string = {{ref_table = Speedrun.TIMERS, ref_value = 'SPEEDRUN_DISP'}}, colours = {Speedrun.COLORS[Speedrun.SETTINGS.timerColor]}, shadow = true, bump = true, scale = 0.6, pop_in = 0.5, maxw = 5, silent = true}), id = 'timer'}}
               }}} or {{n=G.UIT.R, config={align = "cm"}, nodes={
-                {n=G.UIT.O, config={object = DynaText({string = {{ref_table = Speedrun.TIMERS, ref_value = 'SPEEDRUN_DISP'}}, colours = {G.C.WHITE}, shadow = true, bump = true, scale = 0.6, pop_in = 0.5, maxw = 5, silent = true}), id = 'timer'}}
+                {n=G.UIT.O, config={object = DynaText({string = {{ref_table = Speedrun.TIMERS, ref_value = 'SPEEDRUN_DISP'}}, colours = {Speedrun.COLORS[Speedrun.SETTINGS.timerColor]}, shadow = true, bump = true, scale = 0.6, pop_in = 0.5, maxw = 5, silent = true}), id = 'timer'}}
               }}}
 				}
 			}}
