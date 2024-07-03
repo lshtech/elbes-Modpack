@@ -130,3 +130,6 @@
 [submodule "Mods/JokerDisplay"]
 	path = Mods/JokerDisplay
 	url = https://github.com/nh6574/JokerDisplay
+[submodule "Mods/Nopeus"]
+	path = Mods/Nopeus
+	url = https://github.com/cubeanimataz/Nopeus
