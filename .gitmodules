@@ -109,3 +109,12 @@
 [submodule "Mods/Joker-Evolution"]
 	path = Mods/Joker-Evolution
 	url = https://github.com/Dimserene/Joker-Evolution
+[submodule "Mods/Balatro_PhantomThievesJokers"]
+	path = Mods/Balatro_PhantomThievesJokers
+	url = https://github.com/cerloCasa/Balatro_PhantomThievesJokers
+[submodule "Mods/BonusBlinds"]
+	path = Mods/BonusBlinds
+	url = https://github.com/Dimserene/BonusBlinds
+[submodule "Mods/Aura"]
+	path = Mods/Aura
+	url = https://github.com/MathIsFun0/Aura
