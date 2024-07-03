@@ -293,12 +293,6 @@ git submodule update --remote --recursive --merge
   By Mikadoe
 
   [Download](https://github.com/MikaSchoenmakers/MikasBalatro/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1215775159638818826)
-
-- [__More Speeds__](https://github.com/Steamopollys/Steamodded/blob/main/example_mods/Mods/MoreSpeeds.lua) (latest build)
-
-  [Discord](https://discord.com/channels/1116389027176787968/1210304870457020487)
-
-  - One of the example mods by Steamopollys
   
 - [__Myst's Boss Blinds__](https://github.com/Mysthaps/MystBlinds) (latest release)
 
@@ -317,6 +311,10 @@ git submodule update --remote --recursive --merge
   By kjossul
   
   [Download](https://github.com/kjossul/NeowBlessings/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1217892947119308933)
+
+- [__Nopeus__](https://github.com/cubeanimataz/Nopeus) (latest build)
+
+  [Download](https://github.com/cubeanimataz/Nopeus/releases) [Discord](https://discord.com/channels/1116389027176787968/1258019898244993096)
 
 - [__Not Just Yet__](https://github.com/Toneblock/balatro-NotJustYet/tree/v0.2.1) (latest release)
 
