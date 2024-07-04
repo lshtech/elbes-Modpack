@@ -109,9 +109,6 @@
 [submodule "Mods/Balatro_PhantomThievesJokers"]
 	path = Mods/Balatro_PhantomThievesJokers
 	url = https://github.com/cerloCasa/Balatro_PhantomThievesJokers
-[submodule "Mods/BonusBlinds"]
-	path = Mods/BonusBlinds
-	url = https://github.com/Dimserene/BonusBlinds
 [submodule "Mods/Aura"]
 	path = Mods/Aura
 	url = https://github.com/MathIsFun0/Aura
@@ -130,6 +127,9 @@
 [submodule "Mods/DX-Tarots"]
 	path = Mods/DX-Tarots
 	url = https://github.com/Dimserene/DX-Tarots
-[submodule "Mods/Easier-Scoring"]
-	path = Mods/Easier-Scoring
+[submodule "BonusBlinds"]
+	path = BonusBlinds
+	url = https://github.com/Dimserene/BonusBlinds
+[submodule "Easier-Scoring"]
+	path = Easier-Scoring
 	url = https://github.com/cerloCasa/Easier-Scoring
