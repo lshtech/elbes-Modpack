@@ -127,9 +127,9 @@
 [submodule "Mods/DX-Tarots"]
 	path = Mods/DX-Tarots
 	url = https://github.com/Dimserene/DX-Tarots
-[submodule "BonusBlinds"]
-	path = BonusBlinds
-	url = https://github.com/Dimserene/BonusBlinds
-[submodule "Easier-Scoring"]
-	path = Easier-Scoring
+[submodule "Mods/Easier-Scoring"]
+	path = Mods/Easier-Scoring
 	url = https://github.com/cerloCasa/Easier-Scoring
+[submodule "Mods/BonusBlinds"]
+	path = Mods/BonusBlinds
+	url = https://github.com/Dimserene/BonusBlinds
