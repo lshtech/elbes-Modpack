@@ -208,6 +208,8 @@ git submodule update --remote --recursive --merge
 
 - [__Fixed Deck Size__](https://github.com/stupxd/fixed-deck-size) (latest release)
 
+  By Stupid
+
   [Download](https://github.com/stupxd/fixed-deck-size/releases) [Discord](https://discord.com/channels/1116389027176787968/1258438028800692224)
 
 - [__Fusion Jokers__](https://itayfeder.github.io/Fusion-Jokers/) (latest release)
