@@ -133,3 +133,6 @@
 [submodule "Mods/Easier-Scoring"]
 	path = Mods/Easier-Scoring
 	url = https://github.com/cerloCasa/Easier-Scoring
+[submodule "Mods/fixed-deck-size"]
+	path = Mods/fixed-deck-size
+	url = https://github.com/stupxd/fixed-deck-size
