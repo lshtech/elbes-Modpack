@@ -52,7 +52,7 @@ git submodule update --remote --recursive --merge
 
 ## FAQ
 
-  1. The game crashed and it said some mod attempted to compare number with table.
+  1. The game crashed and it said something something ___table___.
 
      - In the game, head for settings > spectral pack > Talisman > Disable the second option > Restart game.
      ![Alt text](https://github.com/Dimserene/Dimserenes-Modpack/blob/main/Screenshot_20240630_211615_Winlator.jpg)
