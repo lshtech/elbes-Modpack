@@ -220,6 +220,8 @@ git submodule update --remote --recursive --merge
 
 - [__Gamblecore__](https://github.com/nicholassam6425/gamblecore) (latest main code)
 
+  By nicholassam6425
+
   [Download](https://github.com/nicholassam6425/gamblecore/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1250974931433295983)
 
 - [__House Rules__](https://github.com/Mysthaps/BalatroMods) (latest release)
@@ -326,6 +328,8 @@ git submodule update --remote --recursive --merge
 
 - [__Nopeus__](https://github.com/cubeanimataz/Nopeus) (latest release)
 
+  By cubeanimataz
+
   [Download](https://github.com/cubeanimataz/Nopeus/releases) [Discord](https://discord.com/channels/1116389027176787968/1258019898244993096)
 
 - [__Not Just Yet__](https://github.com/Toneblock/balatro-NotJustYet/tree/v0.2.1) (latest release)
@@ -366,7 +370,7 @@ git submodule update --remote --recursive --merge
 
 - [__Stickers Always Shown__](https://github.com/SirMaiquis/Balatro-Stickers-Always-Shown) (latest release)
 
-  By Sir Maiquis
+  By SirMaiquis
 
   [Download](https://github.com/SirMaiquis/Balatro-Stickers-Always-Shown/releases) [Discord](https://discord.com/channels/1116389027176787968/1234224985032097792)
 
