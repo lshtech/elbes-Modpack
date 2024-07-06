@@ -61,9 +61,6 @@
 [submodule "Mods/Ro-Balatro"]
 	path = Mods/Ro-Balatro
 	url = https://github.com/AlexZGreat/Ro-Balatro
-[submodule "Mods/BalatroTagPreview"]
-	path = Mods/BalatroTagPreview
-	url = https://github.com/JKd3vLD/BalatroTagPreview
 [submodule "Mods/Taikomochi"]
 	path = Mods/Taikomochi
 	url = https://github.com/Amvoled/Taikomochi
