@@ -212,11 +212,11 @@ git submodule update --remote --recursive --merge
 
   [Download](https://www.nexusmods.com/balatro/mods/43?tab=files)
 
-- [__Fusion Jokers__](https://itayfeder.github.io/Fusion-Jokers/) (latest release)
+- ~~[__Fusion Jokers__](https://itayfeder.github.io/Fusion-Jokers/) (latest release)(Removed to fix a bug)~~
 
-  By itayfeder, Lyman
+  ~~By itayfeder, Lyman~~
 
-  [Download](https://github.com/itayfeder/Fusion-Jokers/releases) [Discord](https://discord.com/channels/1116389027176787968/1227317656131211284)
+  ~~[Download](https://github.com/itayfeder/Fusion-Jokers/releases) [Discord](https://discord.com/channels/1116389027176787968/1227317656131211284)~~
 
 - [__Gamblecore__](https://github.com/nicholassam6425/gamblecore) (latest main code)
 
@@ -242,11 +242,11 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/spikeof2010/JankJonklers/releases) [Discord](https://discord.com/channels/1116389027176787968/1214838383805997117)
 
-- [__Jestobiology__](https://github.com/spikeof2010/Jestobiology/tree/AlphaBeta) build (latest release)
+- ~~[__Jestobiology__](https://github.com/spikeof2010/Jestobiology/tree/AlphaBeta) (latest release)(Removed because dependencies)~~
 
-  By Lyman
+  ~~By Lyman~~
 
-  [Download](https://github.com/spikeof2010/Jestobiology/releases) [Discord](https://discord.com/channels/1116389027176787968/1231665856619086005)
+  ~~[Download](https://github.com/spikeof2010/Jestobiology/releases) [Discord](https://discord.com/channels/1116389027176787968/1231665856619086005)~~
 
 - [__Jimbo's Pack__](https://github.com/art-muncher/Jimbo-s-Pack) (latest release)
 
