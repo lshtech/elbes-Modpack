@@ -127,3 +127,6 @@
 [submodule "Mods/Cartomancer"]
 	path = Mods/Cartomancer
 	url = https://github.com/stupxd/Cartomancer
+[submodule "Mods/Othermod"]
+	path = Mods/Othermod
+	url = https://github.com/Aigengoku/Othermod
