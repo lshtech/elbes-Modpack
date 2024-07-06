@@ -377,7 +377,7 @@ git submodule update --remote --recursive --merge
   - Needs tweak for compat with SMODS 1.0.0
   - Change `local center = GetCenterKeyByJokerName(card.ability.name)` instance into `local center = card.config.center`
 
-~~- [__Tags Preview__](https://github.com/JKd3vLD/BalatroTagPreview) (latest release)(removed because too many bugs)
+~~ - [__Tags Preview__](https://github.com/JKd3vLD/BalatroTagPreview) (latest release)(removed because too many bugs)
 
   By JK
 
