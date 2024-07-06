@@ -141,6 +141,12 @@ git submodule update --remote --recursive --merge
   By Firch, RENREN, Peas, minichibis, J.D., Guwahavel, Ciirulean, ejwu
 
   [Download](https://github.com/Firch/Bunco/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1220084296346501201)
+
+- [__Cartomancer__](https://github.com/stupxd/Cartomancer) (latest release)
+
+  By Stupid
+
+  [Download](https://github.com/stupxd/Cartomancer/release) [Discord](https://discord.com/channels/1116389027176787968/1258438028800692224)
   
 - [__Codex Arcanum__](https://github.com/itayfeder/Codex-Arcanum) (latest release)
 
@@ -205,12 +211,6 @@ git submodule update --remote --recursive --merge
   By Boomer678
 
   [Download](https://www.nexusmods.com/balatro/mods/43?tab=files)
-
-- [__Fixed Deck Size__](https://github.com/stupxd/fixed-deck-size) (latest release)
-
-  By Stupid
-
-  [Download](https://github.com/stupxd/fixed-deck-size/releases) [Discord](https://discord.com/channels/1116389027176787968/1258438028800692224)
 
 - [__Fusion Jokers__](https://itayfeder.github.io/Fusion-Jokers/) (latest release)
 
