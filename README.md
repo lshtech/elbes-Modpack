@@ -344,6 +344,10 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/GauntletGames-2086/Ortalab-DEMO/archive/refs/heads/test.zip) [Discord](https://discord.com/channels/1116389027176787968/1217704157574860810)
 
+- [__Othermod__](https://github.com/Aigengoku/Othermod) (latest release)
+
+  [Download](https://github.com/Aigengoku/Othermod/releases) [Discord](https://discord.com/channels/1116389027176787968/1248387108029202432)
+
 - [__Pampa Joker Pack__](https://batabata3.github.io/balatro-pampa-joker-pack/) (latest release)
 
   By Matelote
