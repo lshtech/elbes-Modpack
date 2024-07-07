@@ -290,11 +290,11 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/LunaAstraCassiopeia/LunasBalatroMods/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1216064295633289286)
 
-- [__Luna's Recontrast__](https://github.com/LunaAstraCassiopeia/LunasBalatroMods) (latest main code)
+- ~~[__Luna's Recontrast__](https://github.com/LunaAstraCassiopeia/LunasBalatroMods) (latest main code)(Removed cause crashing & redundent)~~
 
-  By LunaAstraCassiopeia
+  ~~By LunaAstraCassiopeia~~
 
-  [Download](https://github.com/LunaAstraCassiopeia/LunasBalatroMods/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1216064295633289286)
+  ~~[Download](https://github.com/LunaAstraCassiopeia/LunasBalatroMods/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1216064295633289286)~~
 
 - [__Math Blinds__](https://github.com/Bazinga9000/MathBlinds) (latest main code)
 
@@ -344,11 +344,11 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/GauntletGames-2086/Ortalab-DEMO/archive/refs/heads/test.zip) [Discord](https://discord.com/channels/1116389027176787968/1217704157574860810)
 
-- [__Othermod__](https://github.com/Aigengoku/Othermod) (latest release)
+- ~~[__Othermod__](https://github.com/Aigengoku/Othermod) (latest release)(Removed cause crash)~~
 
-  By Aigengoku
+  ~~By Aigengoku~~
 
-  [Download](https://github.com/Aigengoku/Othermod/releases) [Discord](https://discord.com/channels/1116389027176787968/1248387108029202432)
+  ~~[Download](https://github.com/Aigengoku/Othermod/releases) [Discord](https://discord.com/channels/1116389027176787968/1248387108029202432)~~
 
 - [__Pampa Joker Pack__](https://batabata3.github.io/balatro-pampa-joker-pack/) (latest release)
 
