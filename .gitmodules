@@ -22,9 +22,6 @@
 [submodule "Mods/Betmma_mods"]
 	path = Mods/Betmma_mods
 	url = https://github.com/Dimserene/Betmma_mods
-[submodule "Mods/LunasBalatroMods"]
-	path = Mods/LunasBalatroMods
-	url = https://github.com/LunaAstraCassiopeia/LunasBalatroMods
 [submodule "Mods/MystMods"]
 	path = Mods/MystMods
 	url = https://github.com/Dimserene/MystMods
@@ -115,12 +112,12 @@
 [submodule "Mods/Cartomancer"]
 	path = Mods/Cartomancer
 	url = https://github.com/stupxd/Cartomancer
-[submodule "Mods/Othermod"]
-	path = Mods/Othermod
-	url = https://github.com/Aigengoku/Othermod
 [submodule "Mods/SDM0-s-Stuff"]
 	path = Mods/SDM0-s-Stuff
 	url = https://github.com/Dimserene/SDM0-s-Stuff
 [submodule "Mods/MikasBalatro"]
 	path = Mods/MikasBalatro
 	url = https://github.com/Dimserene/MikasBalatro
+[submodule "Mods/LunasBalatroMods"]
+	path = Mods/LunasBalatroMods
+	url = https://github.com/Dimserene/LunasBalatroMods
