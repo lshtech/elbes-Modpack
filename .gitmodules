@@ -40,9 +40,6 @@
 [submodule "Mods/MathBlinds"]
 	path = Mods/MathBlinds
 	url = https://github.com/Bazinga9000/MathBlinds
-[submodule "Mods/MikasBalatro"]
-	path = Mods/MikasBalatro
-	url = https://github.com/Dimserene/MikasBalatro
 [submodule "Mods/MystBlinds"]
 	path = Mods/MystBlinds
 	url = https://github.com/Mysthaps/MystBlinds
@@ -124,3 +121,6 @@
 [submodule "Mods/SDM0-s-Stuff"]
 	path = Mods/SDM0-s-Stuff
 	url = https://github.com/Dimserene/SDM0-s-Stuff
+[submodule "Mods/MikasBalatro"]
+	path = Mods/MikasBalatro
+	url = https://github.com/Dimserene/MikasBalatro
