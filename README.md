@@ -6,7 +6,7 @@ A custom-made modpack that is hand-picked and put together by myself
 
 Some mod files needs to be altered to avoid compat issues if you want to put the mods together.（Note that i have applied all the modifications in the modpack)
 
-I repeat, this is not a full list of 1.0.0 compatible mods, this is a modpack that when put together and my goal is they should function with no problem.(at least i hope)
+This is not a full list of 1.0.0 compatible mods, this is a modpack that when put together and my goal is they should function with no problem.(at least i hope)
 
 If you wanna join us dealing with this nightmare beast, you can join our [Discord](https://discord.com/channels/1116389027176787968/1255696773599592458)
 
