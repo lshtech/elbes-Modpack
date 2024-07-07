@@ -91,9 +91,6 @@
 [submodule "Mods/Ortalab-DEMO"]
 	path = Mods/Ortalab-DEMO
 	url = https://github.com/Dimserene/Ortalab-DEMO
-[submodule "Mods/SDM0-s-Stuff"]
-	path = Mods/SDM0-s-Stuff
-	url = https://github.com/Dimserene/SDM0-s-Stuff
 [submodule "Mods/Joker-Evolution"]
 	path = Mods/Joker-Evolution
 	url = https://github.com/Dimserene/Joker-Evolution
@@ -130,3 +127,6 @@
 [submodule "Mods/Othermod"]
 	path = Mods/Othermod
 	url = https://github.com/Aigengoku/Othermod
+[submodule "Mods/SDM0-s-Stuff"]
+	path = Mods/SDM0-s-Stuff
+	url = https://github.com/Dimserene/SDM0-s-Stuff
