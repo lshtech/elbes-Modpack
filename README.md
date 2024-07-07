@@ -290,11 +290,11 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/LunaAstraCassiopeia/LunasBalatroMods/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1216064295633289286)
 
-- [__Luna's Recontrast__](https://github.com/LunaAstraCassiopeia/LunasBalatroMods) (latest main code)
+- ~~[__Luna's Recontrast__](https://github.com/LunaAstraCassiopeia/LunasBalatroMods) (latest main code)(Removed cause crashing & redundent)~~
 
-  By LunaAstraCassiopeia
+  ~~By LunaAstraCassiopeia~~
 
-  [Download](https://github.com/LunaAstraCassiopeia/LunasBalatroMods/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1216064295633289286)
+  ~~[Download](https://github.com/LunaAstraCassiopeia/LunasBalatroMods/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1216064295633289286)~~
 
 - [__Math Blinds__](https://github.com/Bazinga9000/MathBlinds) (latest main code)
 
