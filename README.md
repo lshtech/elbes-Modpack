@@ -196,11 +196,11 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/JeffVi/DX-Tarots/releases) [Discord](https://discord.com/channels/1116389027176787968/1226210957253017691)
 
-- [__Easier Scoring__](https://github.com/cerloCasa/Easier-Scoring) (latest release)
+- ~~[__Easier Scoring__](https://github.com/cerloCasa/Easier-Scoring) (latest release)(Removed because of instability)~~
 
-  By PT_Cerlo
+  ~~By PT_Cerlo~~
 
-  [Download](https://github.com/cerloCasa/Easier-Scoring/releases) [Discord](https://discord.com/channels/1116389027176787968/1257660889520144446)
+  ~~[Download](https://github.com/cerloCasa/Easier-Scoring/releases) [Discord](https://discord.com/channels/1116389027176787968/1257660889520144446)~~
 
 - [__Escape Exit Button__](https://github.com/Steamopollys/Steamodded/blob/main/example_mods/Mods/EscapeExitButton.lua#L13) (latest build)
 
@@ -356,11 +356,11 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/batabata3/balatro-pampa-joker-pack/releases) [Discord](https://discord.com/channels/1116389027176787968/1224352378871087104)
 
-- [__Phantom Thieves Jokers__](https://github.com/cerloCasa/Balatro_PhantomThievesJokers) (latest release)
+- ~~[__Phantom Thieves Jokers__](https://github.com/cerloCasa/Balatro_PhantomThievesJokers) (latest release)(removed for dependencies)~~
 
-  By PT_Cerlo
+  ~~By PT_Cerlo~~
 
-  [Download](https://github.com/cerloCasa/Balatro_PhantomThievesJokers/releases) [Discord](https://discord.com/channels/1116389027176787968/1249801316616765560)
+  ~~[Download](https://github.com/cerloCasa/Balatro_PhantomThievesJokers/releases) [Discord](https://discord.com/channels/1116389027176787968/1249801316616765560)~~
 
 - [__RO-Balatro__](https://github.com/AlexZGreat/Ro-Balatro) (latest release)
 
