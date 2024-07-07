@@ -356,7 +356,7 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/batabata3/balatro-pampa-joker-pack/releases) [Discord](https://discord.com/channels/1116389027176787968/1224352378871087104)
 
-- ~~[__Phantom Thieves Jokers__](https://github.com/cerloCasa/Balatro_PhantomThievesJokers) (latest release)(removed for dependencies)~~
+- ~~[__Phantom Thieves Jokers__](https://github.com/cerloCasa/Balatro_PhantomThievesJokers) (latest release)(removed for dependancies)~~
 
   ~~By PT_Cerlo~~
 
