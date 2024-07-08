@@ -118,9 +118,6 @@
 [submodule "Mods/BalatroFoldButton"]
 	path = Mods/BalatroFoldButton
 	url = https://github.com/happinyz/BalatroFoldButton
-[submodule "Mods/kcvanilla"]
-	path = Mods/kcvanilla
-	url = https://github.com/kcgidw/kcvanilla
 [submodule "Mods/Easier-Scoring"]
 	path = Mods/Easier-Scoring
 	url = https://github.com/cerloCasa/Easier-Scoring
@@ -130,3 +127,6 @@
 [submodule "Mods/Ortalab-DEMO"]
 	path = Mods/Ortalab-DEMO
 	url = https://github.com/Dimserene/Ortalab-DEMO
+[submodule "Mods/kcvanilla"]
+	path = Mods/kcvanilla
+	url = https://github.com/kcgidw/kcvanilla
