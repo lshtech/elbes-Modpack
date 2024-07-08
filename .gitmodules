@@ -115,9 +115,6 @@
 [submodule "Mods/LunasBalatroMods"]
 	path = Mods/LunasBalatroMods
 	url = https://github.com/Dimserene/LunasBalatroMods
-[submodule "Mods/Ortalab-DEMO"]
-	path = Mods/Ortalab-DEMO
-	url = https://github.com/Dimserene/Ortalab-DEMO
 [submodule "Mods/BalatroFoldButton"]
 	path = Mods/BalatroFoldButton
 	url = https://github.com/happinyz/BalatroFoldButton
@@ -130,3 +127,6 @@
 [submodule "Mods/Balatro_PhantomThievesJokers"]
 	path = Mods/Balatro_PhantomThievesJokers
 	url = https://github.com/cerloCasa/Balatro_PhantomThievesJokers
+[submodule "Mods/Ortalab-DEMO"]
+	path = Mods/Ortalab-DEMO
+	url = https://github.com/Dimserene/Ortalab-DEMO
