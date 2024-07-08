@@ -127,3 +127,6 @@
 [submodule "Mods/kcvanilla"]
 	path = Mods/kcvanilla
 	url = https://github.com/kcgidw/kcvanilla
+[submodule "Mods/Talisman"]
+	path = Mods/Talisman
+	url = https://github.com/Dimserene/Talisman
