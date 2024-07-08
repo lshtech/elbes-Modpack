@@ -152,11 +152,11 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/stupxd/Cartomancer/release) [Discord](https://discord.com/channels/1116389027176787968/1258438028800692224)
   
-- [__Codex Arcanum__](https://github.com/itayfeder/Codex-Arcanum) (latest release)
+- ~~[__Codex Arcanum__](https://github.com/itayfeder/Codex-Arcanum) (latest release)(Removed by crash)~~
 
-  By itayfeder
+  ~~By itayfeder~~
 
-  [Download](https://github.com/itayfeder/Codex-Arcanum/releases) [Discord](https://discord.com/channels/1116389027176787968/1221916334372290620)
+  ~~[Download](https://github.com/itayfeder/Codex-Arcanum/releases) [Discord](https://discord.com/channels/1116389027176787968/1221916334372290620)~~
 
 - [__Crimson's Ultimate Card Kollection__](https://github.com/XenoCHeart/Crimsons-Ultimate-Card-Collection) (latest release)
 
