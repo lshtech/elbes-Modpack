@@ -7,9 +7,6 @@
 [submodule "Mods/Bunco"]
 	path = Mods/Bunco
 	url = https://github.com/Firch/Bunco
-[submodule "Mods/Codex-Arcanum"]
-	path = Mods/Codex-Arcanum
-	url = https://github.com/Dimserene/Codex-Arcanum
 [submodule "Mods/Cryptid"]
 	path = Mods/Cryptid
 	url = https://github.com/MathIsFun0/Cryptid
