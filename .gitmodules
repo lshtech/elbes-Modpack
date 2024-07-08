@@ -115,3 +115,6 @@
 [submodule "Mods/LunasBalatroMods"]
 	path = Mods/LunasBalatroMods
 	url = https://github.com/Dimserene/LunasBalatroMods
+[submodule "Mods/Ortalab-DEMO"]
+	path = Mods/Ortalab-DEMO
+	url = https://github.com/Dimserene/Ortalab-DEMO
