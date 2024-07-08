@@ -79,9 +79,6 @@
 [submodule "Mods/balatro-pampa-joker-pack"]
 	path = Mods/balatro-pampa-joker-pack
 	url = https://github.com/batabata3/balatro-pampa-joker-pack
-[submodule "Mods/Ortalab-DEMO"]
-	path = Mods/Ortalab-DEMO
-	url = https://github.com/Dimserene/Ortalab-DEMO
 [submodule "Mods/Joker-Evolution"]
 	path = Mods/Joker-Evolution
 	url = https://github.com/Dimserene/Joker-Evolution
