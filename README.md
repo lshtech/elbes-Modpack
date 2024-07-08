@@ -120,6 +120,12 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/JustinBanzon/Bird-Jokers/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1255003757213778002)
 
+- [__Blanks__](https://discord.com/channels/1116389027176787968/1247557789807677480) (latest release)
+
+  By jenwalter666
+
+  [Download](https://discord.com/channels/1116389027176787968/1247557789807677480/1247672341572358155) [Discord](https://discord.com/channels/1116389027176787968/1247557789807677480)
+
 - [__Bonus Blinds__](https://github.com/Mathguy23/BonusBlinds) (latest main code)
 
   By Mathguy
@@ -200,11 +206,11 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/JeffVi/DX-Tarots/releases) [Discord](https://discord.com/channels/1116389027176787968/1226210957253017691)
 
-- ~~[__Easier Scoring__](https://github.com/cerloCasa/Easier-Scoring) (latest release)(Removed because of instability)~~
+- [__Easier Scoring__](https://github.com/cerloCasa/Easier-Scoring) (latest release)
 
-  ~~By PT_Cerlo~~
+  By PT_Cerlo
 
-  ~~[Download](https://github.com/cerloCasa/Easier-Scoring/releases) [Discord](https://discord.com/channels/1116389027176787968/1257660889520144446)~~
+  [Download](https://github.com/cerloCasa/Easier-Scoring/releases) [Discord](https://discord.com/channels/1116389027176787968/1257660889520144446)
 
 - [__Escape Exit Button__](https://github.com/Steamopollys/Steamodded/blob/main/example_mods/Mods/EscapeExitButton.lua#L13) (latest build)
 
@@ -221,6 +227,12 @@ git submodule update --remote --recursive --merge
   ~~By itayfeder, Lyman~~
 
   ~~[Download](https://github.com/itayfeder/Fusion-Jokers/releases) [Discord](https://discord.com/channels/1116389027176787968/1227317656131211284)~~
+
+- [__Fold Button__](https://github.com/happinyz/BalatroFoldButton/) (latest main code)
+
+  By happinyz
+
+  [Download](https://github.com/happinyz/BalatroFoldButton/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1212310687125209118)
 
 - [__Gamblecore__](https://github.com/nicholassam6425/gamblecore) (latest main code)
 
@@ -245,6 +257,12 @@ git submodule update --remote --recursive --merge
   By Lyman
 
   [Download](https://github.com/spikeof2010/JankJonklers/releases) [Discord](https://discord.com/channels/1116389027176787968/1214838383805997117)
+
+- [__JCursor__](https://github.com/jie65535/JMods/) (latest main build)
+
+  By Jie65535
+
+  [Download](https://github.com/jie65535/JMods/archive/refs/heads/main.zip)
 
 - ~~[__Jestobiology__](https://github.com/spikeof2010/Jestobiology/tree/AlphaBeta) (latest release)(Removed because dependencies)~~
 
@@ -276,6 +294,12 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/OppositeWolf770/JokerSellValue/releases) [Discord](https://discord.com/channels/1116389027176787968/1247768604879884349)
 
+- [__KC Vanilla__](https://github.com/kcgidw/kcvanilla) (latest main code)
+
+  By krackocloud
+
+  [Download](https://github.com/kcgidw/kcvanilla/archive/refs/heads/master.zip) [Discord](https://discord.com/channels/1116389027176787968/1259676012086689804)
+
 - [__Lobotomy Corporation__](https://github.com/Mysthaps/LobotomyCorp) (latest release)
 
   By Mysthaps
@@ -293,12 +317,6 @@ git submodule update --remote --recursive --merge
   By LunaAstraCassiopeia
 
   [Download](https://github.com/LunaAstraCassiopeia/LunasBalatroMods/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1216064295633289286)
-
-- ~~[__Luna's Recontrast__](https://github.com/LunaAstraCassiopeia/LunasBalatroMods) (latest main code)(Removed cause crashing & redundent)~~
-
-  ~~By LunaAstraCassiopeia~~
-
-  ~~[Download](https://github.com/LunaAstraCassiopeia/LunasBalatroMods/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1216064295633289286)~~
 
 - [__Math Blinds__](https://github.com/Bazinga9000/MathBlinds) (latest main code)
 
@@ -360,11 +378,11 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/batabata3/balatro-pampa-joker-pack/releases) [Discord](https://discord.com/channels/1116389027176787968/1224352378871087104)
 
-- ~~[__Phantom Thieves Jokers__](https://github.com/cerloCasa/Balatro_PhantomThievesJokers) (latest release)(removed for dependancies)~~
+- [__Phantom Thieves Jokers__](https://github.com/cerloCasa/Balatro_PhantomThievesJokers) (latest release)(removed for dependancies)
 
-  ~~By PT_Cerlo~~
+  By PT_Cerlo
 
-  ~~[Download](https://github.com/cerloCasa/Balatro_PhantomThievesJokers/releases) [Discord](https://discord.com/channels/1116389027176787968/1249801316616765560)~~
+  [Download](https://github.com/cerloCasa/Balatro_PhantomThievesJokers/releases) [Discord](https://discord.com/channels/1116389027176787968/1249801316616765560)
 
 - [__RO-Balatro__](https://github.com/AlexZGreat/Ro-Balatro) (latest release)
 
@@ -377,6 +395,12 @@ git submodule update --remote --recursive --merge
   By SDM_0
 
   [Download](https://github.com/SDM0/Balatro-Mods/archive/refs/heads/smods_1.0.0.zip) [Discord](https://discord.com/channels/1116389027176787968/1228825966940393483)
+
+- [__Seed Unlocker__](https://discord.com/channels/1116389027176787968/1229891707793969265) (latest build)
+
+  By MathIsFun_
+
+  [Download](https://discord.com/channels/1116389027176787968/1229891707793969265/1229891707793969265) [Discord](https://discord.com/channels/1116389027176787968/1229891707793969265)
 
 - [__Stickers Always Shown__](https://github.com/SirMaiquis/Balatro-Stickers-Always-Shown) (latest release)
 
