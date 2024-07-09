@@ -324,11 +324,11 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/Bazinga9000/MathBlinds/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1245962046235873301)
 
-- [__Mika's Balatro Mod Collection__](https://github.com/MikaSchoenmakers/MikasBalatro) (latest main code)
+- ~~[__Mika's Balatro Mod Collection__](https://github.com/MikaSchoenmakers/MikasBalatro) (latest main code) (removed by fatal crash on boot)~~
 
-  By Mikadoe
+  ~~By Mikadoe~~
 
-  [Download](https://github.com/MikaSchoenmakers/MikasBalatro/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1215775159638818826)
+  ~~[Download](https://github.com/MikaSchoenmakers/MikasBalatro/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1215775159638818826)~~
   
 - [__Myst's Boss Blinds__](https://github.com/Mysthaps/MystBlinds) (latest release)
 
