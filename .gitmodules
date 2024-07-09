@@ -106,9 +106,6 @@
 [submodule "Mods/SDM0-s-Stuff"]
 	path = Mods/SDM0-s-Stuff
 	url = https://github.com/Dimserene/SDM0-s-Stuff
-[submodule "Mods/MikasBalatro"]
-	path = Mods/MikasBalatro
-	url = https://github.com/Dimserene/MikasBalatro
 [submodule "Mods/LunasBalatroMods"]
 	path = Mods/LunasBalatroMods
 	url = https://github.com/Dimserene/LunasBalatroMods
