@@ -342,11 +342,11 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/GitNether/nethers-jokers/releases/tag/blank-joker-standalone) [Discord](https://discord.com/channels/1116389027176787968/1245432531852066897)
 
-- [__Neow Blessings__](https://github.com/kjossul/NeowBlessings) (latest main code)
+- ~~[__Neow Blessings__](https://github.com/kjossul/NeowBlessings) (latest main code) (Removed by Crashes when encountered)~~
 
-  By kjossul
+  ~~By kjossul~~
   
-  [Download](https://github.com/kjossul/NeowBlessings/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1217892947119308933)
+  ~~[Download](https://github.com/kjossul/NeowBlessings/archive/refs/heads/main.zip) [Discord](https://discord.com/channels/1116389027176787968/1217892947119308933)~~
 
 - [__Nopeus__](https://github.com/cubeanimataz/Nopeus) (latest release)
 
