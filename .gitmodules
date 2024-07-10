@@ -124,3 +124,6 @@
 [submodule "Mods/Easier-Scoring"]
 	path = Mods/Easier-Scoring
 	url = https://github.com/Dimserene/Easier-Scoring
+[submodule "Mods/Loop"]
+	path = Mods/Loop
+	url = https://github.com/jenwalter666/Loop
