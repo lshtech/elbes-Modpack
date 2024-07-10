@@ -37,9 +37,6 @@
 [submodule "Mods/MystBlinds"]
 	path = Mods/MystBlinds
 	url = https://github.com/Mysthaps/MystBlinds
-[submodule "Mods/NeowBlessings"]
-	path = Mods/NeowBlessings
-	url = https://github.com/kjossul/NeowBlessings
 [submodule "Mods/balatro-NotJustYet"]
 	path = Mods/balatro-NotJustYet
 	url = https://github.com/Toneblock/balatro-NotJustYet
