@@ -63,9 +63,7 @@ git submodule update --remote --recursive --merge
 
      - Feel free to join the [Discord](https://discord.com/channels/1116389027176787968/1255696773599592458) and talk about them!
      
-## The List (WIP)
-
-- Mod List: https://docs.google.com/spreadsheets/d/1L2wPG5mNI-ZBSW_ta__L9EcfAw-arKrXXVD-43eU4og/
+## The List (WIP) ([Google Sheet](https://docs.google.com/spreadsheets/d/1L2wPG5mNI-ZBSW_ta__L9EcfAw-arKrXXVD-43eU4og/))
 
 - [__Steamodded 1.0.0 Alpha__](https://github.com/Steamopollys/Steamodded) (latest main code)
 
