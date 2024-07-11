@@ -164,12 +164,6 @@ git submodule update --remote --recursive --merge
 
   ~~[Download](https://github.com/itayfeder/Codex-Arcanum/releases) [Discord](https://discord.com/channels/1116389027176787968/1221916334372290620)~~
 
-- [__Crimson's Ultimate Card Kollection__](https://github.com/XenoCHeart/Crimsons-Ultimate-Card-Collection) (latest release)
-
-  By Crimson Heart
-
-  [Download](https://github.com/XenoCHeart/Crimsons-Ultimate-Card-Collection/releases/tag/1.0.5) [Discord](https://discord.com/channels/1116389027176787968/1210976027036352582)
-
 - [__Cruel Blinds__](https://github.com/Mathguy23/Cruel-Blinds) (latest main code for 1.0.0)
 
   By Mathguy
