@@ -40,9 +40,6 @@
 [submodule "Mods/balatro-NotJustYet"]
 	path = Mods/balatro-NotJustYet
 	url = https://github.com/Toneblock/balatro-NotJustYet
-[submodule "Mods/Ro-Balatro"]
-	path = Mods/Ro-Balatro
-	url = https://github.com/AlexZGreat/Ro-Balatro
 [submodule "Mods/Taikomochi"]
 	path = Mods/Taikomochi
 	url = https://github.com/Amvoled/Taikomochi
@@ -127,3 +124,6 @@
 [submodule "Mods/Brainstorm"]
 	path = Mods/Brainstorm
 	url = https://github.com/Dimserene/Brainstorm
+[submodule "Mods/Ro-Balatro"]
+	path = Mods/Ro-Balatro
+	url = git@github.com:Dimserene/Ro-Balatro.git
