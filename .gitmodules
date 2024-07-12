@@ -103,9 +103,6 @@
 [submodule "Mods/Ortalab-DEMO"]
 	path = Mods/Ortalab-DEMO
 	url = https://github.com/Dimserene/Ortalab-DEMO
-[submodule "Mods/kcvanilla"]
-	path = Mods/kcvanilla
-	url = https://github.com/kcgidw/kcvanilla
 [submodule "Mods/Talisman"]
 	path = Mods/Talisman
 	url = https://github.com/Dimserene/Talisman
@@ -127,3 +124,6 @@
 [submodule "Mods/DX-Tarots"]
 	path = Mods/DX-Tarots
 	url = https://github.com/Dimserene/DX-Tarots
+[submodule "Mods/kcvanilla"]
+	path = Mods/kcvanilla
+	url = https://github.com/kcgidw/kcvanilla
