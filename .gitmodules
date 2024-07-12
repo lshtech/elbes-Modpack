@@ -115,9 +115,6 @@
 [submodule "Mods/Brainstorm"]
 	path = Mods/Brainstorm
 	url = https://github.com/Dimserene/Brainstorm
-[submodule "Mods/Ro-Balatro"]
-	path = Mods/Ro-Balatro
-	url = git@github.com:Dimserene/Ro-Balatro.git
 [submodule "Mods/Betmma_mods"]
 	path = Mods/Betmma_mods
 	url = https://github.com/Dimserene/Betmma_mods
@@ -127,3 +124,6 @@
 [submodule "Mods/kcvanilla"]
 	path = Mods/kcvanilla
 	url = https://github.com/kcgidw/kcvanilla
+[submodule "Mods/Ro-Balatro"]
+	path = Mods/Ro-Balatro
+	url = https://github.com/Dimserene/Ro-Balatro
