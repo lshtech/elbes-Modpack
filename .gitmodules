@@ -126,4 +126,4 @@
 	url = git@github.com:Dimserene/Ro-Balatro.git
 [submodule "Mods/Betmma_mods"]
 	path = Mods/Betmma_mods
-	url = git@github.com:Dimserene/Betmma_mods.git
+	url = https://github.com/Dimserene/Betmma_mods
