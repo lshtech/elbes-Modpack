@@ -82,9 +82,6 @@
 [submodule "Mods/Nopeus"]
 	path = Mods/Nopeus
 	url = https://github.com/cubeanimataz/Nopeus
-[submodule "Mods/DX-Tarots"]
-	path = Mods/DX-Tarots
-	url = https://github.com/Dimserene/DX-Tarots
 [submodule "Mods/BonusBlinds"]
 	path = Mods/BonusBlinds
 	url = https://github.com/Dimserene/BonusBlinds
@@ -127,3 +124,6 @@
 [submodule "Mods/Betmma_mods"]
 	path = Mods/Betmma_mods
 	url = https://github.com/Dimserene/Betmma_mods
+[submodule "Mods/DX-Tarots"]
+	path = Mods/DX-Tarots
+	url = https://github.com/Dimserene/DX-Tarots
