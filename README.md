@@ -378,11 +378,11 @@ git submodule update --remote --recursive --merge
 
   [Download](https://github.com/cerloCasa/Balatro_PhantomThievesJokers/releases) [Discord](https://discord.com/channels/1116389027176787968/1249801316616765560)
 
-- [__RO-Balatro__](https://github.com/AlexZGreat/Ro-Balatro) (latest release)
+- ~~[__RO-Balatro__](https://github.com/AlexZGreat/Ro-Balatro) (latest release) (Too many bugs)~~
 
-  By AlexZGreat
+  ~~By AlexZGreat~~
 
-  [Download](https://github.com/AlexZGreat/Ro-Balatro/releases) [Discord](https://discord.com/channels/1116389027176787968/1247049217621360640)
+  ~~[Download](https://github.com/AlexZGreat/Ro-Balatro/releases) [Discord](https://discord.com/channels/1116389027176787968/1247049217621360640)~~
 
 - [__SDM_0's Stuff__](https://github.com/SDM0/Balatro-Mods/tree/smods_1.0.0) (latest branch code)
 
