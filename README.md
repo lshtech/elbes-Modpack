@@ -1,4 +1,4 @@
-# Dimserene's Modpack (for Steamodded-1.0.0 Alpha)
+# Dimserene's Modpacks (for Steamodded-1.0.0 Alpha)
 
 ![Alttext](https://github.com/Dimserene/Dimserenes-Modpack/blob/main/Logo.png)
 
