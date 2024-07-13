@@ -124,6 +124,3 @@
 [submodule "Mods/kcvanilla"]
 	path = Mods/kcvanilla
 	url = https://github.com/kcgidw/kcvanilla
-[submodule "Mods/Ro-Balatro"]
-	path = Mods/Ro-Balatro
-	url = https://github.com/Dimserene/Ro-Balatro
