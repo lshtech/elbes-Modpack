@@ -100,9 +100,6 @@
 [submodule "Mods/Ortalab-DEMO"]
 	path = Mods/Ortalab-DEMO
 	url = https://github.com/Dimserene/Ortalab-DEMO
-[submodule "Mods/Talisman"]
-	path = Mods/Talisman
-	url = https://github.com/Dimserene/Talisman
 [submodule "Mods/Easier-Scoring"]
 	path = Mods/Easier-Scoring
 	url = https://github.com/Dimserene/Easier-Scoring
