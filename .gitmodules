@@ -106,9 +106,6 @@
 [submodule "Mods/Loop"]
 	path = Mods/Loop
 	url = https://github.com/jenwalter666/Loop
-[submodule "Mods/Brainstorm"]
-	path = Mods/Brainstorm
-	url = https://github.com/Dimserene/Brainstorm
 [submodule "Mods/Betmma_mods"]
 	path = Mods/Betmma_mods
 	url = https://github.com/Dimserene/Betmma_mods
@@ -118,3 +115,6 @@
 [submodule "Mods/kcvanilla"]
 	path = Mods/kcvanilla
 	url = https://github.com/kcgidw/kcvanilla
+[submodule "Mods/Brainstorm"]
+	path = Mods/Brainstorm
+	url = https://github.com/OceanRamen/Brainstorm
