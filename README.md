@@ -56,12 +56,7 @@ git submodule update --remote --recursive --merge
 
 ## FAQ
 
-  1. The game crashed and it said something something ___table___.
-
-     - In the game, head for settings > spectral pack > Talisman > Disable the second option > Restart game.
-     ![Alt text](https://github.com/Dimserene/Dimserenes-Modpack/blob/main/Screenshot_20240630_211615_Winlator.jpg)
-     
-  2. There's some other game crash / function not working as intended / other problem and i wanna report them!
+  1. There's some game crash / function not working as intended / other problem and i wanna report them!
 
      - Feel free to join the [Discord](https://discord.com/channels/1116389027176787968/1255696773599592458) and talk about them!
      
