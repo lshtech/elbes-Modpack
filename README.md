@@ -4,7 +4,7 @@
 
 Sub-Modpacks: [Vanilla Plus Pack](https://github.com/Dimserene/Vanilla-Plus-Pack) & [Fine-tuned Pack](https://github.com/Dimserene/Fine-tuned-Pack)
 
-#### Thank you all the mod authors, `@humplydinkle`, and many others on discord for helping and testing!
+#### Thank you all the mod authors, [@humplydinkle](https://github.com/Depressomane), and many others on discord for helping and testing!
 (Updates frequently)
 Custom-made modpacks that are hand-picked and put together by myself
 
