@@ -6,7 +6,7 @@ Sub-Modpacks: [Vanilla Plus Pack](https://github.com/Dimserene/Vanilla-Plus-Pack
 
 #### Thank you all the mod authors, `@humplydinkle`, and many others on discord for helping and testing!
 (Updates frequently)
-A custom-made modpack that is hand-picked and put together by myself
+Custom-made modpacks that are hand-picked and put together by myself
 
 Some mod files needs to be altered to avoid compat issues if you want to put the mods together.（Note that i have applied all the modifications in the modpack)
 
