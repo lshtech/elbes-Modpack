@@ -94,9 +94,6 @@
 [submodule "Mods/Balatro_PhantomThievesJokers"]
 	path = Mods/Balatro_PhantomThievesJokers
 	url = https://github.com/cerloCasa/Balatro_PhantomThievesJokers
-[submodule "Mods/Ortalab-DEMO"]
-	path = Mods/Ortalab-DEMO
-	url = https://github.com/Dimserene/Ortalab-DEMO
 [submodule "Mods/Easier-Scoring"]
 	path = Mods/Easier-Scoring
 	url = https://github.com/Dimserene/Easier-Scoring
@@ -118,3 +115,7 @@
 [submodule "Mods/Betmma_mods"]
 	path = Mods/Betmma_mods
 	url = https://github.com/Dimserene/Betmma_mods
+[submodule "Mods/Ortalab-DEMO"]
+	path = Mods/Ortalab-DEMO
+	url = https://github.com/GauntletGames-2086/Ortalab-DEMO
+	branch = test
