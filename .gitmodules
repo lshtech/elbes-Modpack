@@ -79,9 +79,6 @@
 [submodule "Mods/Nopeus"]
 	path = Mods/Nopeus
 	url = https://github.com/cubeanimataz/Nopeus
-[submodule "Mods/BonusBlinds"]
-	path = Mods/BonusBlinds
-	url = https://github.com/Dimserene/BonusBlinds
 [submodule "Mods/Cartomancer"]
 	path = Mods/Cartomancer
 	url = https://github.com/stupxd/Cartomancer
