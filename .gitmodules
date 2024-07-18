@@ -16,9 +16,6 @@
 [submodule "Mods/Balatro-DeckCreator"]
 	path = Mods/Balatro-DeckCreator
 	url = https://github.com/adambennett/Balatro-DeckCreator
-[submodule "Mods/MystMods"]
-	path = Mods/MystMods
-	url = https://github.com/Dimserene/MystMods
 [submodule "Mods/JankJonklers"]
 	path = Mods/JankJonklers
 	url = https://github.com/spikeof2010/JankJonklers
