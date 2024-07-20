@@ -113,9 +113,9 @@
 [submodule "Mods/BonusBlinds"]
 	path = Mods/BonusBlinds
 	url = https://github.com/Dimserene/BonusBlinds
-[submodule "Mods/CardSleeves"]
-	path = Mods/CardSleeves
-	url = https://github.com/Dimserene/CardSleeves
 [submodule "Mods/MikasBalatro"]
 	path = Mods/MikasBalatro
 	url = https://github.com/Dimserene/MikasBalatro
+[submodule "Mods/CardSleeves"]
+	path = Mods/CardSleeves
+	url = https://github.com/Dimserene/CardSleeves
