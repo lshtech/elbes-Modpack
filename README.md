@@ -49,6 +49,7 @@ If you wanna join us dealing with this nightmare beast, you can join our [Discor
 
   ```
 git remote set-url origin https://github.com/Dimserene/Dimserenes-Modpack
+git pull
 git submodule update --remote --recursive --merge
   ```
 
