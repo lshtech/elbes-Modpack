@@ -4,9 +4,6 @@
 [submodule "Mods/Bunco"]
 	path = Mods/Bunco
 	url = https://github.com/Firch/Bunco
-[submodule "Mods/Cryptid"]
-	path = Mods/Cryptid
-	url = https://github.com/MathIsFun0/Cryptid
 [submodule "Mods/D6-Jokers"]
 	path = Mods/D6-Jokers
 	url = https://github.com/GauntletGames-2086/D6-Jokers
