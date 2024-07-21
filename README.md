@@ -26,7 +26,7 @@ If you wanna join us dealing with this nightmare beast, you can join our [Discor
 
 ---
 
-> __You don't need to install Steamodded yourself! The modpack will install and update Steamodded for you!__ 
+> __⚠️You don't need to install Steamodded yourself! The modpack will install and update Steamodded for you!__ 
 
 ---
 
