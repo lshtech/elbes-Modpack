@@ -101,9 +101,6 @@
 [submodule "Mods/MikasBalatro"]
 	path = Mods/MikasBalatro
 	url = https://github.com/Dimserene/MikasBalatro
-[submodule "Mods/CardSleeves"]
-	path = Mods/CardSleeves
-	url = https://github.com/Dimserene/CardSleeves
 [submodule "Mods/SDM0-s-Stuff"]
 	path = Mods/SDM0-s-Stuff
 	url = https://github.com/Dimserene/SDM0-s-Stuff
