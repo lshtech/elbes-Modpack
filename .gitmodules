@@ -13,9 +13,6 @@
 [submodule "Mods/D6-Jokers"]
 	path = Mods/D6-Jokers
 	url = https://github.com/GauntletGames-2086/D6-Jokers
-[submodule "Mods/Balatro-DeckCreator"]
-	path = Mods/Balatro-DeckCreator
-	url = https://github.com/adambennett/Balatro-DeckCreator
 [submodule "Mods/JankJonklers"]
 	path = Mods/JankJonklers
 	url = https://github.com/spikeof2010/JankJonklers
