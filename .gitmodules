@@ -1,9 +1,6 @@
 [submodule "Mods/balatro-safety-steamodded"]
 	path = Mods/balatro-safety-steamodded
 	url = https://github.com/Zei33/balatro-safety-steamodded
-[submodule "Mods/blank-jokers"]
-	path = Mods/blank-jokers
-	url = https://github.com/Dimserene/blank-jokers
 [submodule "Mods/Bunco"]
 	path = Mods/Bunco
 	url = https://github.com/Firch/Bunco
@@ -85,9 +82,6 @@
 [submodule "Mods/Loop"]
 	path = Mods/Loop
 	url = https://github.com/jenwalter666/Loop
-[submodule "Mods/DX-Tarots"]
-	path = Mods/DX-Tarots
-	url = https://github.com/Dimserene/DX-Tarots
 [submodule "Mods/kcvanilla"]
 	path = Mods/kcvanilla
 	url = https://github.com/kcgidw/kcvanilla
