@@ -95,9 +95,6 @@
 	path = Mods/Ortalab-DEMO
 	url = https://github.com/GauntletGames-2086/Ortalab-DEMO
 	branch = test
-[submodule "Mods/BonusBlinds"]
-	path = Mods/BonusBlinds
-	url = https://github.com/Dimserene/BonusBlinds
 [submodule "Mods/MikasBalatro"]
 	path = Mods/MikasBalatro
 	url = https://github.com/Dimserene/MikasBalatro
@@ -113,3 +110,6 @@
 [submodule "Mods/JokerDisplayModSupport"]
 	path = Mods/JokerDisplayModSupport
 	url = https://github.com/nh6574/JokerDisplayModSupport/
+[submodule "Mods/BonusBlinds"]
+	path = Mods/BonusBlinds
+	url = https://github.com/Dimserene/BonusBlinds
