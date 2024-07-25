@@ -110,3 +110,6 @@
 [submodule "Mods/Cryptid"]
 	path = Mods/Cryptid
 	url = https://github.com/MathIsFun0/Cryptid
+[submodule "Mods/JokerDisplayModSupport"]
+	path = Mods/JokerDisplayModSupport
+	url = https://github.com/nh6574/JokerDisplayModSupport/
