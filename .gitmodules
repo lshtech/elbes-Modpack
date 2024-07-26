@@ -82,9 +82,6 @@
 [submodule "Mods/kcvanilla"]
 	path = Mods/kcvanilla
 	url = https://github.com/kcgidw/kcvanilla
-[submodule "Mods/Brainstorm"]
-	path = Mods/Brainstorm
-	url = https://github.com/OceanRamen/Brainstorm
 [submodule "Mods/Talisman"]
 	path = Mods/Talisman
 	url = https://github.com/Dimserene/Talisman
@@ -113,3 +110,6 @@
 [submodule "Mods/BonusBlinds"]
 	path = Mods/BonusBlinds
 	url = https://github.com/Dimserene/BonusBlinds
+[submodule "Mods/Brainstorm"]
+	path = Mods/Brainstorm
+	url = https://github.com/Dimserene/Brainstorm
