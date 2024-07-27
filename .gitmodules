@@ -95,9 +95,6 @@
 [submodule "Mods/MikasBalatro"]
 	path = Mods/MikasBalatro
 	url = https://github.com/Dimserene/MikasBalatro
-[submodule "Mods/Cruel-Blinds"]
-	path = Mods/Cruel-Blinds
-	url = https://github.com/Dimserene/Cruel-Blinds
 [submodule "Mods/Cryptid"]
 	path = Mods/Cryptid
 	url = https://github.com/MathIsFun0/Cryptid
@@ -117,3 +114,6 @@
 	path = Mods/SDM0-s-Stuff
 	url = https://github.com/Dimserene/SDM0-s-Stuff
 	branch = smods_1.0.0
+[submodule "Mods/Cruel-Blinds"]
+	path = Mods/Cruel-Blinds
+	url = https://github.com/Dimserene/Cruel-Blinds
