@@ -1,0 +1,1 @@
+ "{0:yyyy/MM/dd HH:mm:ss}" -f(Get-Date) > version.txt
