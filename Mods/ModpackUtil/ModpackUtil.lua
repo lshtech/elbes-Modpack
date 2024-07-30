@@ -27,7 +27,7 @@ local version = nativefs.read(lovely.mod_dir .. "/ModpackUtil/version.txt")
 local updated = os.date("!%Y/%m/%d %H:%M:%S", love.filesystem.getLastModified(lovely.mod_dir .. "/ModpackUtil/version.txt"))
 
 
-local MODPACK_VERSION = "Dimserene's Modpack - Full(Extreme)" .. "\nCurrent Version: " .. version .. "     Last Update: " .. updated
+local MODPACK_VERSION = "Dimserene's Modpack - Full(Extreme)" .. "\nCurrent Version: " .. version .. "   Game Started: " .. updated
 
 
 local gameMainMenuRef = Game.main_menu
