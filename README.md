@@ -32,25 +32,21 @@ If you wanna join us dealing with this nightmare beast, you can join our [Discor
 
 ## How to Install
 
-  (Windows) Download the __setup.bat__ and put it wherever you want, and run it. The mods will be automatically downloaded and put into correct directory.
+  Download __SetupFull.bat__(Windows) or __SetupFull.sh__(Linux), put it wherever you want, and run it. The mods will be automatically downloaded and put into correct directory.
 
-  Or
-
-  Run following scripts in command prompt:
+  Or run following scripts in command prompt:
 
   ```
-  git clone --recurse-submodules --remote-submodules https://github.com/Dimserene/Dimserenes-Modpack
+git clone --recurse-submodules --remote-submodules https://github.com/Dimserene/Dimserenes-Modpack
   ```
 
   And then copy all the contents in Mods folder to your Mods folder.
 
 ## How to Update Modpack
 
-  (Windows) Run __Update.bat__ which should be in the downloaded Dimserenes-Modpack folder.
+  Run __Update.bat__(Windows) or __UpdateFull.sh__(Linux) which should be in the downloaded Dimserenes-Modpack folder.
 
-  Or
-
-  Run following scripts in command prompt:
+  Or run following scripts in command prompt:
 
   ```
 git remote set-url origin https://github.com/Dimserene/Dimserenes-Modpack
