@@ -123,3 +123,27 @@
 [submodule "Mods/DX-Tarots"]
 	path = Mods/DX-Tarots
 	url = https://github.com/JeffVi/DX-Tarots
+[submodule "Mods/Aurinko"]
+	path = Mods/Aurinko
+	url = https://github.com/jenwalter666/Aurinko
+[submodule "Mods/VanillaExpansion"]
+	path = Mods/VanillaExpansion
+	url = https://github.com/nekojoe/VanillaExpansion
+[submodule "Mods/SpicyJokers"]
+	path = Mods/SpicyJokers
+	url = https://github.com/RitchieDimaria/SpicyJokers
+[submodule "Mods/Virtues"]
+	path = Mods/Virtues
+	url = https://github.com/someone23832/Virtues
+[submodule "Mods/MoreJokerPacks"]
+	path = Mods/MoreJokerPacks
+	url = https://github.com/Samario1/MoreJokerPacks
+[submodule "Mods/StackedRedSeals"]
+	path = Mods/StackedRedSeals
+	url = https://github.com/cerloCasa/StackedRedSeals
+[submodule "Mods/Jeantoine"]
+	path = Mods/Jeantoine
+	url = https://github.com/Kaishi130/Jeantoine
+[submodule "Mods/Contracts"]
+	path = Mods/Contracts
+	url = https://github.com/Mathguy23/Contracts
