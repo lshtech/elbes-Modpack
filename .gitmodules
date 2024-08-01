@@ -144,6 +144,3 @@
 [submodule "Mods/Jeantoine"]
 	path = Mods/Jeantoine
 	url = https://github.com/Kaishi130/Jeantoine
-[submodule "Mods/Contracts"]
-	path = Mods/Contracts
-	url = https://github.com/Mathguy23/Contracts
