@@ -80,9 +80,6 @@
 [submodule "Mods/DebugPlus"]
 	path = Mods/DebugPlus
 	url = https://github.com/Dimserene/DebugPlus
-[submodule "Mods/Cruel-Blinds"]
-	path = Mods/Cruel-Blinds
-	url = https://github.com/Dimserene/Cruel-Blinds
 [submodule "Mods/Betmma_mods"]
 	path = Mods/Betmma_mods
 	url = https://github.com/betmma/my_balatro_mods
@@ -143,3 +140,6 @@
 [submodule "Mods/Joker-Evolution"]
 	path = Mods/Joker-Evolution
 	url = https://github.com/Dimserene/Joker-Evolution
+[submodule "Mods/Cruel-Blinds"]
+	path = Mods/Cruel-Blinds
+	url = https://github.com/Dimserene/Cruel-Blinds
