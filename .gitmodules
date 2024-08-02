@@ -37,9 +37,6 @@
 [submodule "Mods/BossJokers"]
 	path = Mods/BossJokers
 	url = https://github.com/KilledByLava/BossJokers
-[submodule "Mods/Joker-Evolution"]
-	path = Mods/Joker-Evolution
-	url = https://github.com/Dimserene/Joker-Evolution
 [submodule "Mods/Aura"]
 	path = Mods/Aura
 	url = https://github.com/MathIsFun0/Aura
@@ -83,10 +80,6 @@
 [submodule "Mods/DebugPlus"]
 	path = Mods/DebugPlus
 	url = https://github.com/Dimserene/DebugPlus
-[submodule "Mods/SDM0-s-Stuff"]
-	path = Mods/SDM0-s-Stuff
-	url = https://github.com/Dimserene/SDM0-s-Stuff
-	branch = smods_1.0.0
 [submodule "Mods/Cruel-Blinds"]
 	path = Mods/Cruel-Blinds
 	url = https://github.com/Dimserene/Cruel-Blinds
@@ -144,3 +137,9 @@
 [submodule "Mods/Jeantoine"]
 	path = Mods/Jeantoine
 	url = https://github.com/Kaishi130/Jeantoine
+[submodule "Mods/SDM_0-s-Stuff"]
+	path = Mods/SDM_0-s-Stuff
+	url = https://github.com/SDM0/SDM_0-s-Stuff
+[submodule "Mods/Joker-Evolution"]
+	path = Mods/Joker-Evolution
+	url = https://github.com/Dimserene/Joker-Evolution
