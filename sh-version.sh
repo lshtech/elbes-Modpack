@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Function to prompt user and wait for response
+# Function to prompt user and wait for response with options
 prompt_to_continue() {
     while true; do
-        read -p "$1 (press y to edit, n to skip, q to abort): " ynq
+        read -p "$1 (press y to continue, n to skip, q to quit): " ynq
         case $ynq in
             [Yy]* ) return 0;;
             [Nn]* ) return 1;;
-            [Qq]* ) echo "Aborting."; exit;;
+            [Qq]* ) echo "Quitting."; exit;;
             * ) echo "Please answer y, n, or q.";;
         esac
     done
@@ -19,6 +19,9 @@ prompt_any_key() {
     read
     echo
 }
+
+# Initial prompt to continue or quit
+prompt_to_continue "Do you want to continue with the script?"
 
 # Pull the latest changes from the remote repository
 git pull
