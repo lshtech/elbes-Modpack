@@ -14,7 +14,13 @@ prompt_to_continue() {
 
 # Function to prompt user to press any key to continue
 prompt_any_key() {
-    read -n 1 -s -r -p "$1 (press any key to continue)"
+    echo -n "$1 (press any key to continue)"
+    while true; do
+        read -s -r -p "" key
+        if [ -n "$key" ]; then
+            break
+        fi
+    done
     echo
 }
 
