@@ -104,9 +104,6 @@
 [submodule "Mods/BlackjackHands"]
 	path = Mods/BlackjackHands
 	url = https://github.com/Mathguy23/BlackjackHands
-[submodule "Mods/DVD"]
-	path = Mods/DVD
-	url = https://github.com/stupxd/dvd
 [submodule "Mods/DX-Tarots"]
 	path = Mods/DX-Tarots
 	url = https://github.com/JeffVi/DX-Tarots
