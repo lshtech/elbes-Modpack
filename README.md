@@ -38,9 +38,8 @@ If you wanna join us dealing with this nightmare beast, you can join our [Discor
 
   ```
 git clone --recurse-submodules --remote-submodules https://github.com/Dimserene/Dimserenes-Modpack
+xcopy "Dimserenes-Modpack\Mods" "%appdata%\Balatro\Mods" /w /e /h /i
   ```
-
-  And then copy all the contents in Mods folder to your Mods folder.
 
 ## How to Update Modpack
 
