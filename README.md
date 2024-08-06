@@ -45,7 +45,7 @@ xcopy "Dimserenes-Modpack\Mods" "%appdata%\Balatro\Mods" /w /e /h /i
 
   Run __Update.bat__(Windows) or __UpdateFull.sh__(Linux) which should be in the downloaded Dimserenes-Modpack folder.
 
-  Or run following scripts in command prompt:
+  Or run following commands where your downloaded modpack located:
 
   ```
 git remote set-url origin https://github.com/Dimserene/Dimserenes-Modpack
@@ -53,7 +53,7 @@ git pull
 git submodule update --remote --recursive --merge
   ```
 
-  And then, again, copy all the contents in Mods folder to your Mods folder.
+  And then, copy all the contents in Mods folder to your Mods folder.
 
 ## FAQ
 
