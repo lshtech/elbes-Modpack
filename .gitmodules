@@ -1,9 +1,6 @@
 [submodule "Mods/Bunco"]
 	path = Mods/Bunco
 	url = https://github.com/Firch/Bunco
-[submodule "Mods/D6-Jokers"]
-	path = Mods/D6-Jokers
-	url = https://github.com/GauntletGames-2086/D6-Jokers
 [submodule "Mods/JankJonklers"]
 	path = Mods/JankJonklers
 	url = https://github.com/spikeof2010/JankJonklers
@@ -107,9 +104,6 @@
 [submodule "Mods/DX-Tarots"]
 	path = Mods/DX-Tarots
 	url = https://github.com/JeffVi/DX-Tarots
-[submodule "Mods/Aurinko"]
-	path = Mods/Aurinko
-	url = https://github.com/jenwalter666/Aurinko
 [submodule "Mods/VanillaExpansion"]
 	path = Mods/VanillaExpansion
 	url = https://github.com/nekojoe/VanillaExpansion
