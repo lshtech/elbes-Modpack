@@ -1,6 +1,3 @@
-[submodule "Mods/Bunco"]
-	path = Mods/Bunco
-	url = https://github.com/Firch/Bunco
 [submodule "Mods/JankJonklers"]
 	path = Mods/JankJonklers
 	url = https://github.com/spikeof2010/JankJonklers
