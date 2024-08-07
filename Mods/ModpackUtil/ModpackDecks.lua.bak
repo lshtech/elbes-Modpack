@@ -31,7 +31,7 @@ SMODS.Atlas{
             apply = function(back)
                 G.E_MANAGER:add_event(Event({
                     func = function()
-                        add_joker("j_sdm_moon_base", "negative", true, true)
+                        add_joker("j_sdm_moon_base", nil, true, true)
                         return true
                     end
                 }))
