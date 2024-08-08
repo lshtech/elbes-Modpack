@@ -40,15 +40,9 @@
 [submodule "Mods/JokerDisplay"]
 	path = Mods/JokerDisplay
 	url = https://github.com/nh6574/JokerDisplay
-[submodule "Mods/Nopeus"]
-	path = Mods/Nopeus
-	url = https://github.com/cubeanimataz/Nopeus
 [submodule "Mods/Cartomancer"]
 	path = Mods/Cartomancer
 	url = https://github.com/stupxd/Cartomancer
-[submodule "Mods/Loop"]
-	path = Mods/Loop
-	url = https://github.com/jenwalter666/Loop
 [submodule "Mods/Talisman"]
 	path = Mods/Talisman
 	url = https://github.com/Dimserene/Talisman
