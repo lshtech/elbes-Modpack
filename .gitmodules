@@ -47,9 +47,6 @@
 	path = Mods/Ortalab-DEMO
 	url = https://github.com/GauntletGames-2086/Ortalab-DEMO
 	branch = test
-[submodule "Mods/Cryptid"]
-	path = Mods/Cryptid
-	url = https://github.com/MathIsFun0/Cryptid
 [submodule "Mods/JokerDisplayModSupport"]
 	path = Mods/JokerDisplayModSupport
 	url = https://github.com/nh6574/JokerDisplayModSupport/
@@ -122,3 +119,6 @@
 [submodule "Mods/Snow-s-Mods"]
 	path = Mods/Snow-s-Mods
 	url = https://github.com/RattlingSnow353/Snow-s-Mods
+[submodule "Mods/Cryptid"]
+	path = Mods/Cryptid
+	url = https://github.com/Dimserene/Cryptid
