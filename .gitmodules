@@ -47,9 +47,6 @@
 	path = Mods/Ortalab-DEMO
 	url = https://github.com/GauntletGames-2086/Ortalab-DEMO
 	branch = test
-[submodule "Mods/MikasBalatro"]
-	path = Mods/MikasBalatro
-	url = https://github.com/Dimserene/MikasBalatro
 [submodule "Mods/Cryptid"]
 	path = Mods/Cryptid
 	url = https://github.com/MathIsFun0/Cryptid
@@ -86,9 +83,6 @@
 [submodule "Mods/Aure-Spectral"]
 	path = Mods/Aure-Spectral
 	url = https://github.com/SDM0/Aure-Spectral
-[submodule "Mods/DX-Tarots"]
-	path = Mods/DX-Tarots
-	url = https://github.com/JeffVi/DX-Tarots
 [submodule "Mods/VanillaExpansion"]
 	path = Mods/VanillaExpansion
 	url = https://github.com/nekojoe/VanillaExpansion
