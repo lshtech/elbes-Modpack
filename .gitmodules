@@ -116,9 +116,6 @@
 [submodule "Mods/Snow-s-Mods"]
 	path = Mods/Snow-s-Mods
 	url = https://github.com/RattlingSnow353/Snow-s-Mods
-[submodule "Mods/Cryptid"]
-	path = Mods/Cryptid
-	url = https://github.com/Dimserene/Cryptid
 [submodule "Mods/Jestobiology"]
 	path = Mods/Jestobiology
 	url = https://github.com/spikeof2010/Jestobiology
@@ -131,3 +128,6 @@
 [submodule "Mods/ModpackDecks"]
 	path = Mods/ModpackDecks
 	url = https://github.com/Dimserene/ModpackDecks
+[submodule "Mods/Cryptid"]
+	path = Mods/Cryptid
+	url = https://github.com/Dimserene/Cryptid
