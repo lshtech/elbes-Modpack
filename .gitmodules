@@ -80,9 +80,6 @@
 [submodule "Mods/VanillaExpansion"]
 	path = Mods/VanillaExpansion
 	url = https://github.com/nekojoe/VanillaExpansion
-[submodule "Mods/SpicyJokers"]
-	path = Mods/SpicyJokers
-	url = https://github.com/RitchieDimaria/SpicyJokers
 [submodule "Mods/Virtues"]
 	path = Mods/Virtues
 	url = https://github.com/someone23832/Virtues
@@ -131,3 +128,6 @@
 [submodule "Mods/ModpackDecks"]
 	path = Mods/ModpackDecks
 	url = https://github.com/Dimserene/ModpackDecks
+[submodule "Mods/SpicyJokers"]
+	path = Mods/SpicyJokers
+	url = https://github.com/Dimserene/SpicyJokers
