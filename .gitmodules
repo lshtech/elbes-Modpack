@@ -128,6 +128,6 @@
 [submodule "Mods/Cryptid"]
 	path = Mods/Cryptid
 	url = https://github.com/Dimserene/Cryptid
-[submodule "Mods/Balatro-Stickers-Always-Shown"]
-	path = Mods/Balatro-Stickers-Always-Shown
+[submodule "Mods/Stickers-Always-Shown"]
+	path = Mods/Stickers-Always-Shown
 	url = https://github.com/SirMaiquis/Balatro-Stickers-Always-Shown
