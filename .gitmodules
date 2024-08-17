@@ -119,9 +119,6 @@
 [submodule "Mods/ModpackDecks"]
 	path = Mods/ModpackDecks
 	url = https://github.com/Dimserene/ModpackDecks
-[submodule "Mods/Cryptid"]
-	path = Mods/Cryptid
-	url = https://github.com/Dimserene/Cryptid
 [submodule "Mods/Stickers-Always-Shown"]
 	path = Mods/Stickers-Always-Shown
 	url = https://github.com/SirMaiquis/Balatro-Stickers-Always-Shown
@@ -152,3 +149,6 @@
 [submodule "Mods/Bunco"]
 	path = Mods/Bunco
 	url = https://github.com/Dimserene/Bunco
+[submodule "Mods/Cryptid"]
+	path = Mods/Cryptid
+	url = https://github.com/MathIsFun0/Cryptid
