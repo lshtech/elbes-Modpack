@@ -128,9 +128,6 @@
 [submodule "Mods/AncientJokerFix"]
 	path = Mods/AncientJokerFix
 	url = https://github.com/gabepesco/BalatroAncientJokerFix
-[submodule "Mods/Themed_Jokers"]
-	path = Mods/Themed_Jokers
-	url = https://github.com/BlizzowX/Balatro---Themed-Jokers
 [submodule "Mods/CheesyJokers"]
 	path = Mods/CheesyJokers
 	url = https://github.com/ilikecheese0/CheesyJokers
@@ -158,3 +155,6 @@
 [submodule "Mods/BetterIllusion"]
 	path = Mods/BetterIllusion
 	url = https://github.com/rileyinman/BetterIllusion
+[submodule "Mods/Themed_Jokers"]
+	path = Mods/Themed_Jokers
+	url = https://github.com/Dimserene/Themed_Jokers
