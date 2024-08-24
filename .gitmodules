@@ -152,3 +152,9 @@
 [submodule "Mods/Cryptid"]
 	path = Mods/Cryptid
 	url = https://github.com/MathIsFun0/Cryptid
+[submodule "Mods/BBBalatro"]
+	path = Mods/BBBalatro
+	url = https://github.com/BBBalatroMod/BBBalatro
+[submodule "Mods/BetterIllusion"]
+	path = Mods/BetterIllusion
+	url = https://github.com/rileyinman/BetterIllusion
