@@ -83,9 +83,6 @@
 [submodule "Mods/StackedRedSeals"]
 	path = Mods/StackedRedSeals
 	url = https://github.com/cerloCasa/StackedRedSeals
-[submodule "Mods/Jeantoine"]
-	path = Mods/Jeantoine
-	url = https://github.com/Kaishi130/Jeantoine
 [submodule "Mods/SDM_0-s-Stuff"]
 	path = Mods/SDM_0-s-Stuff
 	url = https://github.com/SDM0/SDM_0-s-Stuff

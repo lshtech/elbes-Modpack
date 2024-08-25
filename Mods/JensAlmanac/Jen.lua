@@ -1361,7 +1361,7 @@ SMODS.Edition({
     shader = 'moire',
     config = { chips = math.pi*1e4, x_chips = math.pi*1e3, e_chips = math.pi*100, ee_chips = math.pi*10, eee_chips = math.pi, mult = math.pi*1e4, x_mult = math.pi*1e3, e_mult = math.pi*100, ee_mult = math.pi*10, eee_mult = math.pi },
 	sound = {
-		sound = 'e_moire',
+		sound = 'jen_e_moire',
 		per = 1,
 		vol = 0.4
 	},
