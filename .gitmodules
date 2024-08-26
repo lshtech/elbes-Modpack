@@ -161,6 +161,6 @@
 [submodule "Mods/Actions"]
 	path = Mods/Actions
 	url = https://github.com/Mathguy23/Actions
-[submodule "Mods/LoveForFibonacci"]
-	path = Mods/LoveForFibonacci
-	url = https://github.com/Dimserene/LoveForFibonacci
+[submodule "Mods/Balatro-Jokers-Plus"]
+	path = Mods/Balatro-Jokers-Plus
+	url = https://github.com/KaviD-115/Balatro-Jokers-Plus
