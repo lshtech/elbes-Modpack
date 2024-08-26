@@ -155,3 +155,15 @@
 [submodule "Mods/Themed_Jokers"]
 	path = Mods/Themed_Jokers
 	url = https://github.com/Dimserene/Themed_Jokers
+[submodule "Mods/CollectorsCards"]
+	path = Mods/CollectorsCards
+	url = https://github.com/Mathguy23/CollectorsCards
+[submodule "Mods/Actions"]
+	path = Mods/Actions
+	url = https://github.com/Mathguy23/Actions
+[submodule "Mods/Balatro-Jokers-Plus"]
+	path = Mods/Balatro-Jokers-Plus
+	url = https://github.com/KaviD-115/Balatro-Jokers-Plus
+[submodule "Mods/LoveForFibonacci"]
+	path = Mods/LoveForFibonacci
+	url = https://github.com/Dimserene/LoveForFibonacci
