@@ -3,7 +3,7 @@
 --- MOD_ID: Modpack_Util
 --- MOD_AUTHOR: [Dimserene]
 --- MOD_DESCRIPTION: Dimserene's Modpack Utility
---- VERSION: Full(Extreme)
+--- VERSION: Full
 --- PRIORITY: -999999999999999999999999
 ----------------------------------------------
 ------------MOD CODE -------------------------
@@ -21,7 +21,7 @@ if SMODS.Atlas then
 end
 
 
-local ModpackName = "Dimserene's Modpack - Full(Extreme)"
+local ModpackName = "Dimserene's Modpack - Full"
 local ModpackVersion = nativefs.read(lovely.mod_dir .. "/ModpackUtil/CurrentVersion.txt")
 local ModpackUpdate = nativefs.read(lovely.mod_dir .. "/ModpackUtil/VersionTime.txt")
 
