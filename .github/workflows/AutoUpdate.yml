@@ -1,0 +1,21 @@
+name: Update Modpack Submodules
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  update_modpack:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        submodules: recursive
+
+    - name: Run update script
+      run: |
+        set -e  # Ensure the script stops on the first error
+        chmod +x sh-version.sh
+        ./sh-version.sh
