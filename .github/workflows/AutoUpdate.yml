@@ -1,21 +1,30 @@
-name: Update Modpack Submodules
+name: Update Modpack
 
 on:
-  schedule:
-    - cron: "0 0 * * *"
+  push:
+    branches:
+      - main
 
 jobs:
-  update_modpack:
+  update-modpack:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-      with:
-        submodules: recursive
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-    - name: Run update script
+    - name: Set up Git user
       run: |
-        set -e  # Ensure the script stops on the first error
-        chmod +x sh-version.sh
-        ./sh-version.sh
+        git config --global user.name "Auto Update Bot"
+        git config --global user.email "raul0520@google.com"
+
+    - name: Run version update script
+      run: |
+        chmod +x ./autoversion.sh
+        ./autoversion.sh
+
+    - name: Push changes
+      run: |
+        git push origin main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
