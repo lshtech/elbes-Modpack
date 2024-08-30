@@ -86,9 +86,6 @@
 [submodule "Mods/SDM_0-s-Stuff"]
 	path = Mods/SDM_0-s-Stuff
 	url = https://github.com/SDM0/SDM_0-s-Stuff
-[submodule "Mods/Cruel-Blinds"]
-	path = Mods/Cruel-Blinds
-	url = https://github.com/Dimserene/Cruel-Blinds
 [submodule "Mods/PampaJokerPack"]
 	path = Mods/PampaJokerPack
 	url = https://github.com/Dimserene/PampaJokerPack
@@ -164,3 +161,6 @@
 [submodule "Mods/Balatro-Jokers-Plus"]
 	path = Mods/Balatro-Jokers-Plus
 	url = https://github.com/KaviD-115/Balatro-Jokers-Plus
+[submodule "Mods/Cruel-Blinds"]
+	path = Mods/Cruel-Blinds
+	url = https://github.com/Dimserene/Cruel-Blinds
