@@ -47,9 +47,6 @@
 [submodule "Mods/BonusBlinds"]
 	path = Mods/BonusBlinds
 	url = https://github.com/Dimserene/BonusBlinds
-[submodule "Mods/Brainstorm"]
-	path = Mods/Brainstorm
-	url = https://github.com/Dimserene/Brainstorm
 [submodule "Mods/DebugPlus"]
 	path = Mods/DebugPlus
 	url = https://github.com/Dimserene/DebugPlus
