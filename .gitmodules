@@ -110,9 +110,6 @@
 [submodule "Mods/ModpackDecks"]
 	path = Mods/ModpackDecks
 	url = https://github.com/Dimserene/ModpackDecks
-[submodule "Mods/Stickers-Always-Shown"]
-	path = Mods/Stickers-Always-Shown
-	url = https://github.com/SirMaiquis/Balatro-Stickers-Always-Shown
 [submodule "Mods/Alices_Annum"]
 	path = Mods/Alices_Annum
 	url = https://github.com/ThreeCubed273/alices_annum_balatro_mod
