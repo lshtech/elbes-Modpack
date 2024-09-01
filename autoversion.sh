@@ -45,7 +45,7 @@ git pull
 git submodule update --remote --recursive --merge
 
 # Check if there are any changes staged or in the working directory
-status_output=$(git status --porcelain)
+status_output=$(git status --porcelain | grep -v "README.md")
 
 if [ -z "$status_output" ]; then
     echo "No changes detected after pull and submodule update. Exiting..."
