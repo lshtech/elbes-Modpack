@@ -140,9 +140,6 @@
 [submodule "Mods/BetterIllusion"]
 	path = Mods/BetterIllusion
 	url = https://github.com/rileyinman/BetterIllusion
-[submodule "Mods/Themed_Jokers"]
-	path = Mods/Themed_Jokers
-	url = https://github.com/Dimserene/Themed_Jokers
 [submodule "Mods/CollectorsCards"]
 	path = Mods/CollectorsCards
 	url = https://github.com/Mathguy23/CollectorsCards
@@ -155,3 +152,6 @@
 [submodule "Mods/Cruel-Blinds"]
 	path = Mods/Cruel-Blinds
 	url = https://github.com/Dimserene/Cruel-Blinds
+[submodule "Mods/Themed_Jokers"]
+	path = Mods/Themed_Jokers
+	url = https://github.com/cerloCasa/Themed-Jokers/
