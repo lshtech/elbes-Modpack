@@ -17,7 +17,7 @@ get_latest_commit_message() {
   # Check if the response is an array
   if ! echo "$response" | jq -e 'type == "array"' > /dev/null; then
     echo "Error: Expected an array but got something else for $repo"
-    echo "Response: $response"  # Debugging: Output the raw response
+    echo "Response: $response"
     return
   fi
 
@@ -36,22 +36,14 @@ get_latest_commit_message() {
     echo "Message: $latest_commit"
     echo "Committed by: $committer"
     echo "Date: $commit_date_taiwan"
-    echo -e "\n"  # Add a blank line between each repository's output
+    echo -e "\n"
   fi
 }
 
-# Export the function to make it available for parallel execution
-export -f get_latest_commit_message
-
-# Use GNU parallel to run the requests in parallel (if available)
-if command -v parallel > /dev/null; then
-  parallel get_latest_commit_message ::: "${repos[@]}"
-else
-  echo "GNU parallel not found, running sequentially..."
-  for repo in "${repos[@]}"; do
-    get_latest_commit_message "$repo"
-  done
-fi
+# Process each repository sequentially to ensure correct output order
+for repo in "${repos[@]}"; do
+  get_latest_commit_message "$repo"
+done
 
 # Pause and wait for the user to press Enter before exiting
 read -p "Press Enter to continue..."

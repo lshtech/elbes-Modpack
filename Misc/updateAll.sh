@@ -59,5 +59,6 @@ do
 done
 
 # Prompt user to press any key to exit
+echo ""
 echo "Press any key to exit..."
 read _

@@ -95,6 +95,7 @@ if [ "$BEHIND_COMMITS" -gt 0 ]; then
         echo "Failed to push updates: $REPO_NAME" >> "$SUMMARY_FILE"
         exit 1
     }
+    echo ""
     echo "Updated $REPO_NAME by $BEHIND_COMMITS commits" >> "$SUMMARY_FILE"
 else
     echo "$REPO is up-to-date."
