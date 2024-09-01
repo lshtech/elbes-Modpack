@@ -34,6 +34,10 @@ generate_new_version_string() {
 # Get the name of the current working folder
 working_folder_name=$(basename "$PWD")
 
+echo ""
+echo "Start updating ${working_folder_name}..."
+echo ""
+
 # Pull the latest changes from the remote repository
 git pull
 

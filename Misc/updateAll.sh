@@ -7,12 +7,17 @@ modpacks=("Dimserenes-Modpack" "Fine-tuned-Pack" "Vanilla-Plus-Pack" "Insane-Pac
 base_path=~/storage/documents
 
 # Display modpack options to the user
-echo "Please choose modpacks to update (separate choices by space, e.g., 1 2):"
+echo "================================="
+echo "Choose modpacks to update:"
+echo "(separate choices by space e.g., 1 2)"
+echo ""
 for i in "${!modpacks[@]}"; do
     echo "$((i+1)). ${modpacks[i]}"
 done
+echo ""
 echo "a. Update all"
 echo "q. Quit"
+echo "================================="
 
 # Read user input
 read -p "Enter your choice: " choice
