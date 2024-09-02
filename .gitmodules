@@ -65,9 +65,6 @@
 [submodule "Mods/KCVanilla"]
 	path = Mods/KCVanilla
 	url = https://github.com/kcgidw/kcvanilla
-[submodule "Mods/Aure-Spectral"]
-	path = Mods/Aure-Spectral
-	url = https://github.com/SDM0/Aure-Spectral
 [submodule "Mods/Virtues"]
 	path = Mods/Virtues
 	url = https://github.com/someone23832/Virtues
@@ -158,3 +155,9 @@
 [submodule "Mods/No-Laughing-Matter"]
 	path = Mods/No-Laughing-Matter
 	url = https://github.com/Minirebel/no-laughing-matter
+[submodule "Mods/CardSleeves"]
+	path = Mods/CardSleeves
+	url = https://github.com/larswijn/CardSleeves
+[submodule "Mods/Grim"]
+	path = Mods/Grim
+	url = https://github.com/Mathguy23/Grim
