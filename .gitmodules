@@ -74,9 +74,6 @@
 [submodule "Mods/MoreJokerPacks"]
 	path = Mods/MoreJokerPacks
 	url = https://github.com/Samario1/MoreJokerPacks
-[submodule "Mods/StackedRedSeals"]
-	path = Mods/StackedRedSeals
-	url = https://github.com/cerloCasa/StackedRedSeals
 [submodule "Mods/SDM_0-s-Stuff"]
 	path = Mods/SDM_0-s-Stuff
 	url = https://github.com/SDM0/SDM_0-s-Stuff
@@ -110,9 +107,6 @@
 [submodule "Mods/Alices_Annum"]
 	path = Mods/Alices_Annum
 	url = https://github.com/ThreeCubed273/alices_annum_balatro_mod
-[submodule "Mods/AncientJokerFix"]
-	path = Mods/AncientJokerFix
-	url = https://github.com/gabepesco/BalatroAncientJokerFix
 [submodule "Mods/CheesyJokers"]
 	path = Mods/CheesyJokers
 	url = https://github.com/ilikecheese0/CheesyJokers
@@ -140,9 +134,6 @@
 [submodule "Mods/BetterIllusion"]
 	path = Mods/BetterIllusion
 	url = https://github.com/rileyinman/BetterIllusion
-[submodule "Mods/CollectorsCards"]
-	path = Mods/CollectorsCards
-	url = https://github.com/Mathguy23/CollectorsCards
 [submodule "Mods/Actions"]
 	path = Mods/Actions
 	url = https://github.com/Mathguy23/Actions
@@ -155,3 +146,15 @@
 [submodule "Mods/Themed_Jokers"]
 	path = Mods/Themed_Jokers
 	url = https://github.com/cerloCasa/Themed-Jokers/
+[submodule "Mods/Ceres"]
+	path = Mods/Ceres
+	url = https://github.com/nekojoe/Ceres
+[submodule "Mods/Familiar"]
+	path = Mods/Familiar
+	url = https://github.com/RattlingSnow353/Familiar
+[submodule "Mods/Flower-Pot"]
+	path = Mods/Flower-Pot
+	url = https://github.com/GauntletGames-2086/Flower-Pot
+[submodule "Mods/No-Laughing-Matter"]
+	path = Mods/No-Laughing-Matter
+	url = https://github.com/Minirebel/no-laughing-matter
