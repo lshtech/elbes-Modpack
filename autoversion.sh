@@ -56,80 +56,85 @@ else
     submodule_status="FAILED"
 fi
 
-# Step 3: Check if there are any changes in the "Mods" folder, excluding README.md files
-status_output=$(git status --porcelain Mods/ | grep -v "README.md")
+# Step 3: Check for changes in the "Mods" folder (excluding README.md files)
+mods_changes=$(git status --porcelain Mods/ | grep -v "README.md")
 
-# Variable to track if version was bumped
-version_bumped=false
+# Step 4: Check for changes in the entire repository
+overall_changes=$(git status --porcelain | grep -v "README.md")
 
-if [ -n "$status_output" ]; then
-    # If changes are detected in the Mods folder (excluding README.md), generate a new version string
+if [ -n "$mods_changes" ]; then
+    # If "Mods" folder has changes, generate a new version string
     new_version_string=$(generate_new_version_string)
-    echo "Step 4: Generated new version string: $new_version_string"
-
-    # Step 5: Update the CurrentVersion.txt file with the new version string
+    echo "Mods folder changed. Bumping version to $new_version_string."
+    
+    # Update the CurrentVersion.txt file with the new version string
     if echo "$new_version_string" > ./CurrentVersion.txt; then
-        echo "Step 5: New version string written to CurrentVersion.txt"
+        echo "New version string written to CurrentVersion.txt"
         update_version_status="SUCCESS"
-        version_bumped=true
     else
-        echo "Step 5: Failed to write new version string to CurrentVersion.txt"
+        echo "Failed to write new version string to CurrentVersion.txt"
         update_version_status="FAILED"
     fi
 
-    # Step 6: Copy the updated CurrentVersion.txt file to the Mods/ModpackUtil/ directory
+    # Copy the updated CurrentVersion.txt file to the Mods/ModpackUtil/ directory
     if cp ./CurrentVersion.txt ./Mods/ModpackUtil/; then
-        echo "Step 6: CurrentVersion.txt copied to Mods/ModpackUtil/"
+        echo "CurrentVersion.txt copied to Mods/ModpackUtil/"
         copy_version_status="SUCCESS"
     else
-        echo "Step 6: Failed to copy CurrentVersion.txt to Mods/ModpackUtil/"
+        echo "Failed to copy CurrentVersion.txt to Mods/ModpackUtil/"
         copy_version_status="FAILED"
     fi
+
+elif [ -n "$overall_changes" ]; then
+    # If there are changes in other files, but not in the "Mods" folder, proceed without version bump
+    echo "No changes in Mods folder, but other changes detected. Proceeding without version bump."
 else
-    echo "No relevant changes detected in the Mods folder. Skipping version bump."
-    update_version_status="SKIPPED"
-    copy_version_status="SKIPPED"
+    # No changes detected anywhere, skip everything
+    echo "No changes detected. Skipping update."
+    exit 0
 fi
 
-# Step 7: Write the current UTC date and time to VersionTime.txt in the Mods/ModpackUtil/ directory
+# Check if CurrentVersion.txt exists before proceeding
+if [ ! -f "./CurrentVersion.txt" ]; then
+    echo "CurrentVersion.txt is missing. Failing update."
+    exit 1
+fi
+
+# Step 5: Write the current UTC date and time to VersionTime.txt in the Mods/ModpackUtil/ directory
 if date -u "+%Y/%m/%d %H:%M:%S" > Mods/ModpackUtil/VersionTime.txt; then
-    echo "Step 7: VersionTime.txt updated successfully."
+    echo "VersionTime.txt updated successfully."
     update_time_status="SUCCESS"
 else
-    echo "Step 7: Failed to update VersionTime.txt."
+    echo "Failed to update VersionTime.txt."
     update_time_status="FAILED"
 fi
 
-# Step 8: Stage all changes in the current directory for commit
+# Step 6: Stage all changes in the current directory for commit
 if git add .; then
-    echo "Step 8: Changes staged successfully."
+    echo "Changes staged successfully."
     stage_status="SUCCESS"
 else
-    echo "Step 8: Failed to stage changes."
+    echo "Failed to stage changes."
     stage_status="FAILED"
 fi
 
-# Step 9: Commit the staged changes
-if [ -f "./CurrentVersion.txt" ]; then
-    commit_message=$(cat ./CurrentVersion.txt)
-else
-    commit_message="Update without version bump"
-fi
+# Step 7: Commit the staged changes
+commit_message=$(cat ./CurrentVersion.txt)
 
 if git commit -m "$commit_message"; then
-    echo "Step 9: Changes committed successfully."
+    echo "Changes committed successfully."
     commit_status="SUCCESS"
 else
-    echo "Step 9: Failed to commit changes."
+    echo "Failed to commit changes."
     commit_status="FAILED"
 fi
 
-# Step 10: Push the changes to the remote repository
+# Step 8: Push the changes to the remote repository
 if git push; then
-    echo "Step 10: Changes pushed to remote repository successfully."
+    echo "Changes pushed to remote repository successfully."
     push_status="SUCCESS"
 else
-    echo "Step 10: Failed to push changes to remote repository."
+    echo "Failed to push changes to remote repository."
     push_status="FAILED"
 fi
 
