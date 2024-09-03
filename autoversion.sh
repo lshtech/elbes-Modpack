@@ -38,28 +38,34 @@ echo ""
 echo "Start updating ${working_folder_name}..."
 echo ""
 
-# Step 1: Pull the latest changes from the remote repository
+# Initialize status variables
+pull_status="SKIPPED"
+submodule_status="SKIPPED"
+update_version_status="SKIPPED"
+copy_version_status="SKIPPED"
+update_time_status="SKIPPED"
+stage_status="SKIPPED"
+commit_status="SKIPPED"
+push_status="SKIPPED"
+
+# Pull the latest changes from the remote repository
 if git pull; then
-    echo "Step 1: Pull successful."
     pull_status="SUCCESS"
 else
-    echo "Step 1: Pull failed."
     pull_status="FAILED"
 fi
 
-# Step 2: Update all submodules to their latest commit from the remote repository and merge them
+# Update all submodules to their latest commit from the remote repository and merge them
 if git submodule update --remote --recursive --merge; then
-    echo "Step 2: Submodule update successful."
     submodule_status="SUCCESS"
 else
-    echo "Step 2: Submodule update failed."
     submodule_status="FAILED"
 fi
 
-# Step 3: Check for changes in the "Mods" folder (excluding README.md files)
+# Check for changes in the "Mods" folder (excluding README.md files)
 mods_changes=$(git status --porcelain Mods/ | grep -v "README.md")
 
-# Step 4: Check for changes in the entire repository
+# Check for changes in the entire repository
 overall_changes=$(git status --porcelain | grep -v "README.md")
 
 if [ -n "$mods_changes" ]; then
@@ -88,8 +94,6 @@ if [ -n "$mods_changes" ]; then
 elif [ -n "$overall_changes" ]; then
     # If there are changes in other files, but not in the "Mods" folder, proceed without version bump
     echo "No changes in Mods folder, but other changes detected. Proceeding without version bump."
-    update_version_status="SKIPPED"
-    copy_version_status="SKIPPED"
 else
     # No changes detected anywhere, skip everything
     echo "No changes detected. Skipping update."
@@ -102,7 +106,7 @@ if [ ! -f "./CurrentVersion.txt" ]; then
     exit 1
 fi
 
-# Step 5: Write the current UTC date and time to VersionTime.txt in the Mods/ModpackUtil/ directory
+# Write the current UTC date and time to VersionTime.txt in the Mods/ModpackUtil/ directory
 if date -u "+%Y/%m/%d %H:%M:%S" > Mods/ModpackUtil/VersionTime.txt; then
     echo "VersionTime.txt updated successfully."
     update_time_status="SUCCESS"
@@ -111,7 +115,7 @@ else
     update_time_status="FAILED"
 fi
 
-# Step 6: Stage all changes in the current directory for commit
+# Stage all changes in the current directory for commit
 if git add .; then
     echo "Changes staged successfully."
     stage_status="SUCCESS"
@@ -120,7 +124,7 @@ else
     stage_status="FAILED"
 fi
 
-# Step 7: Commit the staged changes
+# Commit the staged changes
 commit_message=$(cat ./CurrentVersion.txt)
 
 if git commit -m "$commit_message"; then
@@ -131,7 +135,7 @@ else
     commit_status="FAILED"
 fi
 
-# Step 8: Push the changes to the remote repository
+# Push the changes to the remote repository
 if git push; then
     echo "Changes pushed to remote repository successfully."
     push_status="SUCCESS"
