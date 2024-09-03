@@ -59,6 +59,9 @@ fi
 # Step 3: Check if there are any changes in the "Mods" folder
 status_output=$(git status --porcelain Mods/ | grep -v "README.md")
 
+# Variable to track if version was bumped
+version_bumped=false
+
 if [ -n "$status_output" ]; then
     # If changes are detected in the Mods folder, generate a new version string
     new_version_string=$(generate_new_version_string)
@@ -68,6 +71,7 @@ if [ -n "$status_output" ]; then
     if echo "$new_version_string" > ./CurrentVersion.txt; then
         echo "Step 5: New version string written to CurrentVersion.txt"
         update_version_status="SUCCESS"
+        version_bumped=true
     else
         echo "Step 5: Failed to write new version string to CurrentVersion.txt"
         update_version_status="FAILED"
@@ -106,8 +110,8 @@ else
 fi
 
 # Step 9: Commit the staged changes
-if [ "$update_version_status" = "SUCCESS" ]; then
-    commit_message="$new_version_string"
+if [ -f "./CurrentVersion.txt" ]; then
+    commit_message=$(cat ./CurrentVersion.txt)
 else
     commit_message="Update without version bump"
 fi
