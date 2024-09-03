@@ -88,6 +88,8 @@ if [ -n "$mods_changes" ]; then
 elif [ -n "$overall_changes" ]; then
     # If there are changes in other files, but not in the "Mods" folder, proceed without version bump
     echo "No changes in Mods folder, but other changes detected. Proceeding without version bump."
+    update_version_status="SKIPPED"
+    copy_version_status="SKIPPED"
 else
     # No changes detected anywhere, skip everything
     echo "No changes detected. Skipping update."
@@ -146,12 +148,12 @@ if [ "$update_version_status" = "SUCCESS" ] || [ "$update_version_status" = "SKI
     echo "${working_folder_name}: SUCCESSFULLY UPDATED"
 else
     echo "${working_folder_name}: FAILED TO UPDATE"
-    [ "$update_version_status" != "SUCCESS" ] && [ "$update_version_status" != "SKIPPED" ] && echo "  - Failed to update version"
-    [ "$copy_version_status" != "SUCCESS" ] && [ "$copy_version_status" != "SKIPPED" ] && echo "  - Failed to copy version file"
-    [ "$update_time_status" != "SUCCESS" ] && echo "  - Failed to update version time"
-    [ "$stage_status" != "SUCCESS" ] && echo "  - Failed to stage changes"
-    [ "$commit_status" != "SUCCESS" ] && echo "  - Failed to commit changes"
-    [ "$push_status" != "SUCCESS" ] && echo "  - Failed to push changes"
+    [ "$update_version_status" = "FAILED" ] && echo "  - Failed to update version"
+    [ "$copy_version_status" = "FAILED" ] && echo "  - Failed to copy version file"
+    [ "$update_time_status" = "FAILED" ] && echo "  - Failed to update version time"
+    [ "$stage_status" = "FAILED" ] && echo "  - Failed to stage changes"
+    [ "$commit_status" = "FAILED" ] && echo "  - Failed to commit changes"
+    [ "$push_status" = "FAILED" ] && echo "  - Failed to push changes"
 fi
 echo "------------------------------------------"
 
