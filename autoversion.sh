@@ -146,16 +146,19 @@ echo "Step 11: Push status: $push_status"
 echo "------------------------------------------"
 
 # Exit with appropriate status
-if [ "$pull_status" == "SUCCESS" ] && \
-   [ "$submodule_status" == "SUCCESS" ] && \
-   [ "$update_version_status" == "SUCCESS" ] && \
-   [ "$copy_version_status" == "SUCCESS" ] && \
-   [ "$update_time_status" == "SUCCESS" ] && \
-   [ "$stage_status" == "SUCCESS" ] && \
-   [ "$commit_status" == "SUCCESS" ] && \
-   [ "$push_status" == "SUCCESS" ]; then
+if [ "$pull_status" = "SUCCESS" ] && \
+   [ "$submodule_status" = "SUCCESS" ] && \
+   [ "$update_version_status" = "SUCCESS" ] && \
+   [ "$copy_version_status" = "SUCCESS" ] && \
+   [ "$update_time_status" = "SUCCESS" ] && \
+   [ "$stage_status" = "SUCCESS" ] && \
+   [ "$commit_status" = "SUCCESS" ] && \
+   [ "$push_status" = "SUCCESS" ]; then
+   
     # All conditions met
+    echo "All steps succeeded."
     exit 0
 else
+    echo "One or more steps failed."
     exit 1
 fi
