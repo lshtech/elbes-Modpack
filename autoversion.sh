@@ -105,18 +105,19 @@ else
     stage_status="FAILED"
 fi
 
-# Step 9: Commit the staged changes using the content of CurrentVersion.txt as the commit message
-if [ "$update_version_status" != "SKIPPED" ]; then
-    if git commit -F Mods/ModpackUtil/CurrentVersion.txt; then
-        echo "Step 9: Changes committed successfully."
-        commit_status="SUCCESS"
-    else
-        echo "Step 9: Failed to commit changes."
-        commit_status="FAILED"
-    fi
+# Step 9: Commit the staged changes
+if [ "$update_version_status" = "SUCCESS" ]; then
+    commit_message="$new_version_string"
 else
-    echo "Skipping commit since no version bump was performed."
-    commit_status="SKIPPED"
+    commit_message="Update without version bump"
+fi
+
+if git commit -m "$commit_message"; then
+    echo "Step 9: Changes committed successfully."
+    commit_status="SUCCESS"
+else
+    echo "Step 9: Failed to commit changes."
+    commit_status="FAILED"
 fi
 
 # Step 10: Push the changes to the remote repository
@@ -140,7 +141,7 @@ else
     [ "$copy_version_status" != "SUCCESS" ] && [ "$copy_version_status" != "SKIPPED" ] && echo "  - Failed to copy version file"
     [ "$update_time_status" != "SUCCESS" ] && echo "  - Failed to update version time"
     [ "$stage_status" != "SUCCESS" ] && echo "  - Failed to stage changes"
-    [ "$commit_status" != "SUCCESS" ] && [ "$commit_status" != "SKIPPED" ] && echo "  - Failed to commit changes"
+    [ "$commit_status" != "SUCCESS" ] && echo "  - Failed to commit changes"
     [ "$push_status" != "SUCCESS" ] && echo "  - Failed to push changes"
 fi
 echo "------------------------------------------"
@@ -152,7 +153,7 @@ if [ "$pull_status" = "SUCCESS" ] && \
    ([ "$copy_version_status" = "SUCCESS" ] || [ "$copy_version_status" = "SKIPPED" ]) && \
    [ "$update_time_status" = "SUCCESS" ] && \
    [ "$stage_status" = "SUCCESS" ] && \
-   ([ "$commit_status" = "SUCCESS" ] || [ "$commit_status" = "SKIPPED" ]) && \
+   [ "$commit_status" = "SUCCESS" ] && \
    [ "$push_status" = "SUCCESS" ]; then
     exit 0
 else
