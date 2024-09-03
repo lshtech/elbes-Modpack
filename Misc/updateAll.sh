@@ -14,6 +14,9 @@ log_message() {
     echo "$(date +"%Y-%m-%d %H:%M:%S") - $1" >> "$log_file"
 }
 
+# Array to store execution summaries
+execution_summaries=()
+
 while true; do
     # Display modpack options to the user
     echo "================================="
@@ -90,21 +93,44 @@ do
     modpack_path="$base_path/$modpack"
     
     if [[ ! -d "$modpack_path" ]]; then
-        echo "Directory $modpack_path does not exist. Skipping $modpack."
-        log_message "Directory $modpack_path does not exist. Skipping $modpack."
+        message="Directory $modpack_path does not exist. Skipping $modpack."
+        echo "$message"
+        log_message "$message"
+        execution_summaries+=("$modpack: FAILED (Directory does not exist)")
         continue
     fi
     
     if [[ ! -f "$modpack_path/autoversion.sh" ]]; then
-        echo "autoversion.sh script not found in $modpack_path. Skipping $modpack."
-        log_message "autoversion.sh script not found in $modpack_path. Skipping $modpack."
+        message="autoversion.sh script not found in $modpack_path. Skipping $modpack."
+        echo "$message"
+        log_message "$message"
+        execution_summaries+=("$modpack: FAILED (autoversion.sh not found)")
         continue
     fi
     
-    # Directly run the update script without confirmation
+    # Run the update script and capture the result
     cd "$modpack_path" || exit
     sh "$modpack_path/autoversion.sh"
-    log_message "Updated $modpack successfully."
+    if [[ $? -eq 0 ]]; then
+        execution_summaries+=("$modpack: SUCCESS")
+    else
+        execution_summaries+=("$modpack: FAILED (Check autoversion.sh output for details)")
+    fi
+done
+
+# Display summary of results
+echo ""
+echo "================================="
+echo "Update Summary:"
+for summary in "${execution_summaries[@]}"; do
+    echo "$summary"
+done
+echo "================================="
+
+# Log the summary
+log_message "Update Summary:"
+for summary in "${execution_summaries[@]}"; do
+    log_message "$summary"
 done
 
 # Prompt user to press any key to exit
