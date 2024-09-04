@@ -9,11 +9,6 @@ ERRORS_FILE="$5"
 
 REPO_NAME=$(basename "$REPO")
 
-# GitHub username
-GITHUB_USER="Dimserene"
-# GitHub token is loaded directly for personal use
-GITHUB_TOKEN=""
-
 # Skip specific repository
 if [ "$REPO_NAME" = "bot-automation" ]; then
     echo "Skipping $REPO_NAME..."
@@ -97,6 +92,31 @@ if [ "$BEHIND_COMMITS" -gt 0 ]; then
     }
     echo ""
     echo "Updated $REPO_NAME by $BEHIND_COMMITS commits" >> "$SUMMARY_FILE"
+
+    # Additional functionality for JensBalatroCollection
+    if [ "$REPO_NAME" = "JensBalatroCollection" ]; then
+        echo "Checking for updates in subfolders..."
+        SUBFOLDERS=("JenLib" "Aurinko" "Incantation" "Nopeus")
+        MODPACK_PATH="/sdcard/Modpacks/Insane-Pack/Mods/"
+        for SUBFOLDER in "${SUBFOLDERS[@]}"; do
+            if git diff --name-only "upstream/$DEFAULT_BRANCH" "origin/$DEFAULT_BRANCH" | grep -q "$SUBFOLDER/"; then
+                echo "$SUBFOLDER has been updated. Replacing in $MODPACK_PATH"
+                # Remove the old folder before copying the new one
+                rm -rf "${MODPACK_PATH}${SUBFOLDER}" || {
+                    echo "Error: Failed to remove old $SUBFOLDER in $MODPACK_PATH" >> "$ERRORS_FILE"
+                    echo "Failed to remove old $SUBFOLDER in $MODPACK_PATH" >> "$SUMMARY_FILE"
+                    exit 1
+                }
+                cp -r "$SUBFOLDER" "$MODPACK_PATH" || {
+                    echo "Error: Failed to copy $SUBFOLDER to $MODPACK_PATH" >> "$ERRORS_FILE"
+                    echo "Failed to update $SUBFOLDER in $MODPACK_PATH" >> "$SUMMARY_FILE"
+                    exit 1
+                }
+                echo "Updated $SUBFOLDER in $MODPACK_PATH" >> "$SUMMARY_FILE"
+            fi
+        done
+    fi
+
 else
     echo "$REPO is up-to-date."
     echo ""
