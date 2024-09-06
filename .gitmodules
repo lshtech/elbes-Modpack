@@ -19,9 +19,6 @@
 [submodule "Mods/Trance"]
 	path = Mods/Trance
 	url = https://github.com/Dimserene/Trance
-[submodule "Mods/BossJokers"]
-	path = Mods/BossJokers
-	url = https://github.com/KilledByLava/BossJokers
 [submodule "Mods/Aura"]
 	path = Mods/Aura
 	url = https://github.com/MathIsFun0/Aura
@@ -80,9 +77,6 @@
 [submodule "Mods/Joker-Evolution"]
 	path = Mods/Joker-Evolution
 	url = https://github.com/SDM0/Joker-Evolution
-[submodule "Mods/Bird-Jokers"]
-	path = Mods/Bird-Jokers
-	url = https://github.com/JustinBanzon/Bird-Jokers
 [submodule "Mods/Snow-s-Mods"]
 	path = Mods/Snow-s-Mods
 	url = https://github.com/RattlingSnow353/Snow-s-Mods
@@ -155,9 +149,6 @@
 [submodule "Mods/No-Laughing-Matter"]
 	path = Mods/No-Laughing-Matter
 	url = https://github.com/Minirebel/no-laughing-matter
-[submodule "Mods/CardSleeves"]
-	path = Mods/CardSleeves
-	url = https://github.com/larswijn/CardSleeves
 [submodule "Mods/Grim"]
 	path = Mods/Grim
 	url = https://github.com/Mathguy23/Grim
