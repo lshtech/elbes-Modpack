@@ -152,3 +152,12 @@
 [submodule "Mods/Grim"]
 	path = Mods/Grim
 	url = https://github.com/Mathguy23/Grim
+[submodule "Mods/CardSleeves"]
+	path = Mods/CardSleeves
+	url = https://github.com/larswijn/CardSleeves
+[submodule "Mods/BossJokers"]
+	path = Mods/BossJokers
+	url = https://github.com/KilledByLava/BossJokers
+[submodule "Mods/Bird-Jokers"]
+	path = Mods/Bird-Jokers
+	url = https://github.com/JustinBanzon/Bird-Jokers
