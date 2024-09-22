@@ -125,9 +125,6 @@
 [submodule "Mods/Balatro-Jokers-Plus"]
 	path = Mods/Balatro-Jokers-Plus
 	url = https://github.com/KaviD-115/Balatro-Jokers-Plus
-[submodule "Mods/Cruel-Blinds"]
-	path = Mods/Cruel-Blinds
-	url = https://github.com/Dimserene/Cruel-Blinds
 [submodule "Mods/Themed_Jokers"]
 	path = Mods/Themed_Jokers
 	url = https://github.com/cerloCasa/Themed-Jokers/
@@ -171,3 +168,6 @@
 	path = Mods/SnoresvillesTurbulentJokers
 	url = https://github.com/Snoresville/snoresville_turbulent_jokers
 	branch = release
+[submodule "Mods/Cruel-Blinds"]
+	path = Mods/Cruel-Blinds
+	url = https://github.com/Dimserene/Cruel-Blinds
