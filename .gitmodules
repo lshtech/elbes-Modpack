@@ -164,3 +164,10 @@
 [submodule "Mods/DeckSkinsPlus"]
 	path = Mods/DeckSkinsPlus
 	url = https://github.com/Dimserene/DeckSkinsPlus.git
+[submodule "Mods/MoreFluff"]
+	path = Mods/MoreFluff
+	url = https://github.com/notmario/MoreFluff
+[submodule "Mods/SnoresvillesTurbulentJokers"]
+	path = Mods/SnoresvillesTurbulentJokers
+	url = https://github.com/Snoresville/snoresville_turbulent_jokers
+	branch = release
