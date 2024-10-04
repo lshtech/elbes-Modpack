@@ -125,9 +125,6 @@
 [submodule "Mods/Ceres"]
 	path = Mods/Ceres
 	url = https://github.com/nekojoe/Ceres
-[submodule "Mods/Familiar"]
-	path = Mods/Familiar
-	url = https://github.com/RattlingSnow353/Familiar
 [submodule "Mods/Flower-Pot"]
 	path = Mods/Flower-Pot
 	url = https://github.com/GauntletGames-2086/Flower-Pot
