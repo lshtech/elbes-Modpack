@@ -174,3 +174,6 @@
 [submodule "Mods/TooManyJokers"]
 	path = Mods/TooManyJokers
 	url = https://github.com/cg-223/toomanyjokers
+[submodule "Mods/Reverie"]
+	path = Mods/Reverie
+	url = https://github.com/dvrp0/reverie
