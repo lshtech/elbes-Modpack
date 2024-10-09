@@ -183,6 +183,3 @@
 [submodule "Mods/Taikomochi"]
 	path = Mods/Taikomochi
 	url = https://github.com/larswijn/Taikomochi
-[submodule "Mods/Oiiman-s-Additions"]
-	path = Mods/Oiiman-s-Additions
-	url = https://github.com/Sedisfigh/Oiiman-s-Additions
