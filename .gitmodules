@@ -119,9 +119,6 @@
 [submodule "Mods/Balatro-Jokers-Plus"]
 	path = Mods/Balatro-Jokers-Plus
 	url = https://github.com/KaviD-115/Balatro-Jokers-Plus
-[submodule "Mods/Themed_Jokers"]
-	path = Mods/Themed_Jokers
-	url = https://github.com/cerloCasa/Themed-Jokers/
 [submodule "Mods/Ceres"]
 	path = Mods/Ceres
 	url = https://github.com/nekojoe/Ceres
@@ -183,3 +180,6 @@
 [submodule "Mods/Taikomochi"]
 	path = Mods/Taikomochi
 	url = https://github.com/larswijn/Taikomochi
+[submodule "Mods/Themed_Jokers"]
+	path = Mods/Themed_Jokers
+	url = https://github.com/Jevonnissocoolman/Themed-Jokers
