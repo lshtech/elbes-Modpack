@@ -183,3 +183,6 @@
 [submodule "Mods/Themed_Jokers"]
 	path = Mods/Themed_Jokers
 	url = https://github.com/Jevonnissocoolman/Themed-Jokers
+[submodule "Mods/LunasBalatroMods"]
+	path = Mods/LunasBalatroMods
+	url = https://github.com/LunaAstraCassiopeia/LunasBalatroMods
