@@ -41,9 +41,6 @@
 [submodule "Mods/DebugPlus"]
 	path = Mods/DebugPlus
 	url = https://github.com/Dimserene/DebugPlus
-[submodule "Mods/FoldButton"]
-	path = Mods/FoldButton
-	url = https://github.com/happinyz/BalatroFoldButton
 [submodule "Mods/NotJustYet"]
 	path = Mods/NotJustYet
 	url = https://github.com/Toneblock/balatro-NotJustYet
@@ -186,3 +183,24 @@
 [submodule "Mods/Trance"]
 	path = Mods/Trance
 	url = https://github.com/MathIsFun0/Trance
+[submodule "Mods/ModPackFixes"]
+	path = Mods/ModPackFixes
+	url = https://github.com/lshtech/ModPackFixes
+[submodule "Mods/Codex-Arcanum"]
+	path = Mods/Codex-Arcanum
+	url = https://github.com/lshtech/Codex-Arcanum
+[submodule "Mods/Matchbox"]
+	path = Mods/Matchbox
+	url = https://github.com/lshtech/Matchbox
+[submodule "Mods/DiscoveryManager"]
+	path = Mods/DiscoveryManager
+	url = https://github.com/lshtech/DiscoveryManager
+[submodule "Mods/HeyListen"]
+	path = Mods/HeyListen
+	url = https://github.com/SleepyG11/HeyListenBalatro
+[submodule "Mods/JestersPrivilege"]
+	path = Mods/JestersPrivilege
+	url = https://github.com/unethikeele/JestersPrivilege
+[submodule "Mods/Buffoonery"]
+	path = Mods/Buffoonery
+	url = https://github.com/pinkmaggit-hub/Buffoonery
