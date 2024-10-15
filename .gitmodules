@@ -7,9 +7,6 @@
 [submodule "Mods/MystBlinds"]
 	path = Mods/MystBlinds
 	url = https://github.com/Mysthaps/MystBlinds
-[submodule "Mods/The-World-Ends-With-Jimbo"]
-	path = Mods/The-World-Ends-With-Jimbo
-	url = https://github.com/parchmentEngineer/The-World-Ends-With-Jimbo
 [submodule "Mods/Steamodded"]
 	path = Mods/Steamodded
 	url = https://github.com/Steamopollys/Steamodded
@@ -80,9 +77,6 @@
 [submodule "Mods/ModpackDecks"]
 	path = Mods/ModpackDecks
 	url = https://github.com/Dimserene/ModpackDecks
-[submodule "Mods/Alices_Annum"]
-	path = Mods/Alices_Annum
-	url = https://github.com/ThreeCubed273/alices_annum_balatro_mod
 [submodule "Mods/FloundersJokers"]
 	path = Mods/FloundersJokers
 	url = https://github.com/Flounderlul/FloundersJokers
@@ -204,3 +198,9 @@
 [submodule "Mods/Buffoonery"]
 	path = Mods/Buffoonery
 	url = https://github.com/pinkmaggit-hub/Buffoonery
+[submodule "Mods/The-World-Ends-With-Jimbo"]
+	path = Mods/The-World-Ends-With-Jimbo
+	url = https://github.com/Dimserene/The-World-Ends-With-Jimbo
+[submodule "Mods/Alices_Annum"]
+	path = Mods/Alices_Annum
+	url = https://github.com/Dimserene/alices_annum_balatro_mod
