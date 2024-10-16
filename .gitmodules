@@ -209,3 +209,9 @@
 [submodule "Mods/5CEBalatro"]
 	path = Mods/5CEBalatro
 	url = https://github.com/lshtech/5CEBalatro
+[submodule "Mods/MOARJokers"]
+	path = Mods/MOARJokers
+	url = https://github.com/MrSmoothieHuman1/MOARJokers
+[submodule "Mods/Blueprint"]
+	path = Mods/Blueprint
+	url = https://github.com/stupxd/Blueprint
