@@ -25,10 +25,6 @@
 [submodule "Mods/Talisman"]
 	path = Mods/Talisman
 	url = https://github.com/Dimserene/Talisman
-[submodule "Mods/Ortalab-DEMO"]
-	path = Mods/Ortalab-DEMO
-	url = https://github.com/GauntletGames-2086/Ortalab-DEMO
-	branch = test
 [submodule "Mods/BonusBlinds"]
 	path = Mods/BonusBlinds
 	url = https://github.com/Dimserene/BonusBlinds
@@ -201,3 +197,15 @@
 [submodule "Mods/Alices_Annum"]
 	path = Mods/Alices_Annum
 	url = https://github.com/Dimserene/alices_annum_balatro_mod
+[submodule "Mods/Ortalab-DEMO"]
+	path = Mods/Ortalab-DEMO
+	url = https://github.com/Eremel/Ortalab-Demo
+[submodule "Mods/Tetrapak"]
+	path = Mods/Tetrapak
+	url = https://github.com/lshtech/Tetrapak
+[submodule "Mods/RiskofJesters - ║╣╗τ║╗"]
+	path = Mods/RiskofJesters - ║╣╗τ║╗
+	url = https://github.com/lshtech/risk-of-jesters
+[submodule "Mods/5CEBalatro"]
+	path = Mods/5CEBalatro
+	url = https://github.com/lshtech/5CEBalatro
