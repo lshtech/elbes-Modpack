@@ -209,3 +209,9 @@
 [submodule "Mods/Blueprint"]
 	path = Mods/Blueprint
 	url = https://github.com/stupxd/Blueprint
+[submodule "Mods/MOARJokers"]
+	path = Mods/MOARJokers
+	url = https://github.com/MrSmoothieHuman1/MOARJokers
+[submodule "Mods/Tetrapak"]
+	path = Mods/Tetrapak
+	url = https://github.com/lshtech/Tetrapak
