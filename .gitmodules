@@ -215,3 +215,27 @@
 [submodule "Mods/Tetrapak"]
 	path = Mods/Tetrapak
 	url = https://github.com/lshtech/Tetrapak
+[submodule "Mods/MikasBalatro"]
+	path = Mods/MikasBalatro
+	url = https://github.com/lshtech/MikasBalatro
+[submodule "Mods/DX-Tarots"]
+	path = Mods/DX-Tarots
+	url = https://github.com/lshtech/DX-Tarots
+[submodule "Mods/TagPreview"]
+	path = Mods/TagPreview
+	url = https://github.com/lshtech/BalatroTagPreview
+[submodule "Mods/SylviesSilliness"]
+	path = Mods/SylviesSilliness
+	url = https://github.com/lshtech/SylvieSilly
+[submodule "Mods/Dice-Seals"]
+	path = Mods/Dice-Seals
+	url = https://github.com/lshtech/Dice-Seals
+[submodule "Mods/MystesOpenJokers"]
+	path = Mods/MystesOpenJokers
+	url = https://github.com/lshtech/MystesOpenJokers
+[submodule "Mods/BlackSeal"]
+	path = Mods/BlackSeal
+	url = https://github.com/lshtech/BlackSeal
+[submodule "Mods/SilverSeal"]
+	path = Mods/SilverSeal
+	url = https://github.com/lshtech/SilverSeal
