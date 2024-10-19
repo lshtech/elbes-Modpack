@@ -1,6 +1,3 @@
-[submodule "Mods/Jimbo-s-Pack"]
-	path = Mods/Jimbo-s-Pack
-	url = https://github.com/art-muncher/Jimbo-s-Pack
 [submodule "Mods/LobotomyCorp"]
 	path = Mods/LobotomyCorp
 	url = https://github.com/Mysthaps/LobotomyCorp
