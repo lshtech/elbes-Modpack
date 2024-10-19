@@ -61,9 +61,6 @@
 [submodule "Mods/Fusion-Jokers"]
 	path = Mods/Fusion-Jokers
 	url = https://github.com/Dimserene/Fusion-Jokers
-[submodule "Mods/JankJonklers"]
-	path = Mods/JankJonklers
-	url = https://github.com/Dimserene/JankJonklers
 [submodule "Mods/ModpackDecks"]
 	path = Mods/ModpackDecks
 	url = https://github.com/Dimserene/ModpackDecks
@@ -239,3 +236,6 @@
 [submodule "Mods/SpicyJokers"]
 	path = Mods/SpicyJokers
 	url = https://github.com/lshtech/SpicyJokers
+[submodule "Mods/JankJonklers"]
+	path = Mods/JankJonklers
+	url = https://github.com/spikeof2010/JankJonklers
