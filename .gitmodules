@@ -236,3 +236,87 @@
 [submodule "Mods/JankJonklers"]
 	path = Mods/JankJonklers
 	url = https://github.com/spikeof2010/JankJonklers
+[submodule "Mods/Pokermon"]
+	path = Mods/Pokermon
+	url = https://github.com/InertSteak/Pokermon
+[submodule "Mods/Familiar"]
+	path = Mods/Familiar
+	url = https://github.com/RattlingSnow353/Familiar
+[submodule "Mods/BlackjackHands"]
+	path = Mods/BlackjackHands
+	url = https://github.com/Mathguy23/BlackjackHands
+[submodule "Mods/CollectorsCards"]
+	path = Mods/CollectorsCards
+	url = https://github.com/Mathguy23/CollectorsCards
+[submodule "Mods/Crimsons-Ultimate-Card-Collection"]
+	path = Mods/Crimsons-Ultimate-Card-Collection
+	url = https://github.com/XenoCHeart/Crimsons-Ultimate-Card-Collection
+[submodule "Mods/D6-Jokers"]
+	path = Mods/D6-Jokers
+	url = https://github.com/lshtech/D6-Jokers
+[submodule "Mods/ExtraPlanets"]
+	path = Mods/ExtraPlanets
+	url = https://github.com/lshtech/ExtraPlanets
+[submodule "Mods/BalatroOlympus"]
+	path = Mods/BalatroOlympus
+	url = https://github.com/lshtech/BalatroOlympus
+[submodule "Mods/Balatro451"]
+	path = Mods/Balatro451
+	url = https://github.com/SM451Modding/Balatro451
+[submodule "Mods/BalatroFoldButton"]
+	path = Mods/BalatroFoldButton
+	url = https://github.com/happinyz/BalatroFoldButton
+[submodule "Mods/Golds-Cards"]
+	path = Mods/Golds-Cards
+	url = https://github.com/lshtech/Golds-Cards
+[submodule "Mods/InkAndColor"]
+	path = Mods/InkAndColor
+	url = https://github.com/lshtech/InkAndColor
+[submodule "Mods/Jeantoine"]
+	path = Mods/Jeantoine
+	url = https://github.com/Kaishi130/Jeantoine
+[submodule "Mods/Jimbos-Pack"]
+	path = Mods/Jimbos-Pack
+	url = https://github.com/art-muncher/Jimbo-s-Pack
+[submodule "Mods/Komakusa-Cards"]
+	path = Mods/Komakusa-Cards
+	url = https://github.com/AvilionAMillion/Komakusa-Cards/
+[submodule "Mods/KusoMods"]
+	path = Mods/KusoMods
+	url = https://github.com/lshtech/KusoMods
+[submodule "Mods/morjokers"]
+	path = Mods/morjokers
+	url = https://github.com/lshtech/morjokers
+[submodule "Mods/multi-jokers"]
+	path = Mods/multi-jokers
+	url = https://github.com/lshtech/multi-jokers
+[submodule "Mods/Oiiman-s-Additions"]
+	path = Mods/Oiiman-s-Additions
+	url = https://github.com/lshtech/Oiiman-s-Additions
+[submodule "Mods/Othermod"]
+	path = Mods/Othermod
+	url = https://github.com/Aigengoku/Othermod
+[submodule "Mods/PiJoker"]
+	path = Mods/PiJoker
+	url = https://github.com/erachlin/PiJoker
+[submodule "Mods/ror2funnyitems"]
+	path = Mods/ror2funnyitems
+	url = https://github.com/ao-u/ror2funnyitems
+[submodule "Mods/sevendeadlysins"]
+	path = Mods/sevendeadlysins
+	url = https://github.com/lshtech/sevendeadlysins
+[submodule "Mods/balatro-shenanigans-mod"]
+	path = Mods/balatro-shenanigans-mod
+	url = https://github.com/lshtech/balatro-shenanigans-mod
+[submodule "Mods/SixSuits"]
+	path = Mods/SixSuits
+	url = https://github.com/lshtech/SixSuits
+[submodule "Mods/TarotPlus"]
+	path = Mods/TarotPlus
+	url = https://github.com/nhhvhy/TarotPlus
+[submodule "Mods/The-Buffoon-Pack"]
+	path = Mods/The-Buffoon-Pack
+	url = https://github.com/lshtech/The-Buffoon-Pack
+[submodule "Mods/Tsunami"]
+	path = Mods/Tsunami
+	url = https://github.com/Maratby/Tsunami/
