@@ -248,9 +248,6 @@
 [submodule "Mods/CollectorsCards"]
 	path = Mods/CollectorsCards
 	url = https://github.com/Mathguy23/CollectorsCards
-[submodule "Mods/Crimsons-Ultimate-Card-Collection"]
-	path = Mods/Crimsons-Ultimate-Card-Collection
-	url = https://github.com/XenoCHeart/Crimsons-Ultimate-Card-Collection
 [submodule "Mods/D6-Jokers"]
 	path = Mods/D6-Jokers
 	url = https://github.com/lshtech/D6-Jokers
