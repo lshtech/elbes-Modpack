@@ -320,3 +320,6 @@
 [submodule "Mods/Tsunami"]
 	path = Mods/Tsunami
 	url = https://github.com/Maratby/Tsunami/
+[submodule "Mods/Jimbo-s-Pack"]
+	path = Mods/Jimbo-s-Pack
+	url = https://github.com/art-muncher/Jimbo-s-Pack
