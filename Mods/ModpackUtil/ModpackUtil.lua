@@ -10,7 +10,6 @@
 
 local lovely = require("lovely")
 local nativefs = require("nativefs")
-local splash_screenRef = Game.splash_screen
 
 if SMODS.Atlas then
   SMODS.Atlas({
@@ -22,7 +21,7 @@ if SMODS.Atlas then
 end
 
 
-local ModpackName = "Dimserene's Modpack - Full"
+local ModpackName = "elbe's Modpack - Kitchen Sink"
 local ModpackVersion = nativefs.read(lovely.mod_dir .. "/ModpackUtil/CurrentVersion.txt")
 local ModpackUpdate = nativefs.read(lovely.mod_dir .. "/ModpackUtil/VersionTime.txt")
 
@@ -48,30 +47,6 @@ function Game:main_menu(change_context)
 			major = G.ROOM_ATTACH
 		}
 	})
-end
-
-function Game:splash_screen()
-    splash_screenRef(self)
-
-    SMODS.current_mod = mod
-   
-    if (SMODS.Mods["Bunco"] or {}).can_load then
-        for i = #G.P_CENTER_POOLS["Booster"], 1, -1 do
-            local entry = G.P_CENTER_POOLS["Booster"][i]
-            if string.find(entry.key, "p_bunc_virtual") then
-                table.remove(G.P_CENTER_POOLS["Booster"], i)
-            end
-        end
-    end
-
-	if (SMODS.Mods["Oiimanaddition"] or {}).can_load then
-		for i = #G.P_CENTER_POOLS["Booster"], 1, -1 do
-			local entry = G.P_CENTER_POOLS["Booster"][i]
-			if string.find(entry.key, "p_oiim_conditional") then
-				table.remove(G.P_CENTER_POOLS["Booster"], i)
-			end
-		end
-	end
 end
 
 ----------------------------------------------
