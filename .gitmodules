@@ -323,3 +323,6 @@
 [submodule "Mods/JellyMod"]
 	path = Mods/JellyMod
 	url = https://github.com/lshtech/JellyMod
+[submodule "Mods/JamMod"]
+	path = Mods/JamMod
+	url = https://github.com/WilsontheWolf/JamMod
