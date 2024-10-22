@@ -335,3 +335,6 @@
 [submodule "Mods/SyltStickers"]
 	path = Mods/SyltStickers
 	url = https://github.com/lshtech/SyltStickers
+[submodule "Mods/SynthDeck"]
+	path = Mods/SynthDeck
+	url = https://github.com/Eman-3600/SynthDeck
