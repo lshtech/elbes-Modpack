@@ -298,7 +298,7 @@
 	url = https://github.com/erachlin/PiJoker
 [submodule "Mods/ror2funnyitems"]
 	path = Mods/ror2funnyitems
-	url = https://github.com/ao-u/ror2funnyitems
+	url = https://github.com/lshtech/ror2funnyitems
 [submodule "Mods/sevendeadlysins"]
 	path = Mods/sevendeadlysins
 	url = https://github.com/lshtech/sevendeadlysins
