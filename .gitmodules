@@ -244,7 +244,7 @@
 	url = https://github.com/RattlingSnow353/Familiar
 [submodule "Mods/BlackjackHands"]
 	path = Mods/BlackjackHands
-	url = https://github.com/Mathguy23/BlackjackHands
+	url = https://github.com/lshtech/BlackjackHands
 [submodule "Mods/CollectorsCards"]
 	path = Mods/CollectorsCards
 	url = https://github.com/Mathguy23/CollectorsCards
