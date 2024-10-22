@@ -326,3 +326,6 @@
 [submodule "Mods/JamMod"]
 	path = Mods/JamMod
 	url = https://github.com/WilsontheWolf/JamMod
+[submodule "Mods/CheesyJokers"]
+	path = Mods/CheesyJokers
+	url = https://github.com/lshtech/CheesyJokers
