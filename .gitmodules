@@ -332,3 +332,6 @@
 [submodule "Mods/Balatro-CommunityPack"]
 	path = Mods/Balatro-CommunityPack
 	url = https://github.com/lshtech/Balatro-CommunityPack
+[submodule "Mods/SyltStickers"]
+	path = Mods/SyltStickers
+	url = https://github.com/lshtech/SyltStickers
