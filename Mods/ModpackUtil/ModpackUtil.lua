@@ -23,7 +23,6 @@ end
 
 local ModpackName = "elbe's Modpack - Kitchen Sink"
 local ModpackVersion = nativefs.read(lovely.mod_dir .. "/ModpackUtil/CurrentVersion.txt")
-local ModpackUpdate = nativefs.read(lovely.mod_dir .. "/ModpackUtil/VersionTime.txt")
 
 local gameMainMenuRef = Game.main_menu
 function Game:main_menu(change_context)
@@ -34,8 +33,6 @@ function Game:main_menu(change_context)
 							{n = G.UIT.T, config = {scale = 0.3, text = ModpackName, align = "cr", colour = G.C.UI.TEXT_LIGHT}}}},
 						{n= G.UIT.R, config = {align = "cr", padding = 0.05}, nodes = {
 							{n = G.UIT.T, config = {scale = 0.3, text = "Current Version: " .. ModpackVersion, align = "cr", colour = G.C.UI.TEXT_LIGHT}}}},
-						{n= G.UIT.R, config = {align = "cr", padding = 0.05}, nodes = {
-							{n = G.UIT.T, config = {scale = 0.3, text = "(UTC) " .. ModpackUpdate, align = "cr", colour = G.C.UI.TEXT_LIGHT}}}},
 					}},
 		config = {
 			align = "tri",
