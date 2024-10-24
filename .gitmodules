@@ -341,3 +341,6 @@
 [submodule "Mods/balatro-repentance"]
 	path = Mods/balatro-repentance
 	url = https://github.com/meowfem/balatro-repentance
+[submodule "Mods/risk-of-jesters"]
+	path = Mods/risk-of-jesters
+	url = https://github.com/lshtech/risk-of-jesters
