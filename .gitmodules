@@ -338,3 +338,6 @@
 [submodule "Mods/SynthDeck"]
 	path = Mods/SynthDeck
 	url = https://github.com/Eman-3600/SynthDeck
+[submodule "Mods/balatro-repentance"]
+	path = Mods/balatro-repentance
+	url = https://github.com/meowfem/balatro-repentance
