@@ -341,3 +341,6 @@
 [submodule "Mods/risk-of-jesters"]
 	path = Mods/risk-of-jesters
 	url = https://github.com/lshtech/risk-of-jesters
+[submodule "Mods/NeowBlessings"]
+	path = Mods/NeowBlessings
+	url = https://github.com/lshtech/NeowBlessings
