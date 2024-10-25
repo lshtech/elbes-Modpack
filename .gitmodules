@@ -120,7 +120,7 @@
 	url = https://github.com/Dimserene/Betmma_mods
 [submodule "Mods/DeckSkinsPlus"]
 	path = Mods/DeckSkinsPlus
-	url = https://github.com/Dimserene/DeckSkinsPlus.git
+	url = https://github.com/Kekulism/DeckSkinsPlus/
 [submodule "Mods/MoreFluff"]
 	path = Mods/MoreFluff
 	url = https://github.com/notmario/MoreFluff
