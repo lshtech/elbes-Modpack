@@ -21,7 +21,7 @@
 	url = https://github.com/stupxd/Cartomancer
 [submodule "Mods/Talisman"]
 	path = Mods/Talisman
-	url = https://github.com/Dimserene/Talisman
+	url = https://github.com/MathIsFun0/Talisman
 [submodule "Mods/BonusBlinds"]
 	path = Mods/BonusBlinds
 	url = https://github.com/Dimserene/BonusBlinds
@@ -75,7 +75,7 @@
 	url = https://github.com/GitNether/Paperback
 [submodule "Mods/Bunco"]
 	path = Mods/Bunco
-	url = https://github.com/Dimserene/Bunco
+	url = https://github.com/Firch/Bunco
 [submodule "Mods/Cryptid"]
 	path = Mods/Cryptid
 	url = https://github.com/MathIsFun0/Cryptid
@@ -117,7 +117,7 @@
 	url = https://github.com/Bazinga9000/MathBlinds
 [submodule "Mods/Betmma_mods"]
 	path = Mods/Betmma_mods
-	url = https://github.com/Dimserene/Betmma_mods
+	url = https://github.com/betmma/my_balatro_mods
 [submodule "Mods/DeckSkinsPlus"]
 	path = Mods/DeckSkinsPlus
 	url = https://github.com/Kekulism/DeckSkinsPlus/
@@ -187,7 +187,7 @@
 	url = https://github.com/Dimserene/The-World-Ends-With-Jimbo
 [submodule "Mods/Alices_Annum"]
 	path = Mods/Alices_Annum
-	url = https://github.com/Dimserene/alices_annum_balatro_mod
+	url = https://github.com/ThreeCubed273/alices_annum_balatro_mod
 [submodule "Mods/Ortalab-DEMO"]
 	path = Mods/Ortalab-DEMO
 	url = https://github.com/Eremel/Ortalab-Demo
