@@ -350,3 +350,9 @@
 [submodule "Mods/arachnei-balamod"]
 	path = Mods/arachnei-balamod
 	url = https://github.com/lshtech/arachnei-balamod
+[submodule "Mods/Ro-Balatro"]
+	path = Mods/Ro-Balatro
+	url = https://github.com/AlexZGreat/Ro-Balatro
+[submodule "Mods/DatealiveBalatro"]
+	path = Mods/DatealiveBalatro
+	url = https://github.com/snowylight/DatealiveBalatro
