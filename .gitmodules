@@ -353,3 +353,6 @@
 [submodule "Mods/DatealiveBalatro"]
 	path = Mods/DatealiveBalatro
 	url = https://github.com/snowylight/DatealiveBalatro
+[submodule "Mods/DeckSkinsPlus"]
+	path = Mods/DeckSkinsPlus
+	url = https://github.com/Kekulism/DeckSkinsPlus/
