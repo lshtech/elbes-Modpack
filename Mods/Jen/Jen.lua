@@ -3497,12 +3497,15 @@ SMODS.Joker {
 local cuc = Card.use_consumeable
 
 function Card:use_consumeable(area, copier)
-	for k, v in ipairs(G.handlist) do
-		if math.ceil(G.GAME.hands[v].level) ~= G.GAME.hands[v].level then
-			level_up_hand(nil, v, true, math.ceil(G.GAME.hands[v].level) - G.GAME.hands[v].level)
-		end
-		if G.GAME.hands[v].level < 1 then
-			level_up_hand(nil, v, true, math.abs(G.GAME.hands[v].level) + 1)
+	if (next(find_joker('j_jen_suzaku')) and self.Set == 'Spectral') or 
+	(next(find_joker('j_jen_haro')) and self.Set == 'Tarot') then
+		for k, v in ipairs(G.handlist) do
+			if math.ceil(G.GAME.hands[v].level) ~= G.GAME.hands[v].level then
+				level_up_hand(nil, v, true, math.ceil(G.GAME.hands[v].level) - G.GAME.hands[v].level)
+			end
+			if G.GAME.hands[v].level < 1 then
+				level_up_hand(nil, v, true, math.abs(G.GAME.hands[v].level) + 1)
+			end
 		end
 	end
 	cuc(self, area, copier)
