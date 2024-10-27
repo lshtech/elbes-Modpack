@@ -205,7 +205,7 @@
 	url = https://github.com/lshtech/MikasBalatro
 [submodule "Mods/DX-Tarots"]
 	path = Mods/DX-Tarots
-	url = https://github.com/lshtech/DX-Tarots
+	url = https://github.com/JeffVi/DX-Tarots
 [submodule "Mods/TagPreview"]
 	path = Mods/TagPreview
 	url = https://github.com/lshtech/BalatroTagPreview
