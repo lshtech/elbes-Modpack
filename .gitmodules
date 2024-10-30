@@ -353,3 +353,6 @@
 [submodule "Mods/DeckSkinsPlus"]
 	path = Mods/DeckSkinsPlus
 	url = https://github.com/Kekulism/DeckSkinsPlus/
+[submodule "Mods/D6Jokers"]
+	path = Mods/D6Jokers
+	url = https://github.com/GauntletGames-2086/D6-Jokers
