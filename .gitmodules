@@ -356,3 +356,18 @@
 [submodule "Mods/D6Jokers"]
 	path = Mods/D6Jokers
 	url = https://github.com/GauntletGames-2086/D6-Jokers
+[submodule "Mods/Malverk"]
+	path = Mods/Malverk
+	url = https://github.com/Eremel/Malverk
+[submodule "Mods/Multipack"]
+	path = Mods/Multipack
+	url = https://github.com/snowylight/Multipack
+[submodule "Mods/strange-pencil"]
+	path = Mods/strange-pencil
+	url = https://github.com/DigitalDetective47/strange-pencil
+[submodule "Mods/Scaling-Ante-Stakes"]
+	path = Mods/Scaling-Ante-Stakes
+	url = https://github.com/Antonos101/Scaling-Ante-Stakes
+[submodule "Mods/potatro"]
+	path = Mods/potatro
+	url = https://github.com/balt-dev/potatro
