@@ -93,7 +93,7 @@
 	url = https://github.com/KaviD-115/Balatro-Jokers-Plus
 [submodule "Mods/Ceres"]
 	path = Mods/Ceres
-	url = https://github.com/nekojoe/Ceres
+	url = https://github.com/lshtech/Ceres
 [submodule "Mods/Flower-Pot"]
 	path = Mods/Flower-Pot
 	url = https://github.com/GauntletGames-2086/Flower-Pot
