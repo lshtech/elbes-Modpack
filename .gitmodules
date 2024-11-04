@@ -368,3 +368,9 @@
 [submodule "Mods/potatro"]
 	path = Mods/potatro
 	url = https://github.com/balt-dev/potatro
+[submodule "Mods/JoJokers"]
+	path = Mods/JoJokers
+	url = https://github.com/WarlordShado/JoJokers
+[submodule "Mods/MixedPotion"]
+	path = Mods/MixedPotion
+	url = https://github.com/snowylight/MixedPotion
