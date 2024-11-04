@@ -374,3 +374,6 @@
 [submodule "Mods/MixedPotion"]
 	path = Mods/MixedPotion
 	url = https://github.com/snowylight/MixedPotion
+[submodule "Mods/NumBalatro"]
+	path = Mods/NumBalatro
+	url = https://github.com/Numbuh214/NumBalatro
