@@ -386,3 +386,6 @@
 [submodule "Mods/DeckSkinsLite"]
 	path = Mods/DeckSkinsLite
 	url = https://github.com/Kekulism/DeckSkinsLite/
+[submodule "Mods/Cardsauce"]
+	path = Mods/Cardsauce
+	url = https://github.com/Mysthaps/Cardsauce
