@@ -377,3 +377,12 @@
 [submodule "Mods/NumBalatro"]
 	path = Mods/NumBalatro
 	url = https://github.com/Numbuh214/NumBalatro
+[submodule "Mods/circus"]
+	path = Mods/circus
+	url = https://github.com/jrings/circus
+[submodule "Mods/Misers_Menagerie"]
+	path = Mods/Misers_Menagerie
+	url = https://github.com/iiiaaa123/Misers_Menagerie
+[submodule "Mods/DeckSkinsLite"]
+	path = Mods/DeckSkinsLite
+	url = https://github.com/Kekulism/DeckSkinsLite/
