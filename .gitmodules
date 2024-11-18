@@ -392,3 +392,6 @@
 [submodule "Mods/MusicalSuit"]
 	path = Mods/MusicalSuit
 	url = https://github.com/lshtech/MusicalSuit
+[submodule "Mods/Hellatro"]
+	path = Mods/Hellatro
+	url = https://github.com/spire-winder/Hellatro
