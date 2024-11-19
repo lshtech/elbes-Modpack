@@ -395,3 +395,12 @@
 [submodule "Mods/Hellatro"]
 	path = Mods/Hellatro
 	url = https://github.com/spire-winder/Hellatro
+[submodule "Mods/MintysSillyMod"]
+	path = Mods/MintysSillyMod
+	url = https://github.com/wingedcatgirl/MintysSillyMod
+[submodule "Mods/Bm_balatro_mods"]
+	path = Mods/Bm_balatro_mods
+	url = https://github.com/Icecanno/Bm_balatro_mods
+[submodule "Mods/Magic-the-Jokering"]
+	path = Mods/Magic-the-Jokering
+	url = https://github.com/spire-winder/Magic-the-Jokering
