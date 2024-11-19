@@ -404,3 +404,6 @@
 [submodule "Mods/Magic-the-Jokering"]
 	path = Mods/Magic-the-Jokering
 	url = https://github.com/spire-winder/Magic-the-Jokering
+[submodule "Mods/vivid-stasis-balatro"]
+	path = Mods/vivid-stasis-balatro
+	url = https://github.com/Kyiranes/vivid-stasis-balatro
