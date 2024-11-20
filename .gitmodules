@@ -407,3 +407,6 @@
 [submodule "Mods/vivid-stasis-balatro"]
 	path = Mods/vivid-stasis-balatro
 	url = https://github.com/Kyiranes/vivid-stasis-balatro
+[submodule "Mods/Crown-Suit-Mod"]
+	path = Mods/Crown-Suit-Mod
+	url = https://github.com/lshtech/Crown-Suit-Mod
