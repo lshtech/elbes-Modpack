@@ -410,3 +410,6 @@
 [submodule "Mods/Crown-Suit-Mod"]
 	path = Mods/Crown-Suit-Mod
 	url = https://github.com/lshtech/Crown-Suit-Mod
+[submodule "Mods/Gemstones"]
+	path = Mods/Gemstones
+	url = https://github.com/0fficialHalo/Gemstones
