@@ -413,3 +413,6 @@
 [submodule "Mods/Gemstones"]
 	path = Mods/Gemstones
 	url = https://github.com/0fficialHalo/Gemstones
+[submodule "Mods/lqxy-balatro-mods"]
+	path = Mods/lqxy-balatro-mods
+	url = https://github.com/oklexi/lqxy-balatro-mods
