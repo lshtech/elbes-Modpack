@@ -338,9 +338,6 @@
 [submodule "Mods/NeowBlessings"]
 	path = Mods/NeowBlessings
 	url = https://github.com/lshtech/NeowBlessings
-[submodule "Mods/DreadJokers"]
-	path = Mods/DreadJokers
-	url = https://github.com/LunaAstraCassiopeia/DreadJokers
 [submodule "Mods/arachnei-balamod"]
 	path = Mods/arachnei-balamod
 	url = https://github.com/lshtech/arachnei-balamod
