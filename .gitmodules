@@ -413,3 +413,15 @@
 [submodule "Mods/lqxy-balatro-mods"]
 	path = Mods/lqxy-balatro-mods
 	url = https://github.com/oklexi/lqxy-balatro-mods
+[submodule "Mods/Friends-of-Jokers"]
+	path = Mods/Friends-of-Jokers
+	url = https://github.com/NinjaBanana1/Friends-of-Jokers
+[submodule "Mods/Valkyrie-BalatroMod"]
+	path = Mods/Valkyrie-BalatroMod
+	url = https://github.com/dainekoichi/Valkyrie-BalatroMod
+[submodule "Mods/BlindEditions"]
+	path = Mods/BlindEditions
+	url = https://github.com/Mathguy23/BlindEditions
+[submodule "Mods/TatteredDecks"]
+	path = Mods/TatteredDecks
+	url = https://github.com/Cheesy-Brik/TatteredDecks
