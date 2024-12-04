@@ -27,7 +27,7 @@
 	url = https://github.com/Mathguy23/BonusBlinds
 [submodule "Mods/DebugPlus"]
 	path = Mods/DebugPlus
-	url = https://github.com/Dimserene/DebugPlus
+	url = https://github.com/WilsontheWolf/DebugPlus
 [submodule "Mods/NotJustYet"]
 	path = Mods/NotJustYet
 	url = https://github.com/Toneblock/balatro-NotJustYet
