@@ -24,7 +24,7 @@
 	url = https://github.com/MathIsFun0/Talisman
 [submodule "Mods/BonusBlinds"]
 	path = Mods/BonusBlinds
-	url = https://github.com/Dimserene/BonusBlinds
+	url = https://github.com/Mathguy23/BonusBlinds
 [submodule "Mods/DebugPlus"]
 	path = Mods/DebugPlus
 	url = https://github.com/Dimserene/DebugPlus
