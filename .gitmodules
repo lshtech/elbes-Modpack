@@ -268,7 +268,7 @@
 	url = https://github.com/art-muncher/Jimbo-s-Pack
 [submodule "Mods/Komakusa-Cards"]
 	path = Mods/Komakusa-Cards
-	url = https://github.com/AvilionAMillion/Komakusa-Cards/
+	url = https://github.com/lshtech/Komakusa-Cards
 [submodule "Mods/KusoMods"]
 	path = Mods/KusoMods
 	url = https://github.com/lshtech/KusoMods
