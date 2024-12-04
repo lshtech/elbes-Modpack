@@ -425,6 +425,6 @@
 [submodule "Mods/TatteredDecks"]
 	path = Mods/TatteredDecks
 	url = https://github.com/Cheesy-Brik/TatteredDecks
-[submodule "Mods/LunasDreadJokers"]
-	path = Mods/LunasDreadJokers
+[submodule "Mods/Mods/LunasDreadJokers"]
+	path = Mods/Mods/LunasDreadJokers
 	url = https://github.com/LunaAstraCassiopeia/DreadJokers
