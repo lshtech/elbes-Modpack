@@ -6,7 +6,7 @@
 --- MOD_DESCRIPTION: An extension of MoreSpeeds which includes more options, including a new speed which makes the event manager run as fast as it can.
 --- BADGE_COLOR: ff3c3c
 --- PREFIX: nopeus
---- VERSION: 2.2.1
+--- VERSION: 2.2.3
 --- LOADER_VERSION_GEQ: 1.0.0
 
 Nopeus = {
@@ -222,30 +222,4 @@ G.FUNCS.end_consumeable = function(e, delayfac)
 			G.pack_cards = nil
 		return true
 	end}))
-end
-
--- Instant reshuffle at end of round
-
-local hand_to_discard = G.FUNCS.draw_from_hand_to_discard
-
-G.FUNCS.draw_from_hand_to_discard = function (e)
-    if G.SETTINGS.FASTFORWARD < 2 then
-        return hand_to_discard(e)
-    end
-    
-    for _ = 1, #G.hand.cards do
-        G.discard:draw_card_from(G.hand)
-    end
-end
-
-local discard_to_deck = G.FUNCS.draw_from_discard_to_deck
-
-G.FUNCS.draw_from_discard_to_deck = function (e)
-    if G.SETTINGS.FASTFORWARD < 2 then
-        return discard_to_deck(e)
-    end
-    
-    for _ = 1, #G.discard.cards do
-        G.deck:draw_card_from(G.discard)
-    end
 end

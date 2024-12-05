@@ -3,7 +3,7 @@
 --- MOD_ID: Modpack_Util
 --- MOD_AUTHOR: [Dimserene]
 --- MOD_DESCRIPTION: Dimserene's Modpack Utility
---- VERSION: Full
+--- VERSION: 1.0
 --- PRIORITY: -999999999999999999999999
 ----------------------------------------------
 ------------MOD CODE -------------------------
