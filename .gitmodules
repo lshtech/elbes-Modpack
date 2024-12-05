@@ -361,7 +361,7 @@
 	url = https://github.com/DigitalDetective47/strange-pencil
 [submodule "Mods/Scaling-Ante-Stakes"]
 	path = Mods/Scaling-Ante-Stakes
-	url = https://github.com/Antonos101/Scaling-Ante-Stakes
+	url = https://github.com/lshtech/Scaling-Ante-Stakes
 [submodule "Mods/potatro"]
 	path = Mods/potatro
 	url = https://github.com/balt-dev/potatro
