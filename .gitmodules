@@ -431,3 +431,21 @@
 [submodule "Mods/FusionForce"]
 	path = Mods/FusionForce
 	url = https://github.com/LunaAstraCassiopeia/FusionForce
+[submodule "Mods/Jokebook"]
+	path = Mods/Jokebook
+	url = https://github.com/Minirebel/Jokebook
+[submodule "Mods/balatro-ouija"]
+	path = Mods/balatro-ouija
+	url = https://github.com/TamerSoup625/balatro-ouija
+[submodule "Mods/Card-Value-Display"]
+	path = Mods/Card-Value-Display
+	url = https://github.com/art-muncher/Card-Value-Display
+[submodule "Mods/ExtraCredit"]
+	path = Mods/ExtraCredit
+	url = https://github.com/GuilloryCraft/ExtraCredit
+[submodule "Mods/Isaac-Tarot"]
+	path = Mods/Isaac-Tarot
+	url = https://github.com/theZamos/Isaac-Tarot
+[submodule "Mods/yart"]
+	path = Mods/yart
+	url = https://github.com/DigitalDetective47/yart
