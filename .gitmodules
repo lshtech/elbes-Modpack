@@ -443,9 +443,6 @@
 [submodule "Mods/ExtraCredit"]
 	path = Mods/ExtraCredit
 	url = https://github.com/GuilloryCraft/ExtraCredit
-[submodule "Mods/Isaac-Tarot"]
-	path = Mods/Isaac-Tarot
-	url = https://github.com/theZamos/Isaac-Tarot
 [submodule "Mods/yart"]
 	path = Mods/yart
 	url = https://github.com/DigitalDetective47/yart
