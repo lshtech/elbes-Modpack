@@ -1,4 +1,5 @@
 return {
 	["SFXWhenAdding"] = true,
-	["SFXWhenRemoving"] = false
+	["SFXWhenRemoving"] = false,
+	["SFXWhenTrigger"] = true
 }

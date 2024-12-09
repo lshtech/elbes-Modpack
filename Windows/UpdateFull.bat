@@ -8,6 +8,7 @@ rem  pause
 git remote set-url origin https://github.com/lshtech/elbes-Modpack
 git pull
 git submodule update --remote --recursive --merge --force
+xcopy .\Patches\* .\Mods /E /Y
 
 rem echo Copying Mods folder to %appdata%\Balatro\Mods
 rem xcopy "Mods" "%appdata%\Balatro\Mods" /w /e /h /i

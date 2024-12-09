@@ -1,7 +1,88 @@
 [manifest]
 version = "1.0.0"
 dump_lua = true
-priority = 214748364
+priority = 2147483647
+
+[[patches]]
+[patches.pattern]
+target = "globals.lua"
+pattern = "EDITION = {1,1,1,1},"
+position = "before"
+payload = '''jen_RGB = {0,0,0,1},
+jen_RGB_HUE = 0,
+almanac = {0,0,1,1},'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "if ((scoring_hand[i].ability.name == 'Glass Card' and not scoring_hand[i].debuff and pseudorandom('glass') < G.GAME.probabilities.normal/scoring_hand[i].ability.extra) or (G.GAME.modifiers.cry_shatter_rate and pseudorandom('cry_shatter') < 1/G.GAME.modifiers.cry_shatter_rate)) and not scoring_hand[i].ability.eternal then"
+position = "before"
+payload = '''if scoring_hand[i].ability.disposable then destroyed = true end
+if scoring_hand[i].config.center.set == 'Booster' or scoring_hand[i].config.center.set == 'Voucher' then
+	destroyed = true
+	local sizemul = (scoring_hand[i].config.center.set == 'Booster' and 1.27 or 1)
+	Q(function()
+		local ncard = Card(
+			G.play.T.x + G.play.T.w / 2 - G.CARD_W * sizemul / 2,
+			G.play.T.y + G.play.T.h / 2 - G.CARD_H * sizemul / 2,
+			G.CARD_W * sizemul,
+			G.CARD_H * sizemul,
+			G.P_CARDS.empty,
+			G.P_CENTERS[scoring_hand[i].config.center.key],
+			{ bypass_discovery_center = true, bypass_discovery_ui = true }
+		)
+		ncard:start_materialize()
+		Q(function()
+			if ncard then
+				G.consumeables:emplace(ncard)
+			end
+		return true end, 0.25)
+	return true end)
+end'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "if G.GAME.blind:press_play() then"
+position = "before"
+payload = '''local goob = (jl.fc('j_jen_goob') or {})
+if (goob.ability or {}).active then
+	local lh = jl.fc('j_jen_goob_lefthand', 'hand')
+	if lh then
+		local did_discard = false
+		for i = 1, #G.hand.cards do
+			local tar = G.hand.cards[i]
+			if tar then
+				if tar == lh then
+					break
+				else
+					if not tar.highlighted and tar:xpos() < lh:xpos() then
+						if not did_discard then
+							did_discard = true
+							goob:speak(goob_blurbs.play, G.C.RED)
+						end
+						draw_card(G.hand, G.discard, 100, 'down', false, tar)
+						Q(function()
+							play_sound('tarot1')
+							lh:juice_up(0.5, 0.8)
+						return true end)
+					end
+				end
+			end
+		end
+	end
+end'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if amt > 0 or amt < 0 then"
+position = "at"
+payload = "if to_big(amt) > to_big(0) or to_big(amt) < to_big(0) then"
+match_indent = true
 
 [[patches]]
 [patches.pattern]
@@ -12,14 +93,64 @@ payload = "if self.strings and self.focused_string and self.strings[self.focused
 match_indent = true
 
 [[patches]]
+[patches.regex]
+target = "functions/state_events.lua"
+pattern = '''hand_chips\*mult'''
+position = "at"
+payload = "get_chipmult_sum(hand_chips, mult)"
+match_indent = true
+
+[[patches]]
+[patches.regex]
+target = "functions/state_events.lua"
+pattern = '''to_big\(hand_chips\)\*mult'''
+position = "at"
+payload = "get_chipmult_sum(hand_chips, mult)"
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "if to_big(hand_chips)*mult > to_big(0) then"
+position = "at"
+payload = "if get_chipmult_sum(hand_chips, mult) > to_big(0) then"
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.screenwipecard = Card(1, 1, G.CARD_W, G.CARD_H, pseudorandom_element(G.P_CARDS), G.P_CENTERS.c_base)"
+position = "before"
+payload = "Jen.initialising = true"
+match_indent = true
+
+[[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
 pattern = "if context.cardarea == G.play then"
 position = "after"
 payload = '''if card.edition and card.edition.jen_wee and card.playing_card then
 	card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex'), colour = G.C.FILTER})
-	card.ability.perma_bonus = (card.ability.perma_bonus or 0) + (((card.ability.name or '') == 'Stone Card' or card.config.center.no_rank) and 25 or (card:get_id() * 3))
-	card_eval_status_text(card, 'extra', nil, nil, nil, {message = tostring(card.ability.perma_bonus), colour = G.C.CHIPS})
+	card.ability.wee_upgrades = (card.ability.wee_upgrades or 0) + 1
+	card.ability.perma_bonus = (card.ability.perma_bonus or 0) + (((card.ability.name or '') == 'Stone Card' or card.config.center.no_rank) and 25 or card:get_id() == 2 and 60 or (card:get_id() * 3))
+	card_eval_status_text(card, 'extra', nil, nil, nil, {message = number_format(card.ability.perma_bonus), colour = G.C.CHIPS})
+end
+if (((card.config or {}).center or {}).set or '') == 'Colour' and Jen.hv('colour', 1) then
+	trigger_colour_end_of_round(card)
+end'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "table.sort(scoring_hand, function (a, b) return a.T.x < b.T.x end )"
+position = "after"
+payload = '''if not (G.GAME.blind and G.GAME.blind.name == "The Card" and not G.GAME.blind.disabled) and next(SMODS.find_card('j_jen_crimbo')) then
+	for i = 1, #G.hand.cards do
+		if not G.hand.cards[i]:gc().unhighlightable then
+			table.insert(scoring_hand, G.hand.cards[i])
+		end
+	end
 end'''
 match_indent = true
 
@@ -58,9 +189,25 @@ match_indent = true
 [[patches]]
 [patches.pattern]
 target = "functions/UI_definitions.lua"
-pattern = '{n=G.UIT.T, config={text = "X", '
+pattern = '''{n=G.UIT.T, config={text = "X", lang = G.LANGUAGES['en-us'], scale = scale*2, colour = G.C.UI_MULT, shadow = true}},'''
 position = "at"
-payload = '{n=G.UIT.T, config={id = "chipmult_operator", text = "X", '
+payload = '{n=G.UIT.T, config={id = "chipmult_op", text = "X", lang = G.LANGUAGES["en-us"], scale = scale*2, colour = G.C.UI_MULT, shadow = true}},'
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "G.GAME.blind:load(saveTable.BLIND)"
+position = "after"
+payload = "Q(function() update_operator_display() return true end)"
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "game_chips = self.HUD:get_UIE_by_ID('chip_UI_count'),"
+position = "after"
+payload = "op = self.HUD:get_UIE_by_ID('chipmult_op'),"
 match_indent = true
 
 [[patches]]
@@ -82,35 +229,89 @@ match_indent = true
 [[patches]]
 [patches.pattern]
 target = "functions/misc_functions.lua"
+pattern = "G.ARGS.score_intensity.earned_score = G.GAME.current_round.current_hand.chips*G.GAME.current_round.current_hand.mult"
+position = "at"
+payload = '''
+local bigzero = to_big(0)
+if not G.GAME.blind or to_big(G.GAME.blind.chips or 0) <= bigzero then
+	G.ARGS.score_intensity.earned_score = 0
+else
+	G.ARGS.score_intensity.earned_score = get_chipmult_sum(G.GAME.current_round.current_hand.chips, G.GAME.current_round.current_hand.mult)
+end
+bigzero = nil
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
 pattern = "G.ARGS.score_intensity.organ = G.video_organ or G.ARGS.score_intensity.required_score > 0 and math.max(math.min(0.4, 0.1*math.log(G.ARGS.score_intensity.earned_score/(G.ARGS.score_intensity.required_score+1), 5)),0.) or 0"
 position = "at"
 payload = '''
-if Big.arrow then
+if Big.arrow and G.GAME.blind and to_big(G.GAME.blind.chips or 0) > to_big(0) then
 	local notzero = to_big(G.ARGS.score_intensity.required_score) > to_big(0)
 	local e_s = to_big(G.ARGS.score_intensity.earned_score)
 	local r_s = to_big(G.ARGS.score_intensity.required_score+1)
 	local googol = to_big(1e100)
-	local requirement5 = to_big(math.max(math.min(1, 0.1*(math.log(e_s/(r_s:arrow(4, googol)), 5))),0.))
 	local requirement4 = to_big(math.max(math.min(1, 0.1*(math.log(e_s/(r_s:arrow(3, googol)), 5))),0.))
 	local requirement3 = to_big(math.max(math.min(1, 0.1*(math.log(e_s/(r_s:arrow(2, googol)), 5))),0.))
 	local requirement2 = to_big(math.max(math.min(1, 0.1*(math.log(e_s/(r_s^googol), 5))),0.))
-	local requirement1 = math.max(math.min(1, 0.1*math.log(G.ARGS.score_intensity.earned_score/((G.ARGS.score_intensity.required_score+1)*1e100), 5)),0.)
-	if not G.ARGS.score_intensity.ambientDramatic2 then G.ARGS.score_intensity.ambientDramatic2 = 0 end
-	if not G.ARGS.score_intensity.ambientDramatic1 then G.ARGS.score_intensity.ambientDramatic1 = 0 end
+	local requirement1 = math.max(math.min(1, 0.1*math.log(e_s/(r_s*1e100), 5)),0.)
+	if not G.ARGS.score_intensity.ambientDramatic then G.ARGS.score_intensity.ambientDramatic = 0 end
 	if not G.ARGS.score_intensity.ambientSurreal3 then G.ARGS.score_intensity.ambientSurreal3 = 0 end
 	if not G.ARGS.score_intensity.ambientSurreal2 then G.ARGS.score_intensity.ambientSurreal2 = 0 end
 	if not G.ARGS.score_intensity.ambientSurreal1 then G.ARGS.score_intensity.ambientSurreal1 = 0 end
-	G.ARGS.score_intensity.ambientDramatic2 = notzero and requirement5:to_number() or 0
-	G.ARGS.score_intensity.ambientDramatic1 = ((G.ARGS.score_intensity.ambientDramatic2 or 0) <= 0.05 and notzero) and requirement4:to_number() or 0
-	G.ARGS.score_intensity.ambientSurreal3 = ((G.ARGS.score_intensity.ambientDramatic2 or 0) <= 0.05 and (G.ARGS.score_intensity.ambientDramatic1 or 0) <= 0.05 and notzero) and requirement3:to_number() or 0
-	G.ARGS.score_intensity.ambientSurreal2 = ((G.ARGS.score_intensity.ambientDramatic2 or 0) <= 0.05 and (G.ARGS.score_intensity.ambientDramatic1 or 0) <= 0.05 and (G.ARGS.score_intensity.ambientSurreal3 or 0) <= 0.05 and notzero) and requirement2:to_number() or 0
-	G.ARGS.score_intensity.ambientSurreal1 = ((G.ARGS.score_intensity.ambientDramatic2 or 0) <= 0.05 and (G.ARGS.score_intensity.ambientDramatic1 or 0) <= 0.05 and (G.ARGS.score_intensity.ambientSurreal3 or 0) <= 0.05 and (G.ARGS.score_intensity.ambientSurreal2 or 0) <= 0.05 and notzero) and requirement1 or 0
+	G.ARGS.score_intensity.ambientDramatic = notzero and requirement4:to_number() or 0
+	if Jen and type(Jen) == 'table' then Jen.dramatic = G.ARGS.score_intensity.ambientDramatic > 0 end
+	G.ARGS.score_intensity.ambientSurreal3 = ((G.ARGS.score_intensity.ambientDramatic or 0) <= 0.05 and notzero) and requirement3:to_number() or 0
+	G.ARGS.score_intensity.ambientSurreal2 = ((G.ARGS.score_intensity.ambientDramatic or 0) <= 0.05 and (G.ARGS.score_intensity.ambientSurreal3 or 0) <= 0.05 and notzero) and requirement2:to_number() or 0
+	G.ARGS.score_intensity.ambientSurreal1 = ((G.ARGS.score_intensity.ambientDramatic or 0) <= 0.05 and (G.ARGS.score_intensity.ambientSurreal3 or 0) <= 0.05 and (G.ARGS.score_intensity.ambientSurreal2 or 0) <= 0.05 and notzero) and requirement1 or 0
 	G.ARGS.score_intensity.organ = (G.video_organ or ((G.ARGS.score_intensity.ambientSurreal3 or 0) <= 0.05 and (G.ARGS.score_intensity.ambientSurreal2 or 0) <= 0.05 and (G.ARGS.score_intensity.ambientSurreal1 or 0) <= 0.05 and notzero)) and math.max(math.min(1, 0.1*math.log(G.ARGS.score_intensity.earned_score/(G.ARGS.score_intensity.required_score+1), 5)),0.) or 0
 	notzero = nil
 	e_s = nil
 	r_s = nil
 	googol = nil
-	requirement5 = nil
+	requirement4 = nil
+	requirement3 = nil
+	requirement2 = nil
+	requirement1 = nil
+else
+	G.ARGS.score_intensity.organ = G.video_organ or G.ARGS.score_intensity.required_score > 0 and math.max(math.min(0.4, 0.1*math.log(G.ARGS.score_intensity.earned_score/(G.ARGS.score_intensity.required_score+1), 5)),0.) or 0
+end
+'''
+match_indent = true
+
+## cartomancer compatibility
+
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = "G.ARGS.score_intensity.organ = G.video_organ or to_big(G.ARGS.score_intensity.required_score) > to_big(0) and math.max(math.min(0.4, 0.1*math.log(G.ARGS.score_intensity.earned_score/(G.ARGS.score_intensity.required_score+1), 5)),0.) or 0"
+position = "at"
+payload = '''
+if Big.arrow and G.GAME.blind and to_big(G.GAME.blind.chips or 0) > to_big(0) then
+	local notzero = to_big(G.ARGS.score_intensity.required_score) > to_big(0)
+	local e_s = to_big(G.ARGS.score_intensity.earned_score)
+	local r_s = to_big(G.ARGS.score_intensity.required_score+1)
+	local googol = to_big(1e100)
+	local requirement4 = to_big(math.max(math.min(1, 0.1*(math.log(e_s/(r_s:arrow(3, googol)), 5))),0.))
+	local requirement3 = to_big(math.max(math.min(1, 0.1*(math.log(e_s/(r_s:arrow(2, googol)), 5))),0.))
+	local requirement2 = to_big(math.max(math.min(1, 0.1*(math.log(e_s/(r_s^googol), 5))),0.))
+	local requirement1 = math.max(math.min(1, 0.1*math.log(e_s/(r_s*1e100), 5)),0.)
+	if not G.ARGS.score_intensity.ambientDramatic then G.ARGS.score_intensity.ambientDramatic = 0 end
+	if not G.ARGS.score_intensity.ambientSurreal3 then G.ARGS.score_intensity.ambientSurreal3 = 0 end
+	if not G.ARGS.score_intensity.ambientSurreal2 then G.ARGS.score_intensity.ambientSurreal2 = 0 end
+	if not G.ARGS.score_intensity.ambientSurreal1 then G.ARGS.score_intensity.ambientSurreal1 = 0 end
+	G.ARGS.score_intensity.ambientDramatic = notzero and requirement4:to_number() or 0
+	if Jen and type(Jen) == 'table' then Jen.dramatic = G.ARGS.score_intensity.ambientDramatic > 0 end
+	G.ARGS.score_intensity.ambientSurreal3 = ((G.ARGS.score_intensity.ambientDramatic or 0) <= 0.05 and notzero) and requirement3:to_number() or 0
+	G.ARGS.score_intensity.ambientSurreal2 = ((G.ARGS.score_intensity.ambientDramatic or 0) <= 0.05 and (G.ARGS.score_intensity.ambientSurreal3 or 0) <= 0.05 and notzero) and requirement2:to_number() or 0
+	G.ARGS.score_intensity.ambientSurreal1 = ((G.ARGS.score_intensity.ambientDramatic or 0) <= 0.05 and (G.ARGS.score_intensity.ambientSurreal3 or 0) <= 0.05 and (G.ARGS.score_intensity.ambientSurreal2 or 0) <= 0.05 and notzero) and requirement1 or 0
+	G.ARGS.score_intensity.organ = (G.video_organ or ((G.ARGS.score_intensity.ambientSurreal3 or 0) <= 0.05 and (G.ARGS.score_intensity.ambientSurreal2 or 0) <= 0.05 and (G.ARGS.score_intensity.ambientSurreal1 or 0) <= 0.05 and notzero)) and math.max(math.min(1, 0.1*math.log(G.ARGS.score_intensity.earned_score/(G.ARGS.score_intensity.required_score+1), 5)),0.) or 0
+	notzero = nil
+	e_s = nil
+	r_s = nil
+	googol = nil
 	requirement4 = nil
 	requirement3 = nil
 	requirement2 = nil
@@ -130,7 +331,68 @@ payload = '''
 	jen_ambientSurreal1 = {volfunc = function(_prev_volume) return _prev_volume*(1 - dt) + dt*0.6*(G.SETTINGS.SOUND.music_volume + 100)/200*((G.ARGS.score_intensity.ambientSurreal1 or 0) * 1.8) end},
 	jen_ambientSurreal2 = {volfunc = function(_prev_volume) return _prev_volume*(1 - dt) + dt*0.6*(G.SETTINGS.SOUND.music_volume + 110)/200*((G.ARGS.score_intensity.ambientSurreal2 or 0) * 2) end},
 	jen_ambientSurreal3 = {volfunc = function(_prev_volume) return _prev_volume*(1 - dt) + dt*0.6*(G.SETTINGS.SOUND.music_volume + 120)/200*((G.ARGS.score_intensity.ambientSurreal3 or 0) * 2.2) end},
-	jen_ambientDramatic1 = {volfunc = function(_prev_volume) return _prev_volume*(1 - dt) + dt*0.6*(G.SETTINGS.SOUND.music_volume + 135)/200*((G.ARGS.score_intensity.ambientDramatic1 or 0) * 2.4) end},
-	jen_ambientDramatic2 = {volfunc = function(_prev_volume) return _prev_volume*(1 - dt) + dt*0.6*(G.SETTINGS.SOUND.music_volume + 150)/200*((G.ARGS.score_intensity.ambientDramatic2 or 0) * 2.6) end},
+	jen_ambientDramatic = {volfunc = function(_prev_volume) return _prev_volume*(1 - dt) + dt*0.6*(G.SETTINGS.SOUND.music_volume + 135)/200*((G.ARGS.score_intensity.ambientDramatic or 0) * 2.4) end},
 '''
+match_indent = true
+
+## this should safely fail if betmma vouchers is installed
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.T, config={text = string.rep(localize("$"), blind_choice.config.dollars)..'+', scale = 0.35, colour = disabled and G.C.UI.TEXT_INACTIVE or G.C.MONEY, shadow = not disabled}}'''
+position = "at"
+payload = '''
+    {n=G.UIT.T, config={text = (blind_choice.config.dollars > 8 and (localize("$") .. number_format(blind_choice.config.dollars) .. '+') or (string.rep(localize("$"), blind_choice.config.dollars)..'+')), scale = 0.35, colour = disabled and G.C.UI.TEXT_INACTIVE or G.C.MONEY, shadow = not disabled}}
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "blind.lua"
+pattern = '''G.GAME.current_round.dollars_to_be_earned = self.dollars > 0 and (string.rep(localize('$'), self.dollars)..'') or ('')'''
+position = "at"
+payload = '''
+    G.GAME.current_round.dollars_to_be_earned = self.dollars > 8 and (localize('$') .. number_format(self.dollars)) or (self.dollars > 0 and (string.rep(localize('$'), self.dollars)) or '')
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = '''if card.area and card.area.config.type == 'joker' then'''
+position = 'before'
+payload = '''if card.area and (card.area == G.consumeables) and card.gc and (card:gc().set == 'Booster' or card:gc().set == 'Voucher') then
+	local use, sell
+    use = 
+    {n=G.UIT.C, config={align = "tr"}, nodes={
+      {n=G.UIT.C, config={ref_table = card, align = "cr",maxw = 1.25, padding = 0.1, r=0.08, minw = 1.25, minh = 1, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = card:gc().set == 'Voucher' and 'jen_redeemvoucher' or 'jen_openpack', func = card:gc().set == 'Voucher' and 'jen_canredeemvoucher' or 'jen_canopenpack'}, nodes={
+        {n=G.UIT.B, config = {w=0.1,h=0.6}},
+        {n=G.UIT.T, config={text = card:gc().set == 'Voucher' and localize('b_redeem') or localize('b_open'),colour = G.C.UI.TEXT_LIGHT, scale = 0.55, shadow = true}}
+      }}
+    }}
+	sell = {n=G.UIT.C, config={align = "br"}, nodes={
+		{n=G.UIT.C, config={ref_table = card, align = "cr",padding = 0.1, r=0.08, minw = 1.25, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'sell_card', func = 'can_sell_card'}, nodes={
+			{n=G.UIT.B, config = {w=0.1,h=0.6}},
+			{n=G.UIT.C, config={align = "tm"}, nodes={
+				{n=G.UIT.R, config={align = "cm", maxw = 1.25}, nodes={
+				{n=G.UIT.T, config={text = localize('b_sell'),colour = G.C.UI.TEXT_LIGHT, scale = 0.4, shadow = true}}
+				}},
+				{n=G.UIT.R, config={align = "cm"}, nodes={
+					{n=G.UIT.T, config={text = localize('$'),colour = G.C.WHITE, scale = 0.4, shadow = true}},
+					{n=G.UIT.T, config={ref_table = card, ref_value = 'sell_cost_label',colour = G.C.WHITE, scale = 0.55, shadow = true}}
+				}}
+			}}
+		}},
+	}}
+    local t = {
+      n=G.UIT.ROOT, config = {padding = 0, colour = G.C.CLEAR}, nodes={
+        {n=G.UIT.C, config={padding = 0.15, align = 'cl'}, nodes={
+          {n=G.UIT.R, config={align = 'cl'}, nodes={
+            use,
+			sell
+          }},
+        }},
+    }}
+    return t
+end'''
 match_indent = true
