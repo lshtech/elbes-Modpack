@@ -449,3 +449,6 @@
 [submodule "Mods/JensBalatroCollection"]
 	path = Mods/JensBalatroCollection
 	url = https://github.com/jenwalter666/JensBalatroCollection
+[submodule "Mods/Minecraft"]
+	path = Mods/Minecraft
+	url = https://github.com/smg9000/Minecraft
