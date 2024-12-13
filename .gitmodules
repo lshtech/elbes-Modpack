@@ -452,3 +452,6 @@
 [submodule "Mods/Minecraft"]
 	path = Mods/Minecraft
 	url = https://github.com/smg9000/Minecraft
+[submodule "Mods/TOGAPackBalatro"]
+	path = Mods/TOGAPackBalatro
+	url = https://github.com/TheOneGoofAli/TOGAPackBalatro
