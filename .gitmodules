@@ -151,7 +151,7 @@
 	url = https://github.com/larswijn/Taikomochi
 [submodule "Mods/Themed_Jokers"]
 	path = Mods/Themed_Jokers
-	url = https://github.com/Jevonnissocoolman/Themed-Jokers
+	url = https://github.com/cerloCasa/Themed-Jokers
 [submodule "Mods/LunasBalatroMods"]
 	path = Mods/LunasBalatroMods
 	url = https://github.com/LunaAstraCassiopeia/LunasBalatroMods
