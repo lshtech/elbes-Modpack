@@ -455,3 +455,9 @@
 [submodule "Mods/TOGAPackBalatro"]
 	path = Mods/TOGAPackBalatro
 	url = https://github.com/TheOneGoofAli/TOGAPackBalatro
+[submodule "Mods/balatro-vivian-joker"]
+	path = Mods/balatro-vivian-joker
+	url = https://github.com/Onekone/balatro-vivian-joker
+[submodule "Mods/Balatro-Donuts-Mod"]
+	path = Mods/Balatro-Donuts-Mod
+	url = https://github.com/BDonutGLXY/Balatro-Donuts-Mod
