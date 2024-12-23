@@ -7,27 +7,15 @@
 --- PRIORITY: 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
 --- BADGE_COLOR: 3c3cff
 --- PREFIX: jen
---- VERSION: 0.1.0-open_dev-01
---- DEPENDENCIES: [JenLib>=0.3.1, nopeus>=2.2.3, aurinko>=0.4.8, Talisman>=2.0.0-beta9, Cryptid>=0.5.2~1115a, incantation>=0.5.9, Steamodded>=1.0.0~ALPHA-1204a]
+--- VERSION: 0.1.0-OT4
+--- DEPENDENCIES: [JenLib>=0.3.4, nopeus>=2.2.3, aurinko>=0.4.11, Talisman>=2.0.0-beta9, Cryptid>=0.5.2~1116a, incantation>=0.5.10, Steamodded>=1.0.0~ALPHA-1212c]
 --- LOADER_VERSION_GEQ: 1.0.0
 
 maxArrow = 1e4
 
+local maxfloat = 1.7976931348623157e308
+
 local blacklisted_mods = {
---[[	fastsc = true,
-	bunco = true,
-	antonosstake = true,
-	ceres = true,
-	infinitefusion = true,
-	evil = true,
-	jimbospack = true,
-	grm = true,
-	minecraft = true,
-	pokermon = true,
-	twewy = true,
-	betmmaabilities = true,
-	betmmaspells = true,
-	reverie = true]]
 }
 
 for k, v in pairs(SMODS.Mods) do
@@ -52,6 +40,7 @@ end
 
 --COMMON STRINGS
 local mayoverflow = '{C:inactive,s:0.65}(Does not require room, but may overflow){}'
+local redeemprev = '{s:0.75}Also redeems {C:attention,s:0.75}previous tier for free{s:0.75} if not yet acquired'
 
 --INITIAL STUFF
 
@@ -152,6 +141,14 @@ Jen = {
 				'j_jen_godsmarble'
 			}
 		},
+		['Corrupt Crimbo'] = {
+			cost = 250,
+			output = 'j_jen_faceless',
+			ingredients = {
+				'j_jen_crimbo',
+				'j_jen_godsmarble'
+			}
+		},
 		['Corrupt Alice'] = {
 			cost = 5e3	,
 			output = 'j_jen_nexus',
@@ -230,12 +227,12 @@ Jen = {
 		scalar_increment = .13,
 		scalar_additivedivisor = 50,
 		scalar_exponent = 1,
-		endless = {
-			progress_max = 100,
-			progress_inc = 20,
+		straddle = {
+			enabled = true,
 			backwards_mod = 2,
-			mult = 1.13,
-			mult_inc = 0.02
+			progress_min = 3,
+			progress_max = 7,
+			progress_increment = 10
 		},
 		blind_scalar = {
 		},
@@ -245,6 +242,7 @@ Jen = {
 			'betm_jokers_j_balatro_mobile',
 			'betm_jokers_j_gameplay_update',
 			'betm_jokers_j_friends_of_jimbo',
+			'j_cry_necromancer',
 			'j_cry_mask',
 			'j_cry_exposed',
 			'j_cry_equilib',
@@ -253,6 +251,7 @@ Jen = {
 			'j_cry_spy',
 			'j_cry_copypaste',
 			'j_cry_flip_side',
+			'j_sdm_legionary_joker',
 			'p_mupack_favoritepack',
 			'e_cry_double_sided',
 			'c_cry_meld',
@@ -265,7 +264,16 @@ Jen = {
 			'v_cry_double_vision',
 			'v_cry_curate',
 			'e_tentacle',
+			'e_phantom',
+			'v_betm_vouchers_art_gallery',
+			'v_betm_vouchers_undying',
+			'v_betm_vouchers_reincarnate',
 			'v_betm_vouchers_solar_system',
+			'v_betm_vouchers_bonus_plus',
+			'v_betm_vouchers_mult_plus',
+			'v_betm_vouchers_b1g50',
+			'v_betm_vouchers_b1g1',
+			'v_betm_vouchers_b1ginf',
 			'v_betm_vouchers_target',
 			'v_betm_vouchers_bullseye',
 			'v_betm_vouchers_overkill',
@@ -278,6 +286,19 @@ Jen = {
 			'v_betm_vouchers_cryptozoology',
 			'v_betm_vouchers_gravity_assist',
 			'v_betm_vouchers_gravitational_wave',
+			'v_betm_vouchers_eternity',
+			'v_betm_vouchers_half_life',
+			'v_betm_vouchers_heat_death',
+			'v_betm_vouchers_bobby_pin',
+			'v_betm_vouchers_3d_boosters',
+			'v_betm_vouchers_4d_boosters',
+			'v_betm_vouchers_4d_vouchers',
+			'v_betm_vouchers_prologue',
+			'v_betm_vouchers_epilogue',
+			'v_betm_vouchers_laminator',
+			'v_betm_vouchers_eliminator',
+			'v_betm_vouchers_gilded_glider',
+			'v_betm_vouchers_mirror',
 			--'v_betm_vouchers_engulfer',
 			--'v_betm_vouchers_event_horizon',
 			'v_betm_vouchers_darkness',
@@ -319,7 +340,7 @@ local jen_modifierbadges = {
 			'Lengthy animations'
 		},
 		col = G.C.WHITE,
-		tcol = G.C.CRY_EXOTIC
+		tcol = G.C.JOKER_GREY
 	},
 	experimental = {
 		text = {
@@ -561,9 +582,8 @@ end
 
 local win_game_ref = win_game
 function win_game()
-	G.GAME.jen_endless = 0
-	G.GAME.jen_endless_progress = 0
-	G.GAME.win_ante = 1
+	G.GAME.straddle = 0
+	G.GAME.straddle_progress = 0
 	win_game_ref()
 end
 
@@ -647,13 +667,6 @@ local function bismuth_retriggers()
 		end
 	end
 	return math.max(1, amnt)
-end
-
-local csa = Card.set_ability
-
-function Card:set_ability(center, initial, delay_sprites)
-	if not center then center = G.P_CENTERS['j_jen_jen'] end
-	return csa(self, center, initial, delay_sprites)
 end
 
 function Card:speak(text, col)
@@ -759,7 +772,7 @@ function Card:draw(layer)
 					end
 				end
 				if (self.added_to_deck or (self.area and self.area == G.hand)) and not self.edition then
-					if Jen.kudaai_active and CEN.set ~= 'Booster' then
+					if Jen.kudaai_active and (CEN.set ~= 'Booster' or self.area == G.consumeables) and not CEN.cannot_edition then
 						self:set_edition({[random_editions[pseudorandom('kudaai_edition', 1, #random_editions)]] = true}, true)
 					end
 				end
@@ -1003,9 +1016,14 @@ function gameover()
 	G.STATE_COMPLETE = true
 end
 
+table.insert(IncantationAddons.Stacking, 'jen_chess')
+table.insert(IncantationAddons.Stacking, 'jen_jokerability')
+table.insert(IncantationAddons.Stacking, 'jen_omegaconsumable')
+table.insert(IncantationAddons.Stacking, 'jen_tokens')
 table.insert(IncantationAddons.Dividing, 'jen_chess')
 table.insert(IncantationAddons.Dividing, 'jen_jokerability')
 table.insert(IncantationAddons.Dividing, 'jen_omegaconsumable')
+table.insert(IncantationAddons.Dividing, 'jen_tokens')
 table.insert(IncantationAddons.BulkUse, 'jen_tokens')
 
 AurinkoAddons.jen_wee = function(card, hand, instant, amount)
@@ -1208,13 +1226,13 @@ end
 function get_malice()
 	if not G.GAME then return 0 end
 	if not G.GAME.malice then G.GAME.malice = 0 end
-	return (get_final_operator() >= (maxArrow + 1)) and 0 or math.min(1e300, G.GAME.malice)
+	return (get_final_operator() >= (maxArrow + 1)) and 0 or math.min(maxfloat, G.GAME.malice)
 end
 
 function get_max_malice(offset)
 	offset = offset or 0
 	local mod = math.max(0, (get_final_operator(true) - 1) + offset)
-	return get_final_operator(true) + offset >= (maxArrow + 1) and 0 or math.min(1e300, math.ceil((Jen.config.malice_base * math.max(1, mod+1)) * (Jen.config.malice_increase ^ mod)))
+	return get_final_operator(true) + offset >= (maxArrow + 1) and 0 or math.min(maxfloat, math.ceil((Jen.config.malice_base * math.max(1, mod+1)) * (Jen.config.malice_increase ^ mod)))
 end
 
 function check_malice(check)
@@ -1248,37 +1266,85 @@ function add_malice(mod)
 	if not kosmos then return end
 	if not G.GAME.malice then G.GAME.malice = 0 end
 	mod = math.ceil(math.abs(mod) * (Jen.config.malice_increase ^ G.GAME.round_resets.ante))
-	G.GAME.malice = math.min(1e300, G.GAME.malice + mod)
+	G.GAME.malice = math.min(maxfloat, G.GAME.malice + mod)
 	card_status_text(kosmos, '+' .. number_format(mod), nil, 0.05*kosmos.T.h, G.C.RED, 0.6, 0.6, 0.4, 0.4, 'bm', 'jen_enchant', 0.5, 1)
 	jl.a('Malice : ' .. number_format(G.GAME.malice) .. ' / ' .. number_format(get_max_malice()), 3, 0.75, G.C.RED)
 	Q(function() check_malice(G.GAME.malice) return true end)
 end
 
+local edr = ease_dollars
+function ease_dollars(mod, instant)
+	edr(mod,instant)
+	Q(function() if jl.invalid_number(G.GAME.dollars) then G.GAME.dollars = maxfloat end return true end)
+end
+
 local anteref = ease_ante
 function ease_ante(mod)
 	if mod > 0 then add_malice((Jen.config.malice_base / 8) * (Jen.config.malice_increase ^ (G.GAME.round_resets.ante + mod))) end
-	if G.GAME.jen_endless and mod > 0 then
-		mod = mod + (G.GAME.win_ante - 1)
+	if Jen.config.straddle.enabled and G.GAME.straddle and mod > 0 then
+		mod = mod + G.GAME.straddle
 	end
 	anteref(mod)
-	if G.GAME.jen_endless and mod ~= 0 then
-		if mod > 1 then mod = mod - G.GAME.win_ante end
-		local rate = math.max(1, 0.9 + (G.GAME.win_ante/10))
-		if mod ~= math.abs(mod) then
-			rate = rate * Jen.config.endless.backwards_mod
+	if jl.invalid_number(G.GAME.round_resets.ante) then
+		G.GAME.round_resets.ante = maxfloat
+	end
+	if Jen.config.straddle.enabled and G.GAME.straddle and mod ~= 0 then
+		if math.ceil(mod) > 1 then mod = mod - G.GAME.straddle end
+		local spd = 1
+		local add = math.min(Jen.config.straddle.progress_max * 50, (math.abs(mod) * (mod < 0 and Jen.config.straddle.backwards_mod or 1)), 1e4)
+		local to_next = math.min(Jen.config.straddle.progress_max, Jen.config.straddle.progress_min + math.floor(G.GAME.straddle / Jen.config.straddle.progress_increment))
+		local progressbar = {}
+		for i = 1, Jen.config.straddle.progress_max do
+			progressbar[i] = jl.rawcard(i > to_next and 'm_stone' or 'c_base', 0.8, (2/Jen.config.straddle.progress_max) * i)
+			if i <= G.GAME.straddle_progress then
+				progressbar[i]:set_edition({negative = true}, true, true)
+			end
 		end
-		rate = rate * math.abs(mod) * (Jen.config.endless.mult + (Jen.config.endless.mult_inc * G.GAME.win_ante))
-		G.GAME.jen_endless_progress = math.min(1e300, G.GAME.jen_endless_progress + (Jen.config.endless.progress_inc * rate))
-		jl.a('Straddle : ' .. jl.round(G.GAME.jen_endless_progress, 2) .. ' / ' .. Jen.config.endless.progress_max, G.SETTINGS.GAMESPEED, 1, G.C.FILTER)
-		Q(function()
-			play_sound('highlight2', 0.685, 0.2)
-			play_sound('generic1')
-		return true end)
-		if G.GAME.jen_endless_progress >= Jen.config.endless.progress_max then
-			local increment = math.floor(G.GAME.jen_endless_progress / Jen.config.endless.progress_max)
-			G.GAME.jen_endless_progress = G.GAME.jen_endless_progress - (Jen.config.endless.progress_max * increment)
-			ease_winante(increment)
+		progressbar[1]:add_dynatext('Straddle ' .. G.GAME.straddle)
+		progressbar[to_next]:add_dynatext(nil, 'Straddle ' .. (G.GAME.straddle + 1))
+		jl.rd(0.5)
+		while add > 0 do
+			add = add - 1
+			G.GAME.straddle_progress = G.GAME.straddle_progress + 1
+			local target = progressbar[G.GAME.straddle_progress]
+			Q(function() target:set_edition({negative = true}, true, true) target:juice_up(0.8,0.5) play_sound('highlight2', 0.625, 0.2) return true end)
+			if G.GAME.straddle_progress >= to_next then
+				G.GAME.straddle_progress = 0
+				G.GAME.straddle = G.GAME.straddle + 1
+				target:remove_dynatext()
+				progressbar[1]:remove_dynatext()
+				to_next = math.min(Jen.config.straddle.progress_max, Jen.config.straddle.progress_min + math.floor(G.GAME.straddle / Jen.config.straddle.progress_increment))
+				if spd < 4 then jl.rd(1/spd) end
+				jl.a('Straddle ' .. G.GAME.straddle, G.SETTINGS.GAMESPEED * 2, 1, mix_colours(G.C.RED, G.C.UI.TEXT_LIGHT, math.min(1 + (Jen.config.straddle.progress_increment / 10), G.GAME.straddle / Jen.config.straddle.progress_increment) - (Jen.config.straddle.progress_increment / 10)))
+				Q(function()
+					play_sound('highlight2', 0.4, 0.2)
+					play_sound('generic1')
+				return true end)
+				if spd < 4 then jl.rd(1/spd) end
+				for i = 1, Jen.config.straddle.progress_max do
+					Q(function() progressbar[i]:fake_dissolve() return true end, 0.1)
+				end
+				if spd < 4 then jl.rd(1/spd) end
+				Q(function()
+					for i = 1, Jen.config.straddle.progress_max do
+						progressbar[i]:start_materialize()
+						progressbar[i]:set_ability(G.P_CENTERS[i > to_next and 'm_stone' or 'c_base'])
+						progressbar[i]:set_edition(nil, true, true)
+					end
+				return true end)
+				for i = 1, Jen.config.straddle.progress_max do
+					if i == 1 or i == to_next then
+						progressbar[i]:add_dynatext(i == 1 and ('Straddle ' .. G.GAME.straddle), i == to_next and ('Straddle ' .. (G.GAME.straddle + 1)))
+					end
+				end
+				spd = spd + .5
+			end
+			if spd < 4 then jl.rd(.25/spd) end
 		end
+		jl.rd(1)
+		progressbar[1]:remove_dynatext()
+		progressbar[to_next]:remove_dynatext()
+		Q(function() for i = 1, #progressbar do progressbar[i]:destroy() end return true end)
 	end
 	Q(function() G.GAME.round_resets.blind_ante = G.GAME.round_resets.ante return true end)
 end
@@ -1311,11 +1377,8 @@ function Card:sell_card()
 			return true end)
 		end
 	end
-	if Jen.hv('astronomy', 6) then
+	if Jen.hv('astronomy', 6) and self.gc and self:gc() and not self:gc().cant_astronomy then
 		local hand = jl.rndhand()
-		if Jen.hv('astronomy', 7) then
-			self:do_jen_astronomy(hand, self.sell_cost / 4)
-		end
 		jl.th(hand)
 		level_up_hand(self, hand, nil, self.sell_cost / 4)
 		jl.ch()
@@ -1586,7 +1649,7 @@ function ease_winante(mod)
 		func = function()
 			local ante_UI = G.hand_text_area.ante
 			mod = mod or 0
-			local text = G.GAME.jen_endless and 'Rate' or 'Max'
+			local text = 'Max'
 			local col = G.C.PURPLE
 			if mod < 0 then
 				text = text .. ' -'
@@ -1854,6 +1917,11 @@ end
 
 --CONSUMABLE TYPES
 
+SMODS.ObjectTypes.Tarot.collection_rows = {7,7,7}
+SMODS.ObjectTypes.Spectral.collection_rows = {7,7,7}
+SMODS.ObjectTypes.Planet.collection_rows = {7,7,7}
+SMODS.ObjectTypes.Planet.default = 'c_jen_debris'
+
 SMODS.ConsumableType {
 	key = 'jen_tokens',
 	collection_rows = {6, 6},
@@ -1881,7 +1949,7 @@ SMODS.ConsumableType {
 
 SMODS.ConsumableType {
 	key = 'jen_omegaconsumable',
-	collection_rows = {6, 6},
+	collection_rows = {6, 6, 6},
 	primary_colour = G.C.CHIPS,
 	secondary_colour = G.C.BLACK,
 	default = 'c_jen_pluto_omega',
@@ -1907,6 +1975,7 @@ SMODS.ConsumableType {
 
 --SOUNDS
 
+SMODS.Sound({key = 'misc1', path = 'misc1.ogg'})
 SMODS.Sound({key = 'done', path = 'done.ogg'})
 SMODS.Sound({key = 'e_crystal', path = 'e_crystal.ogg'})
 SMODS.Sound({key = 'grindstone', path = 'grindstone.ogg'})
@@ -2214,14 +2283,6 @@ SMODS.Edition({
 		G.E_MANAGER:add_event(Event({blocking = false, blockable = false, func = function()
 			card:grow(Jen.config.wee_sizemod)
 		return true end}))
-		local was_added = card.added_to_deck
-		if was_added then
-			card:remove_from_deck()
-		end
-		cry_misprintize(card, {min = (G.GAME.modifiers.cry_misprint_min or 1),max = (G.GAME.modifiers.cry_misprint_max or 1)})
-		if was_added then
-			card:add_to_deck()
-		end
 	end,
     shader = false,
     discovered = true,
@@ -2273,7 +2334,7 @@ SMODS.Edition({
 		if was_added then
 			card:remove_from_deck()
 		end
-		cry_misprintize(card, {min = modifier*(G.GAME.modifiers.cry_misprint_min or 1),max = modifier*(G.GAME.modifiers.cry_misprint_max or 1)})
+		cry_misprintize(card, {min = modifier, max = modifier}, nil, true)
 		if was_added then
 			card:add_to_deck()
 		end
@@ -2282,11 +2343,12 @@ SMODS.Edition({
 		G.E_MANAGER:add_event(Event({blocking = false, blockable = false, func = function()
 			card:shrink(Jen.config.wee_sizemod)
 		return true end}))
+		local modifier = 100
 		local was_added = card.added_to_deck
 		if was_added then
 			card:remove_from_deck()
 		end
-		cry_misprintize(card, {min = (G.GAME.modifiers.cry_misprint_min or 1),max = (G.GAME.modifiers.cry_misprint_max or 1)})
+		cry_misprintize(card, {min = 1/modifier, max = 1/modifier}, nil, true)
 		if was_added then
 			card:add_to_deck()
 		end
@@ -3043,6 +3105,7 @@ local atlases = {
 	'haro',
 	'suzaku',
 	'ayanami',
+	'ratau',
 	'jen',
 	'math',
 	'koslo',
@@ -3086,6 +3149,7 @@ local atlases = {
 	'roffle',
 	'luke',
 	'7granddad',
+	'gamingchair',
 	'aster',
 	'rin',
 	'astrophage',
@@ -3113,6 +3177,7 @@ local atlases = {
 	'jeremy',
 	'cheese',
 	'crimbo',
+	'faceless',
 	'maxie',
 	'dandy',
 	'goob',
@@ -3515,14 +3580,45 @@ SMODS.Enhancement {
 }
 
 SMODS.Enhancement {
+	key = 'potassium',
+	loc_txt = {
+		name = 'Potassium Card',
+		text = {
+			'Creates a {C:dark_edition}Negative {C:attention}Gros Michel',
+			'{C:red}Destroyed{} after scoring',
+			'{C:cry_exotic,s:0.6,E:1}Power Card{}'
+		}
+	},
+	disposable = true,
+	pos = { x = 7, y = 1 },
+	atlas = 'jenenhance',
+	unlocked = true,
+	discovered = true,
+	calculate = function(self, card, context, effect)
+		if jl.sc(context) then
+			Q(function()
+				local k19 = create_card('Joker', G.jokers, nil, nil, nil, nil, 'j_gros_michel', 'nanner')
+				k19.no_forced_edition = true
+				k19:set_edition({negative = true}, true)
+				k19.no_forced_edition = nil
+				k19:add_to_deck()
+				G.jokers:emplace(k19)
+			return true end)
+		end
+	end
+}
+
+SMODS.Enhancement {
 	key = 'fizzy',
 	loc_txt = {
 		name = 'Fizzy Card',
 		text = {
 			'Creates a {C:attention}Double Tag{}',
+			'{C:red}Destroyed{} after scoring',
 			'{C:cry_exotic,s:0.6,E:1}Power Card{}'
 		}
 	},
+	disposable = true,
 	pos = { x = 8, y = 1 },
 	atlas = 'jenenhance',
 	unlocked = true,
@@ -3538,9 +3634,9 @@ SMODS.Enhancement {
 }
 
 SMODS.Enhancement {
-	key = 'blue',
+	key = 'water',
 	loc_txt = {
-		name = 'Blue Card',
+		name = 'Water Card',
 		text = {
 			'{C:green}Always scores{}'
 		}
@@ -3556,9 +3652,11 @@ SMODS.Enhancement {
 		name = 'Handy Card',
 		text = {
 			'{C:blue}+1{} hand this round',
+			'{C:red}Destroyed{} after scoring',
 			'{C:cry_exotic,s:0.6,E:1}Power Card{}'
 		}
 	},
+	disposable = true,
 	pos = { x = 1, y = 1 },
 	atlas = 'jenenhance',
 	unlocked = true,
@@ -3621,7 +3719,8 @@ SMODS.Enhancement {
 			'{C:cry_exotic,s:0.6,E:1}Power Card{}'
 		}
 	},
-	config = {p_dollars = 10, disposable = true},
+	config = {p_dollars = 10},
+	disposable = true,
 	pos = { x = 4, y = 1 },
 	atlas = 'jenenhance',
 	unlocked = true,
@@ -3659,7 +3758,7 @@ for k, v in ipairs(handinacard) do
 				'{C:cry_epic,s:0.6,E:1}Hand Card{}'
 			}
 		},
-		config = {disposable = true},
+		disposable = true,
 		pos = { x = k - 1, y = 2 },
 		atlas = 'jenenhance',
 		unlocked = true,
@@ -3695,7 +3794,8 @@ SMODS.Enhancement {
 			'{C:jen_RGB,s:0.6,E:1}Super Power Card{}'
 		}
 	},
-	config = {h_dollars = 6, p_dollars = 20, chips = 160, mult = 8, h_x_mult = 2.25, Xchips = 3.515625, Xmult = 9, Echips = 1.2, Emult = 1.3, disposable = true},
+	config = {h_dollars = 6, p_dollars = 20, chips = 160, mult = 8, h_x_mult = 2.25, Xchips = 3.515625, Xmult = 9, Echips = 1.2, Emult = 1.3},
+	disposable = true,
 	any_suit = true,
 	always_scores = true,
 	pos = { x = 0, y = 1 },
@@ -3714,6 +3814,16 @@ SMODS.Enhancement {
 					return true
 				end }))
 			end
+			for i = 1, 2 do
+				Q(function()
+					local k19 = create_card('Joker', G.jokers, nil, nil, nil, nil, 'j_gros_michel', 'nanner')
+					k19.no_forced_edition = true
+					k19:set_edition({negative = true}, true)
+					k19.no_forced_edition = nil
+					k19:add_to_deck()
+					G.jokers:emplace(k19)
+				return true end)
+			end
 			ease_hands_played(2)
 			ease_discard(2)
 			G.hand:change_size(2)
@@ -3724,6 +3834,55 @@ SMODS.Enhancement {
 }
 
 --JOKERS
+
+	SMODS.Joker:take_ownership('perkeo', {
+		name = "Perkeo (Almanac)",
+		loc_vars = function(self, info_queue, center)
+			info_queue[#info_queue+1] = {key = 'e_negative_consumable', set = 'Edition', config = {extra = 1}}
+			return {vars = {center.ability.extra}}
+		end,
+		calculate = function(self, card, context)
+			local should_retrigger = false
+			if context.ending_shop then
+				if G.consumeables.cards[1] then
+					G.E_MANAGER:add_event(Event({
+						func = function() 
+							local total, checked, center = 0, 0, nil
+							for i = 1, #G.consumeables.cards do
+								total = total + (G.consumeables.cards[i]:getQty())
+							end
+							local poll = pseudorandom(pseudoseed('perkeo'))*total
+							for i = 1, #G.consumeables.cards do
+								checked = checked + (G.consumeables.cards[i]:getQty())
+								if checked >= poll and G.consumeables.cards[i]:gc().key ~= 'c_cry_pointer' then
+									center = G.consumeables.cards[i]
+									break
+								end
+							end
+							if center then
+								should_retrigger = true
+								local card = copy_card(center, nil)
+								card.ability.qty = 1
+								card:set_edition({negative = true}, true)
+								card:add_to_deck()
+								G.consumeables:emplace(card) 
+							end
+							return true
+						end}))
+					if jl.njr(context) then
+						Q(function()
+							if should_retrigger then
+								card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_duplicated_ex')})
+							else
+								card:speak('No valid consumables!', G.C.RED)
+							end
+						return true end)
+					end
+					return nil, should_retrigger
+				end
+			end
+		end
+	})
 
 SMODS.Joker {
 	key = 'lambert',
@@ -3930,6 +4089,7 @@ SMODS.Joker {
 	config = {extra = {power = 1.3}},
 	pos = { x = 0, y = 0 },
 	soul_pos = { x = 1, y = 0 },
+	drama = { x = 2, y = 0 },
 	cost = 50,
 	fusable = true,
 	rarity = 'cry_exotic',
@@ -3940,7 +4100,7 @@ SMODS.Joker {
 	perishable_compat = false,
 	atlas = 'jenshamura',
     loc_vars = function(self, info_queue, center)
-        return {vars = {center.ability.extra.power, Jen.gods() and 'My mind... my BRAIN...' or 'I wish to help create a', Jen.gods() and "IT'S FRACTURING MY CRANIUM!!!" or 'better future for everyone.'}}
+        return {vars = {center.ability.extra.power, Jen.dramatic and 'My brain\'s already suffered enough... Please!! Stop!!' or Jen.gods() and 'My mind... my BRAIN...' or 'I wish to help create a', Jen.dramatic and 'IT DOESN\'T NEED TO BREAK ANY MORE THAN IT ALREADY HAS!!' or Jen.gods() and "IT'S FRACTURING MY CRANIUM!!!" or 'better future for everyone.'}}
     end,
     calculate = function(self, card, context)
 		if context.individual then
@@ -4485,7 +4645,7 @@ SMODS.Joker {
 	immutable = true,
 	atlas = 'jenhephaestus',
     calculate = function(self, card, context)
-		if jl.njr(context) and context.using_consumeable and context.consumeable and context.consumeable:gc().key ~= 'c_jen_reverse_fool' and context.consumeable:gc().key ~= 'c_cry_pointer' and context.consumeable.ability.set ~= 'jen_omegaconsumable' and context.consumeable.ability.set ~= 'jen_jokerability' and not (context.consumeable.edition or {}).negative then
+		if jl.njr(context) and not context.blueprint and context.using_consumeable and context.consumeable and context.consumeable:gc().key ~= 'c_jen_reverse_fool' and context.consumeable:gc().key ~= 'c_cry_pointer' and context.consumeable.ability.set ~= 'jen_omegaconsumable' and context.consumeable.ability.set ~= 'jen_jokerability' and not (context.consumeable.edition or {}).negative then
 			local quota = 0
 			local rolls = math.min(1e5, context.consumeable:getEvalQty())
 			local probability = hephaestus_chance(card)
@@ -4831,6 +4991,7 @@ local cheese_quotes = {
 		'For Jeremy!',
 		'For the Jeremiah.',
 		'To Jeremyyyyy!',
+		'To Niiimbuuuus!',
 		'Wawaaaaaaaa!!!',
 		'Taste the WAWA!',
 		'Too slow!',
@@ -4844,7 +5005,7 @@ SMODS.Joker {
 		name = 'Cheese',
 		text = {
 			'{C:blue}+#1#{} hand(s) if played',
-			'hand is your {C:attention}secondmost played{}',
+			'hand is your {C:attention}most played{}',
 			'{C:inactive}(#2#){}',
 			' ',
 			"{C:inactive,E:1}#3#{}",
@@ -4867,7 +5028,7 @@ SMODS.Joker {
         return {vars = {center.ability.add, jl.sfavhand(), #SMODS.find_card('j_jen_jeremy') > 0 and cheese_quotes.bb[math.random(#cheese_quotes.bb)] or cheese_quotes.normal[math.random(#cheese_quotes.normal)]}}
     end,
     calculate = function(self, card, context)
-		if context.cardarea == G.jokers and not context.before and not context.after and context.poker_hands and next(context.poker_hands[jl.sfavhand()]) then
+		if context.cardarea == G.jokers and not context.before and not context.after and context.poker_hands and next(context.poker_hands[jl.favhand()]) then
 			card_eval_status_text(card, 'extra', nil, nil, nil, {message = cheese_quotes.trigger[math.random(#cheese_quotes.trigger)], colour = G.C.BLUE})
 			ease_hands_played(card.ability.add or 1)
 			return nil, true
@@ -5114,7 +5275,8 @@ SMODS.Joker {
 			' ',
 			"{C:inactive,s:1.11,E:1}The throne of death is not for{}",
 			"{C:inactive,s:1.11,E:1}a merciful fool like you.{}",
-			'{C:dark_edition,s:0.7,E:2}Face art by : raidoesthings{}'
+			'{C:dark_edition,s:0.7,E:2}Face art by : raidoesthings{}',
+			'{C:cry_exotic,s:0.7,E:2}Origin : Cult of the Lamb{}'
 		}
 	},
 	config = {extra = {planets = 5, black_holes = 3}},
@@ -5184,6 +5346,39 @@ SMODS.Joker {
 			return nil, true
 		end
 	end
+}
+
+SMODS.Joker {
+	key = 'ratau',
+	loc_txt = {
+		name = 'Ratau',
+		text = {
+			'Values on {C:attention}consumables',
+			'are {C:attention}multiplied{} by {C:attention}#1#',
+			'{C:inactive}(If possible, as some values can\'t be modified)',
+			' ',
+			"{C:inactive,E:1}You still have the chance to mend your",
+			"{C:inactive,E:1}past, so don\'t waste it like I did.",
+			'{C:dark_edition,s:0.7,E:2}Face art by : raidoesthings{}',
+			'{C:cry_exotic,s:0.7,E:2}Origin : Cult of the Lamb{}'
+		}
+	},
+	config = {modifier = 2},
+	pos = { x = 0, y = 0 },
+	soul_pos = { x = 1, y = 0 },
+	cost = 12,
+	jumbo_mod = 3,
+	rarity = 'cry_epic',
+	unlocked = true,
+	discovered = true,
+	blueprint_compat = false,
+	eternal_compat = true,
+	perishable_compat = false,
+	immutable = true,
+	atlas = 'jenratau',
+    loc_vars = function(self, info_queue, center)
+        return {vars = {center.ability.modifier}}
+    end
 }
 
 SMODS.Joker {
@@ -5606,7 +5801,7 @@ SMODS.Joker {
 	loc_txt = {
 		name = 'Shikigami',
 		text = {
-			'Played {C:attention}7{}s create',
+			'Scored {C:attention}7{}s create',
 			'{C:attention}7 copies{} of themselves',
 			' ',
 			"{C:inactive,s:1.11,E:1}Why are we cards??{}",
@@ -5834,7 +6029,7 @@ local cuc = Card.use_consumeable
 
 function Card:do_jen_astronomy(hand, mod)
 	local cen = self.gc and self:gc()
-	if cen then
+	if cen and not cen.cant_astronomy then
 		mod = mod or 1
 		local pos = -1
 		for i = 1, #G.handlist do
@@ -5918,6 +6113,7 @@ function Card:do_jen_astronomy(hand, mod)
 				end,
 			}))
 			update_hand_text({ sound = "button", volume = 0.7, pitch = 0.9, delay = 0 }, { level = "+" .. tostring(iterations * 0.1) })
+			delay(1)
 			for k, v in ipairs(G.handlist) do
 				if v ~= (forehand or '') and v ~= (backhand or '') then
 					level_up_hand(self, v, true, 0.1 * iterations)
@@ -5990,6 +6186,8 @@ function Card:use_consumeable(area, copier)
 					self:do_jen_astronomy(v, self:getEvalQty())
 				end
 			end
+		elseif cen.key == 'c_jen_soul_omega' then
+			self:setQty(1)
 		end
 	end
 	cuc(self, area, copier)
@@ -6185,17 +6383,73 @@ local maxie_quotes = {
 		'I-it hurts... it h-hurts... it hurts, it hurts ithurts ithurtsITHURTS-!!!',
 		'M-my flesh... it b-burns...',
 		'G-get that... THING... away from me!! It\'s-... making me h-hear w-whispers...!'
+	},
+	trigger = {
+		'A gift for your kindness!',
+		'Temperance/Hermit value!',
+		'Bnuuy.',
+		'You can\'t handle the uber instincts of my uber autism.',
+		'This might help!',
+		'I\'m gonna have sexual thoughts about that.',
+		'300 booster packs, for only 2 pounds?! Yes, sir!',
+		'Hehea!',
+		'Fucking Monopoly Money...',
+		'Could you pass me some milk? I\'m thirsty.',
+		'If you don\'t like bunnies; fuck you, die!',
+		'Rizz.',
+		'nnNOOOOOHHHH-',
+		'Pocket £@"!@}$£:$%"%~$":%£',
+		'Also try Soundpad!',
+		'Balatro is on my soundboard!',
+		'Bird up!',
+		'Crazy? I was crazy once...',
+		'The Giant Enemy Spider!',
+		'gore5',
+		'negativebutretriggeredreverb',
+		'The sun is a deadly lazer...!',
+		'rrrRRRRrRRRRrrrRRrrr',
+		'I can\'t stop winning!',
+		'I lost so much money, but...',
+		'AAaaA-',
+		'Oh no, not Wilhelm!',
+		'SHOOT THEM WITH THE DEHYDRATION GUN!',
+		'Five. Hundred. Booster packs.',
+		'Fortnite.',
+		'WHA\' DOES \'DIS BUTT\'N DUU?',
+		'WHA\' DOES \'DIS FUCKA DUU?',
+		'Balls.',
+		'I turned myself into a card.',
+		'I\'m card.',
+		'I TURNED MYSELF INTO A CARD, MORTY!!!',
+		'Do I look like I know what a JPEG is?',
+		'G O   F U C K   Y O U R S E L F',
+		'ONION- O- OH- ONION RING I\'VE GOT AN ONION RING',
+		'Wow, I have so many trigger quotes!',
+		'This is like, meta.',
+		'Dude, the thing that everybo-',
+		'Oooooohhhh, my pohh-!',
+		'Dog park.',
+		'Cock and Ball Torture, from Wikipedia, the free encyclopedia at en.wikipedia.org.',
+		'Off to hang myself. Watch and lea-*choke*',
+		'Boo-womp.',
+		'See that moderator? We\'re gonna ping \'im!',
+		'I\'ve come to make an announcement.',
+		'UUAAAAAAAAAAA-',
+		'I like to play with myself! Wait, that sounds wrong.',
+		'isek die.m4a',
+		'My eyes are having an orgasm.',
+		'Hey there, are you having a good day? Well, fuck you!'
 	}
 }
 
 SMODS.Joker {
 	key = 'maxie',
 	loc_txt = {
-		name = 'Maxie',
+		name = '{C:edition}Maxie',
 		text = {
 			'{C:attention}Non-{C:dark_edition}Negative {C:tarot}Temperance{} and {C:tarot}The Hermit',
 			'create a {C:green}random {C:attention}Booster{} when used',
-			'Fixed {C:green}1% chance{} to also create a {C:green}random {C:attention}Voucher',
+			'Fixed {C:green}10% chance{} to also create a {C:green}random {C:attention}Voucher',
 			' ',
 			'{C:inactive,s:1,E:1}#1#',
 			'{C:dark_edition,s:0.7,E:2}Face art by : Maxie{}'
@@ -6203,6 +6457,7 @@ SMODS.Joker {
 	},
 	pos = { x = 0, y = 0 },
 	soul_pos = { x = 1, y = 0 },
+	drama = { x = 2, y = 0 },
 	cost = 250,
 	rarity = 'jen_wondrous',
     loc_vars = function(self, info_queue, center)
@@ -6225,11 +6480,12 @@ SMODS.Joker {
 	perishable_compat = false,
 	atlas = 'jenmaxie',
     calculate = function(self, card, context)
-		if context.using_consumeable and context.consumeable and (context.consumeable.ability.name == 'Temperance' or context.consumeable.ability.name == 'The Hermit') then
+		if jl.njr(context) and context.using_consumeable and context.consumeable and (context.consumeable.ability.name == 'Temperance' or context.consumeable.ability.name == 'The Hermit') then
 			local quota = (context.consumeable:getEvalQty())
 			local isnegative = (context.consumeable.edition or {}).negative
 			if not isnegative then
 				card:speak('+' .. quota .. ' Booster' .. (quota > 1 and 's' or ''), G.C.DARK_EDITION)
+				card:speak(maxie_quotes.trigger, G.C.DARK_EDITION)
 				for i = 1, quota do
 					G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.2/quota, func = function()
 						if card then
@@ -6243,8 +6499,9 @@ SMODS.Joker {
 							G.consumeables:emplace(duplicate)
 						end
 					return true end }))
-					if jl.chance('maxie_voucherchance', 100, true) then
+					if jl.chance('maxie_voucherchance', 10, true) then
 						card:speak('+Voucher', G.C.EDITION)
+						card:speak(maxie_quotes.trigger, G.C.EDITION)
 						G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.2/quota, func = function()
 							if card then
 								card:juice_up(0.8, 0.5)
@@ -7074,6 +7331,54 @@ SMODS.Joker {
 	end
 }
 
+SMODS.Joker {
+	key = 'gamingchair',
+	loc_txt = {
+		name = '{C:jen_RGB}Gaming Chair{}',
+		text = {
+			'{C:red}Fixed {C:green}60% chance{} to {C:attention}immediately defeat',
+			'{C:attention}Blinds{} when starting a round',
+			' ',
+			"{C:inactive,E:1}Get a good gaming chair.{}",
+			'{C:cry_exotic,s:0.7,E:2}Origin : Gaming{}'
+		}
+	},
+	config = {},
+	pos = { x = 0, y = 0 },
+	soul_pos = { x = 1, y = 0 },
+	cost = 250,
+	rarity = 'jen_wondrous',
+	misc_badge = gaming,
+	unique = true,
+	unlocked = true,
+	discovered = true,
+	blueprint_compat = false,
+	eternal_compat = true,
+	perishable_compat = false,
+	debuff_immune = true,
+	immutable = true,
+	atlas = 'jengamingchair',
+	calculate = function(self, card, context)
+		if not context.blueprint_card and jl.njr(context) and context.setting_blind then
+			if jl.chance('gamingchair', 1.6666666666666666666666666666667, true) then
+				card:speak('Good Gaming Chair!', G.C.jen_RGB)
+				Q(function()
+					Q(function()
+						Q(function()
+							Q(function()
+								G.GAME.chips = G.GAME.blind.chips
+								G.STATE = G.STATES.HAND_PLAYED
+								G.STATE_COMPLETE = true
+								end_round()
+							return true end)
+						return true end)
+					return true end)
+				return true end)
+			end
+		end
+	end
+}
+
 local nyx_maxenergy = 5
 
 SMODS.Joker {
@@ -7873,9 +8178,19 @@ SMODS.Joker {
 }
 
 local crimbo_quotes = {
-	'Can you see as well as the one without eyes?',
-	'I could take him.',
-	'Do you think that the clouds have silver thoughts?'
+	normal = {
+		'Can you see as well as the one without eyes?',
+		'I could take him.',
+		'Do you think that the clouds have silver thoughts?'
+	},
+	gods = {
+		'I understand, though I won\'t like it.',
+		'Could I convince you otherwise?'
+	},
+	fuse = {
+		'I guess not.',
+		'This is terrible.'
+	}
 }
 
 SMODS.Joker {
@@ -7913,7 +8228,7 @@ SMODS.Joker {
 	immutable = true,
 	atlas = 'jencrimbo',
     loc_vars = function(self, info_queue, center)
-        return {vars = {crimbo_quotes[math.random(#crimbo_quotes)]}}
+        return {vars = {Jen.gods() and crimbo_quotes.gods[math.random(#crimbo_quotes.gods)] or crimbo_quotes.normal[math.random(#crimbo_quotes.normal)]}}
     end,
 }
 
@@ -8311,7 +8626,7 @@ SMODS.Joker {
 					G.GAME.round_resets.temp_handsize = (G.GAME.round_resets.temp_handsize or 0) - 2
 				end
 			elseif (next(lh) and next(rh)) and card.ability.missinghands then
-				play_sound_q('highlight2')
+				play_sound_q('highlight2', 1, 0.6)
 				card:speak('Recovered!', G.C.GREEN)
 				card.ability.missinghands = false
 				if lh.area and lh.area ~= G.jokers then
@@ -8422,7 +8737,6 @@ SMODS.Joker {
 					if next(lh) then lh:remove_from_deck(); lh:destroy() end
 					Q(function()
 						local nlh = create_card('Joker', G.jokers, nil, nil, nil, nil, 'j_jen_goob_lefthand', 'goob_nlh')
-						nlh:set_eternal(true)
 						nlh:start_materialize({G.C.CHIPS})
 						nlh:add_to_deck()
 						G.jokers:emplace(nlh)
@@ -8434,7 +8748,6 @@ SMODS.Joker {
 					if next(rh) then rh:remove_from_deck(); rh:destroy() end
 					Q(function()
 						local nrh = create_card('Joker', G.jokers, nil, nil, nil, nil, 'j_jen_goob_righthand', 'goob_nrh')
-						nrh:set_eternal(true)
 						nrh:start_materialize({G.C.MULT})
 						nrh:add_to_deck()
 						G.jokers:emplace(nrh)
@@ -8557,6 +8870,7 @@ SMODS.Joker {
 	blueprint_compat = false,
 	eternal_compat = true,
 	perishable_compat = false,
+	unique = true,
 	atlas = 'jenrazzledazzle',
 	update = function(self, card, front)
 		if card.added_to_deck and card.ability and card.ability.curmode and card.children and card.children.center and card.children.floating_sprite then
@@ -8650,9 +8964,27 @@ SMODS.Joker {
 	end
 }
 
+function decimal_hand_colour(level)
+	if math.floor(level) ~= level then
+		local fl = math.floor(level)
+		local ce = math.ceil(level)
+		local col1 = G.C.HAND_LEVELS[fl] or G.C.RED
+		local col2 = G.C.HAND_LEVELS[ce] or G.C.RED
+		local newcol = mix_colours(col1, col2, ce-level)
+		G.C.HAND_LEVELS[level] = newcol
+	end
+end
+
 local luhr = level_up_hand
-function level_up_hand(card, hand, instant, amount)
+function level_up_hand(card, hand, instant, amount, no_astronomy, no_astronomy_omega, no_jokers)
 	amount = amount or 1
+	if not no_astronomy and amount > 0 then
+		if Jen.hv('astronomy', 9) then
+			amount = amount * 5
+		elseif Jen.hv('astronomy', 7) then
+			amount = amount * 2
+		end
+	end
 	if amount > 0 then
 		add_malice(10 * amount)
 		if #SMODS.find_card('j_jen_guilduryn') > 0 and hand ~= jl.favhand() then
@@ -8669,28 +9001,36 @@ function level_up_hand(card, hand, instant, amount)
 		end
 	end
 	luhr(card, hand, instant, amount)
-	jl.jokers({jen_lving = true, lvs = amount, lv_hand = hand, lv_instant = instant, card = card})
-	if amount < 0 and Jen.hv('astronomy', 11) then
+	if jl.invalid_number(number_format(G.GAME.hands[hand].level)) then
+		G.GAME.hands[hand].level = maxfloat
+		if not instant then
+			update_hand_text({sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3}, {level=maxfloat})
+			delay(0.3)
+		end
+	end
+	if math.floor(G.GAME.hands[hand].level) ~= G.GAME.hands[hand].level then
+		decimal_hand_colour(G.GAME.hands[hand].level)
+	end
+	if not no_jokers then
+		jl.jokers({jen_lving = true, lvs = amount, lv_hand = hand, lv_instant = instant, card = card})
+	end
+	if amount < 0 and Jen.hv('astronomy', 11) and not no_astronomy then
 		local refund = math.abs(amount) / 4
 		local fav = jl.favhand()
-		if Jen.hv('astronomy', 12) and card then
-			card:do_jen_astronomy(fav, refund)
-		end
 		jl.th(fav)
-		level_up_hand(card, fav, false, refund)
+		level_up_hand(card, fav, false, refund, true)
 	end
-	if Jen.hv('astronomy', 13) and amount > 0 and not card.aurinko_already_repeated then
+	if amount > 0 and Jen.hv('astronomy', 12) and not no_astronomy then
+		local dividend = math.abs(amount) / 10
+		local fav = jl.favhand()
+		jl.th(fav)
+		level_up_hand(card, fav, false, dividend, true)
+	end
+	if Jen.hv('astronomy', 13) and amount >= 1 and not no_astronomy_omega then
 		local pos = jl.handpos(hand)
 		if G.handlist[pos + 1] then
 			jl.th(G.handlist[pos + 1])
-			level_up_hand(card, G.handlist[pos + 1], nil, amount / 2)
-		end
-	end
-	if jl.invalid_number(G.GAME.hands[hand].level) then
-		G.GAME.hands[hand].level = 1e308
-		if not instant then
-			update_hand_text({sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3}, {level=1e308})
-			delay(0.3)
+			level_up_hand(card, G.handlist[pos + 1], nil, amount / 2, true)
 		end
 	end
 end
@@ -10360,6 +10700,48 @@ SMODS.Consumable {
 	}
 
 	SMODS.Joker {
+		key = 'faceless',
+		loc_txt = {
+			name = 'The {C:cry_ascendant}Faceless{} Tyrant',
+			text = {
+				'{C:attention}All playing cards{} contribute to scoring',
+				'Cards in played hand that are already scoring will {C:attention}score twice',
+				'{C:inactive}(Order : Scoring hand > Hand cards > Deck cards > Played hand)',
+				' ',
+				"{C:inactive,E:1}#1#",
+				'{C:dark_edition,s:0.7,E:2}Face art by : CrimboJimbo{}'
+			}
+		},
+		config = {off_op = 0},
+		pos = { x = 0, y = 0 },
+		soul_pos = { x = 1, y = 0, extra = { x = 2, y = 0 }},
+		cost = 250,
+		misc_badge = {
+			colour = G.C.CRY_ASCENDANT,
+			text_colour = G.C.EDITION,
+			text = {
+				'Ko-Fi Juggernaut',
+				'CrimboJimbo',
+				'£600+ Donated'
+			}
+		},
+		rarity = 'jen_ritualistic',
+		unlocked = true,
+		discovered = true,
+		no_doe = true,
+		blueprint_compat = true,
+		eternal_compat = true,
+		perishable_compat = false,
+		immutable = true,
+		unique = true,
+		debuff_immune = true,
+		atlas = 'jenfaceless',
+		loc_vars = function(self, info_queue, center)
+			return {vars = {crimbo_quotes.fuse[math.random(#crimbo_quotes.fuse)]}}
+		end
+	}
+
+	SMODS.Joker {
 		key = 'inhabited',
 		loc_txt = {
 			name = 'The Inhabited Storm of Paranormality',
@@ -10395,7 +10777,13 @@ SMODS.Consumable {
 			if context.individual then
 				if context.cardarea == G.play then
 					if context.other_card.ability.name == 'Steel Card' then
-						local ORDER = context.other_card.order or 1
+						local ORDER = 1
+						for k, v in ipairs(G.play.cards) do
+							if v == context.other_card then
+								ORDER = k
+								break
+							end
+						end
 						if ORDER == 1 then
 							return {
 								x_chips = 2,
@@ -10639,6 +11027,12 @@ function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_jui
 				if self.sell_cost > 0 and self.area then
 					add_malice(self.sell_cost * 3)
 				end
+				if Jen.hv('astronomy', 8) and not self.no_astronomy and (self.facing or 'down') == 'up' and ((self.ability or {}).set or '') ~= 'Voucher' and ((self.ability or {}).set or '') ~= 'Booster' and self.gc and not self:gc().cant_astronomy then
+					local hand = jl.rndhand()
+					jl.th(hand)
+					level_up_hand(self, hand, nil, self.sell_cost / 8)
+					jl.ch()
+				end
 				self:set_edition(nil, true)
 				if self.area then self.area:remove_card(self) end
 				if not self.added_to_deck then self:add_to_deck() end
@@ -10673,11 +11067,8 @@ function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_jui
 				if self.sell_cost > 0 and self.area then
 					add_malice(self.sell_cost * 3)
 				end
-				if Jen.hv('astronomy', 8) and not self.no_astronomy then
+				if Jen.hv('astronomy', 8) and not self.no_astronomy and ((self.ability or {}).set or '') ~= 'Voucher' and ((self.ability or {}).set or '') ~= 'Booster' and self.gc and not self:gc().cant_astronomy then
 					local hand = jl.rndhand()
-					if Jen.hv('astronomy', 10) then
-						self:do_jen_astronomy(hand, self.sell_cost / 8)
-					end
 					jl.th(hand)
 					level_up_hand(self, hand, nil, self.sell_cost / 8)
 					jl.ch()
@@ -10691,11 +11082,8 @@ function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_jui
 		else
 			if self.sell_cost > 0 and not G.screenwipe then
 				add_malice(self.sell_cost * 3)
-				if Jen.hv('astronomy', 8) and not self.no_astronomy then
+				if Jen.hv('astronomy', 8) and not self.no_astronomy and (self.facing or 'down') == 'up' and ((self.ability or {}).set or '') ~= 'Voucher' and ((self.ability or {}).set or '') ~= 'Booster' and self.gc and not self:gc().cant_astronomy then
 					local hand = jl.rndhand()
-					if Jen.hv('astronomy', 10) then
-						self:do_jen_astronomy(hand, self.sell_cost / 8)
-					end
 					jl.th(hand)
 					level_up_hand(self, hand, nil, self.sell_cost / 8)
 					jl.ch()
@@ -10724,6 +11112,12 @@ function Card:shatter()
 				card_status_text(self, 'Resist!', nil, 0.05*self.T.h, G.C.RED, nil, 0.6, nil, nil, 'bm', 'cancel', 1, 0.9)
 				if self.sell_cost > 0 and self.area then
 					add_malice(self.sell_cost * 3)
+				end
+				if Jen.hv('astronomy', 8) and not self.no_astronomy and ((self.ability or {}).set or '') ~= 'Voucher' and ((self.ability or {}).set or '') ~= 'Booster' and self.gc and not self:gc().cant_astronomy then
+					local hand = jl.rndhand()
+					jl.th(hand)
+					level_up_hand(self, hand, nil, self.sell_cost / 8)
+					jl.ch()
 				end
 				self:set_edition(nil, true)
 				if self.area then self.area:remove_card(self) end
@@ -10758,11 +11152,8 @@ function Card:shatter()
 				end
 				if self.sell_cost > 0 and not G.screenwipe then
 					add_malice(self.sell_cost * 3)
-					if Jen.hv('astronomy', 8) and not self.no_astronomy then
+					if Jen.hv('astronomy', 8) and not self.no_astronomy and ((self.ability or {}).set or '') ~= 'Voucher' and ((self.ability or {}).set or '') ~= 'Booster' and self.gc and not self:gc().cant_astronomy then
 						local hand = jl.rndhand()
-						if Jen.hv('astronomy', 10) then
-							self:do_jen_astronomy(hand, self.sell_cost / 8)
-						end
 						jl.th(hand)
 						level_up_hand(self, hand, nil, self.sell_cost / 8)
 						jl.ch()
@@ -10775,11 +11166,8 @@ function Card:shatter()
 		else
 			if self.sell_cost > 0 and not G.screenwipe then
 				add_malice(self.sell_cost * 3)
-				if Jen.hv('astronomy', 8) and not self.no_astronomy then
+				if Jen.hv('astronomy', 8) and not self.no_astronomy and ((self.ability or {}).set or '') ~= 'Voucher' and ((self.ability or {}).set or '') ~= 'Booster' and self.gc and not self:gc().cant_astronomy then
 					local hand = jl.rndhand()
-					if Jen.hv('astronomy', 10) then
-						self:do_jen_astronomy(hand, self.sell_cost / 8)
-					end
 					jl.th(hand)
 					level_up_hand(self, hand, nil, self.sell_cost / 8)
 					jl.ch()
@@ -10894,6 +11282,7 @@ G.FUNCS.jen_openpack = function(e)
 				{ bypass_discovery_center = true, bypass_discovery_ui = true }
 			)
 			ncard:start_materialize()
+			if card.edition then ncard:set_edition(card.edition, true, true) end
 			ncard.from_tag = true
 			ncard.cost = 0
 			ncard:fire()
@@ -12889,12 +13278,58 @@ SMODS.Consumable {
 }
 
 SMODS.Consumable {
+	key = 'debris',
+	loc_txt = {
+		name = 'Debris',
+		text = {
+			'Upgrade a {C:green}random{}',
+			'poker hand by {C:attention}one-twentieth',
+			'{C:inactive,s:0.75}(Cannot be editioned, and does not trigger Tähtitiede or leveling jokers)',
+			'{C:dark_edition,s:0.7,E:2}Art by : Maxie{}'
+		}
+	},
+	set = 'Planet',
+	set_card_type_badge = spacedebris,
+	pos = { x = 6, y = 2 },
+	cost = 1,
+	unlocked = true,
+	discovered = true,
+	cannot_edition = true,
+	cant_astronomy = true,
+	atlas = 'jenacc',
+	in_pool = function() return false end,
+	can_use = function(self, card)
+		return jl.canuse()
+	end,
+	use = function(self, card, area, copier)
+		local hand = jl.rndhand()
+		jl.th(hand)
+		level_up_hand(card, hand, nil, 0.05, true, true, true)
+		jl.ch()
+	end,
+	bulk_use = function(self, card, area, copier, number)
+		local hands = {}
+		for i = 1, number do
+			local hand = jl.rndhand()
+			hands[hand] = (hands[hand] or 0) + 0.05
+		end
+		for k, v in pairs(hands) do
+			update_hand_text({sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3}, {handname=localize(k, 'poker_hands'),chips = G.GAME.hands[k].chips, mult = G.GAME.hands[k].mult, level=G.GAME.hands[k].level})
+			jl.a('+' .. tostring(v), 0.75, 2, G.C.BLUE, 'generic1')
+			delay(0.75)
+			level_up_hand(card, k, nil, v, true, true, true)
+		end
+		jl.ch()
+	end
+}
+
+SMODS.Consumable {
 	key = 'comet',
 	loc_txt = {
 		name = 'Comet',
 		text = {
 			'Upgrade a {C:green}random{}',
-			'poker hand {C:attention}#1#{} time(s)',
+			'poker hand by {C:attention}#1#',
 			'{C:dark_edition,s:0.7,E:2}Art by : spikeberd{}'
 		}
 	},
@@ -12915,14 +13350,14 @@ SMODS.Consumable {
 	use = function(self, card, area, copier)
 		local hand = jl.rndhand()
 		jl.th(hand)
-		level_up_hand(card, hand, nil, math.ceil(card.ability.extra.levels))
+		level_up_hand(card, hand, nil, card.ability.extra.levels)
 		jl.ch()
 	end,
 	bulk_use = function(self,card,area,copier,number)
 		local hands = {}
 		for i = 1, number do
 			local hand = jl.rndhand()
-			hands[hand] = (hands[hand] or 0) + math.ceil(card.ability.extra.levels)
+			hands[hand] = (hands[hand] or 0) + card.ability.extra.levels
 		end
 		for k, v in pairs(hands) do
 			update_hand_text({sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3}, {handname=localize(k, 'poker_hands'),chips = G.GAME.hands[k].chips, mult = G.GAME.hands[k].mult, level=G.GAME.hands[k].level})
@@ -12939,11 +13374,10 @@ SMODS.Consumable {
 	loc_txt = {
 		name = 'Meteor',
 		text = {
-			'Increase the level of a {C:green}random{}',
+			'Upgrades a {C:green}random{}',
 			'poker hand by {C:attention}#1#{},',
-			'{C:red,s:1.2}but decrease{} the level of a {C:attention}different{}',
-			'{C:green}random{} poker hand {C:red}#2#{}',
-			'{C:inactive}(Level cannot go below 1){}',
+			'but {C:red}downgrades{} a {C:attention}different{}',
+			'{C:green}random{} poker hand by {C:red}#2#{}',
 			'{C:dark_edition,s:0.7,E:2}Art by : spikeberd{}'
 		}
 	},
@@ -12957,7 +13391,7 @@ SMODS.Consumable {
 	discovered = true,
 	atlas = 'jenacc',
     loc_vars = function(self, info_queue, center)
-        return {vars = {(((center or {}).ability or {}).extra or {}).levels or 3, math.floor((((center or {}).ability or {}).extra or {}).downgrades or 1)}}
+        return {vars = {(((center or {}).ability or {}).extra or {}).levels or 3, ((((center or {}).ability or {}).extra or {}).downgrades or 1)}}
     end,
 	can_use = function(self, card)
 		return jl.canuse()
@@ -12967,12 +13401,9 @@ SMODS.Consumable {
 		jl.th(hand)
 		level_up_hand(card, hand, nil, card.ability.extra.levels)
 		hand = jl.rndhand(hand)
-		local downgradefactor = math.ceil(card.ability.extra.downgrades)
-		if G.GAME.hands[hand].level - downgradefactor < 1 then
-			downgradefactor = math.max(0, G.GAME.hands[hand].level - 1)
-		end
+		local downgradefactor = card.ability.extra.downgrades
 		jl.th(hand)
-		if downgradefactor < 1 then
+		if downgradefactor <= 0 then
 			jl.a('Safe!', 0.75, 2, G.C.FILTER, 'generic1')
 			delay(0.75)
 		else
@@ -12986,13 +13417,10 @@ SMODS.Consumable {
 			local hand = jl.rndhand()
 			hands[hand] = (hands[hand] or 0) + card.ability.extra.levels
 			hand = jl.rndhand(hand)
-			hands[hand] = (hands[hand] or 0) - math.floor(card.ability.extra.downgrades)
+			hands[hand] = (hands[hand] or 0) - card.ability.extra.downgrades
 		end
 		for k, v in pairs(hands) do
 			local downgradefactor = v
-			if G.GAME.hands[k].level - downgradefactor < 1 then
-				downgradefactor = math.max(0, G.GAME.hands[k].level - 1)
-			end
 			update_hand_text({sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3}, {handname=localize(k, 'poker_hands'),chips = G.GAME.hands[k].chips, mult = G.GAME.hands[k].mult, level=G.GAME.hands[k].level})
 			if v == 0 then
 				jl.a('0', 0.75, 2, G.C.FILTER, 'generic1')
@@ -13100,6 +13528,7 @@ local power_enhancements = {
 	'handy',
 	'juggler',
 	'cash',
+	'potassium',
 	'fizzy',
 	'osmium',
 	'fortune'
@@ -13529,7 +13958,8 @@ SMODS.Consumable {
 			'Creates up to {C:attention}#1#{}',
 			'random {C:attention}consumable(s){}',
 			'{C:inactive}(Copies edition of this card if it has one){}',
-			mayoverflow
+			mayoverflow,
+			'{C:dark_edition,s:0.7,E:2}Art by : patchy{}'
 		}
 	},
 	config = {extra = {extraconsumables = 1}},
@@ -13655,7 +14085,6 @@ SMODS.Consumable {
 			'{C:green}Randomly{} shifts the level of',
 			'{C:attention}all poker hands{} by',
 			'{C:red}#1#{} to {C:attention}#2#{} level(s)',
-			'{C:inactive}(Level cannot go below 1){}',
 			'{C:dark_edition,s:0.7,E:2}Art by : patchy{}'
 		}
 	},
@@ -13687,9 +14116,6 @@ SMODS.Consumable {
 		else
 			for _, hand in ipairs(G.handlist) do
 				local shift = pseudorandom('dysnomia', math.floor(card.ability.extra.down), math.ceil(card.ability.extra.up))
-				if G.GAME.hands[hand].level + shift < 1 then
-					shift = 1 - G.GAME.hands[hand].level
-				end
 				jl.th(hand)
 				if shift == 0 then
 					jl.a('0', 0.75, 2, G.C.FILTER, 'generic1')
@@ -13721,9 +14147,6 @@ SMODS.Consumable {
 				end
 			end
 			for hand, lv in pairs(hands) do
-				if G.GAME.hands[hand].level + lv < 1 then
-					lv = 1 - G.GAME.hands[hand].level
-				end
 				jl.th(hand)
 				if lv == 0 then
 					jl.a('0', 0.75, 2, G.C.FILTER, 'generic1')
@@ -13745,8 +14168,8 @@ SMODS.Consumable {
 		name = 'Asteroid',
 		text = {
 			'Each {C:spectral}Spectral{} card held in the consumable tray',
-			'{C:planet}levels up{} a {C:attention}random {C:purple}poker hand',
-			'by {C:attention}#1#{} level(s)',
+			'{C:planet}levels up{} a {C:attention}random discovered',
+			'{C:purple}poker hand{} by {C:attention}#1#',
 			'{C:dark_edition,s:0.7,E:2}Art by : abreaker{}'
 		}
 	},
@@ -13776,7 +14199,7 @@ SMODS.Consumable {
 					hand = jl.rndhand()
 					jl.th(hand)
 					Q(function() v:juice_up(1, 0.5) return true end)
-					level_up_hand(card, hand, nil, math.ceil(card.ability.extra.levels))
+					level_up_hand(card, hand, nil, card.ability.extra.levels)
 				end
 			end
 		end
@@ -13797,7 +14220,7 @@ SMODS.Consumable {
 					hand = jl.rndhand()
 					jl.th(hand)
 					Q(function() v:juice_up(1, 0.5) return true end)
-					level_up_hand(card, hand, nil, math.ceil(card.ability.extra.levels))
+					level_up_hand(card, hand, nil, card.ability.extra.levels)
 				end
 			end
 		end
@@ -13816,8 +14239,8 @@ SMODS.Consumable {
 		name = 'Voyager 1',
 		text = {
 			'Each {C:planet}Planet{} card held in the consumable tray',
-			'{C:planet}levels up{} a {C:attention}random {C:purple}poker hand',
-			'by {C:attention}#1#{} level(s)',
+			'{C:planet}levels up{} a {C:attention}random discovered',
+			'{C:purple}poker hand{} by {C:attention}#1#',
 			'{C:dark_edition,s:0.7,E:2}Art by : ThreeCubed{}'
 		}
 	},
@@ -13848,7 +14271,7 @@ SMODS.Consumable {
 					hand = jl.rndhand()
 					jl.th(hand)
 					Q(function() v:juice_up(1, 0.5) return true end)
-					level_up_hand(card, hand, nil, math.ceil(card.ability.extra.levels))
+					level_up_hand(card, hand, nil, card.ability.extra.levels)
 				end
 			end
 		end
@@ -13869,7 +14292,7 @@ SMODS.Consumable {
 					hand = jl.rndhand()
 					jl.th(hand)
 					Q(function() v:juice_up(1, 0.5) return true end)
-					level_up_hand(card, hand, nil, math.ceil(card.ability.extra.levels))
+					level_up_hand(card, hand, nil, card.ability.extra.levels)
 				end
 			end
 		end
@@ -13888,8 +14311,8 @@ SMODS.Consumable {
 		name = 'Nebula',
 		text = {
 			'Each {C:tarot}Tarot{} card held in the consumable tray',
-			'{C:planet}levels up{} a {C:attention}random {C:purple}poker hand',
-			'by {C:attention}#1#{} level(s)',
+			'{C:planet}levels up{} a {C:attention}random discovered',
+			'{C:purple}poker hand{} by {C:attention}#1#',
 			'{C:dark_edition,s:0.7,E:2}Art by : hexatheboi{}'
 		}
 	},
@@ -13920,7 +14343,7 @@ SMODS.Consumable {
 					hand = jl.rndhand()
 					jl.th(hand)
 					Q(function() v:juice_up(1, 0.5) return true end)
-					level_up_hand(card, hand, nil, math.ceil(card.ability.extra.levels))
+					level_up_hand(card, hand, nil, card.ability.extra.levels)
 				end
 			end
 		end
@@ -13941,7 +14364,7 @@ SMODS.Consumable {
 					hand = jl.rndhand()
 					jl.th(hand)
 					Q(function() v:juice_up(1, 0.5) return true end)
-					level_up_hand(card, hand, nil, math.ceil(card.ability.extra.levels))
+					level_up_hand(card, hand, nil, card.ability.extra.levels)
 				end
 			end
 		end
@@ -13973,6 +14396,7 @@ SMODS.Consumable {
 	unlocked = true,
 	discovered = true,
 	atlas = 'jenplanets',
+	cannot_edition = true,
 	can_use = function(self, card)
 		return jl.canuse()
 	end,
@@ -13987,10 +14411,11 @@ SMODS.Consumable {
 			end
 			if v.level > 1 then
 				levels = levels + math.max(0, v.level - 1)
-				level_up_hand(nil, k, true, -v.level + 1)
+				level_up_hand(nil, k, true, -v.level + 1, true, true)
 			end
 		end
 		jl.th('all')
+		delay(1)
 		levels = jl.round(levels / numhands, 2)
 		Q(function()
 			play_sound('gong', 0.94, 0.3)
@@ -13999,9 +14424,9 @@ SMODS.Consumable {
 			card:juice_up(1, 0.5)
 		return true end)
 		jl.h(localize('k_all_hands'), '=', '=', '=' .. tostring(levels + 1), true)
-		delay(1)
+		delay(3)
 		for k, v in pairs(HANDS) do
-			level_up_hand(nil, k, true, levels)
+			level_up_hand(nil, k, true, levels, true, true)
 		end
 		jl.ch()
 	end,
@@ -14020,6 +14445,7 @@ SMODS.Consumable {
 			end
 		end
 		jl.th('all')
+		delay(1)
 		levels = jl.round(levels / numhands, 2)
 		Q(function()
 			play_sound('gong', 0.94, 0.3)
@@ -14030,7 +14456,7 @@ SMODS.Consumable {
 		jl.h(localize('k_all_hands'), '=', '=', '=' .. tostring(levels + 1), true)
 		delay(1)
 		for k, v in pairs(HANDS) do
-			level_up_hand(nil, k, true, levels)
+			level_up_hand(nil, k, true, levels, true, true)
 		end
 		jl.ch()
 	end
@@ -14165,7 +14591,6 @@ SMODS.Consumable {
 			'all {C:attention}other {C:purple}poker hands',
 			'by {C:attention}half of that amount{}',
 			'{C:inactive}(#2#){}',
-			'{C:inactive}(Level {C:red}can {C:inactive}go below 1){}',
 			'{C:dark_edition,s:0.7,E:2}Art by : ThreeCubed{}'
 		}
 	},
@@ -14406,8 +14831,8 @@ SMODS.Consumable {
 		name = 'Io',
 		text = {
 			'Each {C:cry_code}Code{} card held in the consumable tray',
-			'{C:planet}levels up{} a {C:attention}random {C:purple}poker hand',
-			'by {C:attention}#1#{} level(s)',
+			'{C:planet}levels up{} a {C:attention}random discovered',
+			'{C:purple}poker hand{} by {C:attention}#1#',
 			'{C:dark_edition,s:0.7,E:2}Art by : ThreeCubed{}'
 		}
 	},
@@ -14438,7 +14863,7 @@ SMODS.Consumable {
 					hand = jl.rndhand()
 					jl.th(hand)
 					Q(function() v:juice_up(1, 0.5) return true end)
-					level_up_hand(card, hand, nil, math.ceil(card.ability.extra.levels))
+					level_up_hand(card, hand, nil, card.ability.extra.levels)
 				end
 			end
 		end
@@ -14459,7 +14884,7 @@ SMODS.Consumable {
 					hand = jl.rndhand()
 					jl.th(hand)
 					Q(function() v:juice_up(1, 0.5) return true end)
-					level_up_hand(card, hand, nil, math.ceil(card.ability.extra.levels))
+					level_up_hand(card, hand, nil, card.ability.extra.levels)
 				end
 			end
 		end
@@ -14505,8 +14930,9 @@ SMODS.Consumable {
 		local did_exchange = false
 		local target = G.consumeables.cards[#G.consumeables.cards]
 		if target and not (target.ability or {}).eternal then
-			if target.sell_cost >= card.ability.exchange_rate then
-				local budget = target.sell_cost
+			local absolute_value = target.sell_cost / target:getQty()
+			if absolute_value >= card.ability.exchange_rate then
+				local budget = absolute_value
 				while budget >= card.ability.exchange_rate do
 					did_exchange = true
 					for i = 1, math.ceil(card.ability.exchange) do
@@ -14531,15 +14957,16 @@ SMODS.Consumable {
 			jl.a('No valid consumable!', G.SETTINGS.GAMESPEED, 0.65, G.C.RED, 'timpani')
 			jl.rd(1)
 		else
-			Q(function() target:start_dissolve() return true end)
+			Q(function() if target:getQty() > 1 then target:subQty(1) else target:start_dissolve() end return true end)
 		end
 	end,
 	bulk_use = function(self, card, area, copier, number)
 		local did_exchange = false
 		local target = G.consumeables.cards[#G.consumeables.cards]
 		if target and not (target.ability or {}).eternal then
-			if target.sell_cost >= card.ability.exchange_rate then
-				local budget = target.sell_cost
+			local absolute_value = target.sell_cost / target:getQty()
+			if absolute_value >= card.ability.exchange_rate then
+				local budget = absolute_value
 				while budget >= card.ability.exchange_rate do
 					did_exchange = true
 					for i = 1, math.ceil(card.ability.exchange) do
@@ -14564,7 +14991,7 @@ SMODS.Consumable {
 			jl.a('No valid consumable!', G.SETTINGS.GAMESPEED, 0.65, G.C.RED, 'timpani')
 			jl.rd(1)
 		else
-			Q(function() target:start_dissolve() return true end)
+			Q(function() if target:getQty() > 1 then target:subQty(1) else target:start_dissolve() end return true end)
 		end
 	end
 }
@@ -14752,7 +15179,215 @@ SMODS.Consumable {
 		Q(function() play_sound('multhit2') return true end)
 		update_operator_display_custom(' ', G.C.WHITE)
 		delay(1)
+		jl.th(hand)
+		update_operator_display()
+		delay(1)
+		jl.ch()
     end
+}
+
+SMODS.Consumable {
+	key = 'mimas',
+	loc_txt = {
+		name = 'Mimas',
+		text = {
+			'Increases the {C:attention}most played poker hand\'s{}',
+			'{C:chips}Chips-per-level{} and {C:mult}Mult-per-level',
+			'by {C:attention}one-fifth of the square root{} of its {C:attention}current {C:chips}Chips{} & {C:mult}Mult{},',
+			'then {C:attention}increase the hand\'s current {C:chips}Chips{} & {C:mult}Mult',
+			'to reflect on its new {C:chips}Chips-per-level{} and {C:mult}Mult-per-level',
+			'{C:inactive}(#1#)',
+			'{C:dark_edition,s:0.7,E:2}Art by : smg9000{}'
+		}
+	},
+	set_card_type_badge = natsat,
+	set = 'Planet',
+	pos = { x = 0, y = 4 },
+	cost = 4,
+	unlocked = true,
+	discovered = true,
+	atlas = 'jenplanets',
+    loc_vars = function(self, info_queue, center)
+        return {vars = {localize(jl.favhand(), 'poker_hands')}}
+    end,
+	can_use = function(self, card)
+		return jl.canuse()
+	end,
+	use = function(self, card, area, copier)
+		local hand = jl.favhand()
+		local data = G.GAME.hands[hand]
+		update_operator_display_custom('Per Lv.', G.C.WHITE)
+		jl.h(localize(hand, 'poker_hands'), data.l_chips, data.l_mult, data.level)
+		local old_lchips = G.GAME.hands[hand].l_chips
+		local old_lmult = G.GAME.hands[hand].l_mult
+		local added_chips = (G.GAME.hands[hand].chips^.5) / 5
+		local added_mult = (G.GAME.hands[hand].mult^.5) / 5
+		G.GAME.hands[hand].l_chips = old_lchips + added_chips
+		G.GAME.hands[hand].l_mult = old_lmult + added_mult
+		G.E_MANAGER:add_event(Event({
+			trigger = "after",
+			delay = 0.2,
+			func = function()
+				play_sound("tarot1")
+				card:juice_up(0.8, 0.5)
+				G.TAROT_INTERRUPT_PULSE = true
+				return true
+			end,
+		}))
+		update_hand_text({ delay = 0 }, { mult = G.GAME.hands[hand].l_mult, StatusText = true })
+		G.E_MANAGER:add_event(Event({
+			trigger = "after",
+			delay = 0.9,
+			func = function()
+				play_sound("tarot1")
+				card:juice_up(0.8, 0.5)
+				G.TAROT_INTERRUPT_PULSE = nil
+				return true
+			end,
+		}))
+		update_hand_text({ delay = 0 }, { chips = G.GAME.hands[hand].l_chips, StatusText = true })
+		delay(4)
+		update_operator_display()
+		jl.th(hand)
+		G.GAME.hands[hand].chips = G.GAME.hands[hand].chips + (added_chips * data.level)
+		G.GAME.hands[hand].mult = G.GAME.hands[hand].mult + (added_mult * data.level)
+		G.E_MANAGER:add_event(Event({
+			trigger = "after",
+			delay = 0.2,
+			func = function()
+				play_sound("tarot1")
+				card:juice_up(0.8, 0.5)
+				G.TAROT_INTERRUPT_PULSE = true
+				return true
+			end,
+		}))
+		update_hand_text({ delay = 0 }, { mult = G.GAME.hands[hand].mult, StatusText = true })
+		G.E_MANAGER:add_event(Event({
+			trigger = "after",
+			delay = 0.9,
+			func = function()
+				play_sound("tarot1")
+				card:juice_up(0.8, 0.5)
+				G.TAROT_INTERRUPT_PULSE = nil
+				return true
+			end,
+		}))
+		update_hand_text({ delay = 0 }, { chips = G.GAME.hands[hand].chips, StatusText = true })
+		delay(4)
+		jl.ch()
+	end,
+	bulk_use = function(self, card, area, copier, number)
+		local hand = jl.favhand()
+		local data = G.GAME.hands[hand]
+		update_operator_display_custom('Per Lv.', G.C.WHITE)
+		jl.h(localize(hand, 'poker_hands'), data.l_chips, data.l_mult, data.level)
+		local old_lchips = G.GAME.hands[hand].l_chips
+		local old_lmult = G.GAME.hands[hand].l_mult
+		local old_chips = G.GAME.hands[hand].chips
+		local old_mult = G.GAME.hands[hand].mult
+		local added_chips = 0
+		local added_mult = 0
+		for i = 1, math.max(1, number) do
+			added_chips = added_chips + ((old_chips^.5) / 5)
+			added_mult = added_mult + ((old_mult^.5) / 5)
+			old_chips = old_chips + (added_chips * data.level)
+			old_mult = old_mult + (added_mult * data.level)
+		end
+		G.GAME.hands[hand].l_chips = old_lchips + added_chips
+		G.GAME.hands[hand].l_mult = old_lmult + added_mult
+		G.E_MANAGER:add_event(Event({
+			trigger = "after",
+			delay = 0.2,
+			func = function()
+				play_sound("tarot1")
+				card:juice_up(0.8, 0.5)
+				G.TAROT_INTERRUPT_PULSE = true
+				return true
+			end,
+		}))
+		update_hand_text({ delay = 0 }, { mult = G.GAME.hands[hand].l_mult, StatusText = true })
+		G.E_MANAGER:add_event(Event({
+			trigger = "after",
+			delay = 0.9,
+			func = function()
+				play_sound("tarot1")
+				card:juice_up(0.8, 0.5)
+				G.TAROT_INTERRUPT_PULSE = nil
+				return true
+			end,
+		}))
+		update_hand_text({ delay = 0 }, { chips = G.GAME.hands[hand].l_chips, StatusText = true })
+		delay(4)
+		update_operator_display()
+		jl.th(hand)
+		G.GAME.hands[hand].chips = old_chips
+		G.GAME.hands[hand].mult = old_mult
+		G.E_MANAGER:add_event(Event({
+			trigger = "after",
+			delay = 0.2,
+			func = function()
+				play_sound("tarot1")
+				card:juice_up(0.8, 0.5)
+				G.TAROT_INTERRUPT_PULSE = true
+				return true
+			end,
+		}))
+		update_hand_text({ delay = 0 }, { mult = G.GAME.hands[hand].mult, StatusText = true })
+		G.E_MANAGER:add_event(Event({
+			trigger = "after",
+			delay = 0.9,
+			func = function()
+				play_sound("tarot1")
+				card:juice_up(0.8, 0.5)
+				G.TAROT_INTERRUPT_PULSE = nil
+				return true
+			end,
+		}))
+		update_hand_text({ delay = 0 }, { chips = G.GAME.hands[hand].chips, StatusText = true })
+		delay(4)
+		jl.ch()
+	end
+}
+
+SMODS.Consumable {
+	key = 'enceladus',
+	loc_txt = {
+		name = 'Enceladus',
+		text = {
+			'Gain {C:money}$#1#{} for each time',
+			'your {C:attention}most played poker hand{}',
+			'has been played',
+			'{C:inactive}(Max of $#2#)',
+			'{C:inactive}(Currently #3#, {C:money}$#4#{C:inactive})',
+			'{C:dark_edition,s:0.7,E:2}Art by : patchy{}'
+		}
+	},
+	config = {max_payout = 50, earnings = 1},
+	set_card_type_badge = natsat,
+	set = 'Planet',
+	pos = { x = 1, y = 4 },
+	cost = 3,
+	unlocked = true,
+	discovered = true,
+	atlas = 'jenplanets',
+    loc_vars = function(self, info_queue, center)
+        return {vars = {((center or {}).ability or {}).earnings or 1, ((center or {}).ability or {}).max_payout or 50, localize(jl.favhand(), 'poker_hands'), (((center or {}).ability or {}).earnings or 1) * ((((G.GAME or {}).hands or {})[jl.favhand()] or {}).played or 0)}}
+    end,
+	can_use = function(self, card)
+		return jl.canuse()
+	end,
+	use = function(self, card, area, copier)
+		local hand = jl.favhand()
+		delay(1)
+		ease_dollars(math.min(G.GAME.hands[hand].played * card.ability.earnings, card.ability.max_payout))
+		Q(function() card:juice_up(0.8, 0.5) return true end)
+	end,
+	bulk_use = function(self, card, area, copier, number)
+		local hand = jl.favhand()
+		delay(1)
+		ease_dollars(math.min(G.GAME.hands[hand].played * card.ability.earnings, card.ability.max_payout) * number)
+		Q(function() card:juice_up(0.8, 0.5) return true end)
+	end
 }
 
 SMODS.Consumable {
@@ -15153,11 +15788,11 @@ SMODS.Consumable {
 			'then for each card in your deck',
 			'that is {C:attention}identical in rank and suit',
 			'to the shown card, {C:planet}upgrade {C:attention}all poker hands',
-			'Level amount starts at {C:attention}0.5{}, and {C:attention}doubles each time',
+			'Level amount starts at {C:attention}0.25{}, and {C:attention}doubles each time',
 			'{C:inactive}(ex. if you had 3 Jack of Hearts and',
 			'{C:inactive}Jack of Hearts was the shown card,',
 			'{C:inactive}all poker hands would level up',
-			'{C:inactive}by +0.5, then by +1, then by +2, for a total of +3.5)',
+			'{C:inactive}by +0.25, then by +0.5, then by +1, for a total of +1.75)',
 			'{C:dark_edition,s:0.7,E:2}Art by : patchy{}'
 		}
 	},
@@ -15188,7 +15823,7 @@ SMODS.Consumable {
 			jl.hm('x' .. identical)
 			delay(3)
 			for i = 1, identical do
-				cumulative = cumulative + ((2 ^ (i-1))/2)
+				cumulative = cumulative + ((2 ^ (i-1))/4)
 				play_sound_q('button', 1.1)
 				jl.hcm('+' .. number_format(cumulative), i == identical and '' or ('x' .. (identical - i)))
 				delay(0.25)
@@ -15227,7 +15862,7 @@ SMODS.Consumable {
 				jl.hm('x' .. identical)
 				delay(3)
 				for i = 1, identical do
-					cumulative = cumulative + ((2 ^ (i-1))/2)
+					cumulative = cumulative + ((2 ^ (i-1))/4)
 					play_sound_q('button', 1.1)
 					jl.hcm('+' .. number_format(cumulative), i == identical and '' or ('x' .. (identical - i)))
 					delay(0.25)
@@ -15249,7 +15884,6 @@ SMODS.Consumable {
 	end
 }
 
---[[
 SMODS.Consumable {
 	key = 'orcus',
 	loc_txt = {
@@ -15272,15 +15906,277 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, center)
 		local fav = jl.favhand()
 		local hands = jl.adjacenthands(fav)
-        return {vars = {hands.backhand and localize(hands.backhand, 'poker_hands') or '<none>', localize(hands.backhand, 'poker_hands')}}
+        return {vars = {hands.backhand and localize(hands.backhand, 'poker_hands') or '<none>', localize(fav, 'poker_hands'), hands.forehand and localize(hands.forehand, 'poker_hands') or '<none>'}}
     end,
 	can_use = function(self, card)
 		return jl.canuse()
 	end,
 	use = function(self, card, area, copier)
+		local fav = jl.favhand()
+		local hands = jl.adjacenthands(fav)
+		local lv = 0
+		local levels_siphoned = 0
+		if hands.backhand then
+			if G.GAME.hands[hands.backhand].level > 0 then
+				jl.th(hands.backhand)
+				lv = G.GAME.hands[hands.backhand].level / 2
+				level_up_hand(card, hands.backhand, nil, -lv)
+				levels_siphoned = lv
+			end
+		end
+		if hands.forehand then
+			if G.GAME.hands[hands.forehand].level > 0 then
+				jl.th(hands.forehand)
+				lv = G.GAME.hands[hands.forehand].level / 2
+				level_up_hand(card, hands.forehand, nil, -lv)
+				levels_siphoned = levels_siphoned + lv
+			end
+		end
+		card:do_jen_astronomy(fav, levels_siphoned)
+		jl.th(fav)
+		level_up_hand(card, fav, nil, levels_siphoned)
+		jl.ch()
+	end,
+	bulk_use = function(self, card, area, copier, number)
+		local fav = jl.favhand()
+		local hands = jl.adjacenthands(fav)
+		local lv = 0
+		local levels_siphoned = 0
+		local divisor = 1 / (2^(number-1))
+		if hands.backhand then
+			if G.GAME.hands[hands.backhand].level > 0 then
+				jl.th(hands.backhand)
+				lv = (G.GAME.hands[hands.backhand].level/2) / divisor
+				level_up_hand(card, hands.backhand, nil, -lv)
+				levels_siphoned = lv
+			end
+		end
+		if hands.forehand then
+			if G.GAME.hands[hands.forehand].level > 0 then
+				jl.th(hands.forehand)
+				lv = (G.GAME.hands[hands.forehand].level/2) / divisor
+				level_up_hand(card, hands.forehand, nil, -lv)
+				levels_siphoned = levels_siphoned + lv
+			end
+		end
+		card:do_jen_astronomy(fav, levels_siphoned)
+		jl.th(fav)
+		level_up_hand(card, fav, nil, levels_siphoned)
+		jl.ch()
 	end
 }
-]]
+
+SMODS.Consumable {
+	key = 'vanth',
+	loc_txt = {
+		name = 'Vanth',
+		text = {
+			'{C:attention}Rounds{} all hand levels {C:attention}up{}',
+			'to the {C:attention}next integer',
+			'{C:inactive}(ex. 2.43 >becomes> 3, 5.81 >becomes> 6)',
+			'{C:dark_edition,s:0.7,E:2}Art by : patchy{}'
+		}
+	},
+	set = 'Planet',
+	pos = { x = 0, y = 9 },
+	cost = 3,
+	unlocked = true,
+	discovered = true,
+	cannot_edition = true,
+	atlas = 'jenplanets',
+	can_use = function(self, card)
+		return jl.canuse()
+	end,
+	use = function(self, card, area, copier)
+		for k, v in ipairs(G.handlist) do
+			if math.ceil(G.GAME.hands[v].level) ~= G.GAME.hands[v].level then
+				level_up_hand(nil, v, true, math.ceil(G.GAME.hands[v].level) - G.GAME.hands[v].level, true, true)
+			end
+		end
+		jl.th('all')
+		delay(1)
+		jl.h(localize('k_all_hands'), '+', '+', '=ceil(#)', true)
+		Q(function() card:juice_up(1, 0.5) play_sound('highlight2', 1, 0.6) return true end)
+		delay(3)
+		jl.ch()
+	end,
+	bulk_use = function(self, card, area, copier, number)
+		for k, v in ipairs(G.handlist) do
+			if math.ceil(G.GAME.hands[v].level) ~= G.GAME.hands[v].level then
+				level_up_hand(nil, v, true, math.ceil(G.GAME.hands[v].level) - G.GAME.hands[v].level, true, true)
+			end
+		end
+		jl.th('all')
+		delay(1)
+		jl.h(localize('k_all_hands'), '+', '+', '=ceil(#)', true)
+		Q(function() card:juice_up(1, 0.5) play_sound('highlight2', 1, 0.6) return true end)
+		delay(3)
+		jl.ch()
+	end
+}
+
+SMODS.Consumable {
+	key = 'charon',
+	loc_txt = {
+		name = 'Charon',
+		text = {
+			'{C:attention}Two {C:green}random {C:attention}discovered{} poker hands',
+			'will {C:attention}swap over{} their statistics',
+			'{C:inactive}(Chips, Mult, Chips/Level, Mult/Level, Level, Times Played)',
+			'{C:dark_edition,s:0.7,E:2}Art by : patchy{}'
+		}
+	},
+	set = 'Planet',
+	pos = { x = 1, y = 9 },
+	cost = 6,
+	unlocked = true,
+	discovered = true,
+	cannot_edition = true,
+	ignore_allplanets = true,
+	atlas = 'jenplanets',
+	can_use = function(self, card)
+		return jl.canuse()
+	end,
+	use = function(self, card, area, copier)
+		local hand1 = jl.rndhand()
+		local hand2 = jl.rndhand(hand1)
+		local card1 = jl.rawcard(jl.planethand(hand1), 1, 0.5)
+		local card2 = jl.rawcard(jl.planethand(hand2), 1, 1.5)
+		local hand1data = {
+			chips = G.GAME.hands[hand1].chips,
+			l_chips = G.GAME.hands[hand1].l_chips,
+			mult = G.GAME.hands[hand1].mult,
+			l_mult = G.GAME.hands[hand1].l_mult,
+			level = G.GAME.hands[hand1].level,
+			played = G.GAME.hands[hand1].played
+		}
+		if (G.SETTINGS.FASTFORWARD or 0) <= 0 then
+			jl.h('', '', '', '')
+			delay(1)
+			jl.th(hand1)
+			Q(function() card1:juice_up(0.3, 0.5); return true end)
+			delay(2)
+			update_operator_display_custom('Per Lv.', G.C.WHITE)
+			jl.hcm(G.GAME.hands[hand1].l_chips, G.GAME.hands[hand1].l_mult)
+			delay(2)
+			update_operator_display()
+			jl.th(hand2)
+			Q(function() card2:juice_up(0.3, 0.5); return true end)
+			delay(2)
+			update_operator_display_custom('Per Lv.', G.C.WHITE)
+			jl.hcm(G.GAME.hands[hand2].l_chips, G.GAME.hands[hand2].l_mult)
+			delay(2)
+			update_operator_display()
+			jl.h('', '', '', '')
+		else
+			jl.ch()
+		end
+		delay(1)
+		Q(function() card:juice_up(0.3, 0.5); play_sound('tarot1'); return true end)
+		delay(0.5)
+		Q(function() card1:fake_dissolve(); card2:fake_dissolve(); return true end)
+		delay(0.5)
+		card:speak('Swapped!')
+		Q(function() card1:set_ability(G.P_CENTERS[jl.planethand(hand2)]); card2:set_ability(G.P_CENTERS[jl.planethand(hand1)]); card1:start_materialize(); card2:start_materialize(); play_sound('jen_misc1'); return true end)
+		G.GAME.hands[hand1].chips = G.GAME.hands[hand2].chips
+		G.GAME.hands[hand1].l_chips = G.GAME.hands[hand2].l_chips
+		G.GAME.hands[hand1].mult = G.GAME.hands[hand2].mult
+		G.GAME.hands[hand1].l_mult = G.GAME.hands[hand2].l_mult
+		G.GAME.hands[hand1].level = G.GAME.hands[hand2].level
+		G.GAME.hands[hand1].played = G.GAME.hands[hand2].played
+		G.GAME.hands[hand2].chips = hand1data.chips
+		G.GAME.hands[hand2].l_chips = hand1data.l_chips
+		G.GAME.hands[hand2].mult = hand1data.mult
+		G.GAME.hands[hand2].l_mult = hand1data.l_mult
+		G.GAME.hands[hand2].level = hand1data.level
+		G.GAME.hands[hand2].played = hand1data.played
+		delay(1)
+		if (G.SETTINGS.FASTFORWARD or 0) <= 0 then
+			jl.th(hand2)
+			Q(function() card1:juice_up(0.3, 0.5) return true end)
+			delay(2)
+			update_operator_display_custom('Per Lv.', G.C.WHITE)
+			jl.hcm(G.GAME.hands[hand2].l_chips, G.GAME.hands[hand2].l_mult)
+			delay(2)
+			update_operator_display()
+			jl.th(hand1)
+			Q(function() card2:juice_up(0.3, 0.5) return true end)
+			delay(2)
+			update_operator_display_custom('Per Lv.', G.C.WHITE)
+			jl.hcm(G.GAME.hands[hand1].l_chips, G.GAME.hands[hand1].l_mult)
+			delay(2)
+			update_operator_display()
+			jl.ch()
+		end
+		Q(function() card1:destroy(); card2:destroy(); hand1data = nil; return true end)
+	end
+}
+
+SMODS.Consumable {
+	key = 'haumea',
+	loc_txt = {
+		name = 'Haumea',
+		text = {
+			'Your {C:red}most played hand{} will',
+			'{C:planet}upgrade{} the {C:blue}poker hands{} that are',
+			'{C:attention}adjacent{} to it by a {C:attention}fourth{}',
+			'of its current level',
+			'{C:inactive}({C:blue}#1# {C:green}<< {C:red}#2# {C:green}>> {C:blue}#3#{C:inactive})',
+			'{C:dark_edition,s:0.7,E:2}Art by : patchy{}'
+		}
+	},
+	set = 'Planet',
+	ayanami = true,
+	pos = { x = 2, y = 9 },
+	cost = 5,
+	unlocked = true,
+	discovered = true,
+	atlas = 'jenplanets',
+    loc_vars = function(self, info_queue, center)
+		local fav = jl.favhand()
+		local hands = jl.adjacenthands(fav)
+        return {vars = {hands.backhand and localize(hands.backhand, 'poker_hands') or '<none>', localize(fav, 'poker_hands'), hands.forehand and localize(hands.forehand, 'poker_hands') or '<none>'}}
+    end,
+	can_use = function(self, card)
+		return jl.canuse()
+	end,
+	use = function(self, card, area, copier)
+		local fav = jl.favhand()
+		local hands = jl.adjacenthands(fav)
+		local mod = G.GAME.hands[fav].level / 4
+		if G.GAME.hands[fav].level > 0 then
+			if hands.backhand then
+				card:do_jen_astronomy(hands.backhand, mod)
+				jl.th(hands.backhand)
+				level_up_hand(card, hands.backhand, nil, mod)
+			end
+			if hands.forehand then
+				card:do_jen_astronomy(hands.forehand, mod)
+				jl.th(hands.forehand)
+				level_up_hand(card, hands.forehand, nil, mod)
+			end
+		end
+		jl.ch()
+	end,
+	bulk_use = function(self, card, area, copier, number)
+		local fav = jl.favhand()
+		local hands = jl.adjacenthands(fav)
+		local mod = (G.GAME.hands[hand].level / 4) * number
+		if G.GAME.hands[fav].level > 0 then
+			if hands.backhand then
+				card:do_jen_astronomy(hands.backhand, mod)
+				jl.th(hands.backhand)
+				level_up_hand(card, hands.backhand, nil, mod)
+			end
+			if hands.forehand then
+				card:do_jen_astronomy(hands.forehand, mod)
+				jl.th(hands.forehand)
+				level_up_hand(card, hands.forehand, nil, mod)
+			end
+		end
+		jl.ch()
+	end
+}
 
 --Omega CONSUMABLES
 
@@ -16427,7 +17323,7 @@ SMODS.Consumable {
 	use = function(self, card, area, copier)
 		for k, v in pairs(G.P_CENTERS) do
 			if v.set == 'Joker' and string.sub(k, 1, 6) == 'j_jen_' and (tostring(v.rarity) == 'cry_epic' or (type(v.rarity) == 'number' and v.rarity == 4)) then
-				local card2 = create_card('Joker', G.jokers, nil, nil, nil, nil, v.key, 'wraith_omega')
+				local card2 = jl.card(v.key)
 				card2:add_to_deck()
 				G.jokers:emplace(card2)
 			end
@@ -16848,50 +17744,70 @@ local vchrs = {
 			},
 			{
 				'{C:attention}Leftover rounds{} on used {C:colourcard}Colour{} cards',
-				'are {C:attention}randomly redistributed{} to other {C:colourcard}Colour{} cards'
+				'are {C:attention}randomly redistributed{} to other {C:colourcard}Colour{} cards',
+				' ',
+				redeemprev
 			},
 			{
 				'{C:dark_edition}Polychrome {C:colourcard}Colour{} cards',
 				'add {C:attention}half of their max rounds{}',
-				'to {C:attention}all other {C:colourcard}Colour{} cards when used'
+				'to {C:attention}all other {C:colourcard}Colour{} cards when used',
+				' ',
+				redeemprev
 			},
 			{
 				'{C:colourcard}Colour{} cards increase the {C:planet}level',
 				'of {C:attention}all poker hands{} by the following equation when used:',
-				'{X:attention,C:white}(Current Rounds / 2) + (Max Rounds / 4) + (Current Charges * 5)'
+				'{X:attention,C:white}(Current Rounds / 2) + (Max Rounds / 4) + (Current Charges * 5)',
+				' ',
+				redeemprev
 			},
 			{
 				'At the end of round,',
 				'{C:colourcard}Colour{} cards in the consumable tray',
-				'{C:attention}gain a round{} for every {C:attention}round of progress they already have'
+				'{C:attention}gain a round{} for every {C:attention}round of progress they already have',
+				' ',
+				redeemprev
 			},
 			{
 				'At the end of round,',
 				'{C:colourcard}Colour{} cards in the consumable tray',
-				'{C:attention}gain progress equal to their maximum progress'
+				'{C:attention}gain progress equal to their maximum progress',
+				' ',
+				redeemprev
 			},
 			{
 				'Adds {C:attention}cycles{} to the end-of-round progression process',
 				'of all {C:colourcard}Colour{} cards in the consumable tray, starting at {C:attention}one cycle',
-				'Multiply number of cycles by {C:attention}the amount of progress{} they currently have {C:attention}plus one'
+				'Multiply number of cycles by {C:attention}the amount of progress{} they currently have {C:attention}plus one',
+				' ',
+				redeemprev
 			},
 			{
 				'Number of {C:attention}cycles{} from {C:attention}Värimaailma VII',
 				'is {C:attention}multiplied{} by the {C:colourcard}Colour{} card\'s',
-				'{C:attention}maximum amount of progress'
+				'{C:attention}maximum amount of progress',
+				' ',
+				redeemprev
 			},
 			{
 				'Number of {C:attention}cycles{} that {C:attention}Värimaailma VII',
-				'starts at is {C:attention}increased{} from one cycle to {C:attention}three cycles'
+				'starts at is {C:attention}increased{} from one cycle to {C:attention}three cycles',
+				' ',
+				redeemprev
 			},
 			{
 				'Removes the {C:dark_edition}Polychrome{}',
-				'requirement from {C:attention}Värimaailma III'
+				'requirement from {C:attention}Värimaailma III',
+				' ',
+				redeemprev
 			},
 			{
 				'{C:colourcard}Colour{} cards add their',
 				'{C:attention}current charges{} as {C:attention}rounds',
-				'to {C:attention}all other {C:colourcard}Colour{} cards when used'
+				'to {C:attention}all other {C:colourcard}Colour{} cards when used',
+				' ',
+				redeemprev
 			},
 			{
 				'{C:dark_edition}Negative {C:colourcard}Colour{} cards add',
@@ -16904,6 +17820,8 @@ local vchrs = {
 				'{C:inactive}D = Target\'s current progress',
 				'{C:inactive}E = Negative\'s current charges + 1',
 				'{C:inactive}F = Number of Colour cards + 1',
+				' ',
+				redeemprev
  			},
 		}
 	},
@@ -16914,72 +17832,103 @@ local vchrs = {
 		price = 10,
 		increment = 3,
 		tiers_desc = {
-			{
+			{ --1
 				'{C:attention}Specific-hand {C:planet}Planets{} will also',
 				'upgrade {C:attention}adjacent{} poker hands',
 				'{C:inactive}(ex. using Mercury to upgrade Pair will also upgrade High Card and Two Pair){}'
 			},
-			{
+			{ --2
 				'{C:attention}Specific-hand {C:planet}Planets{} will also',
 				'upgrade {C:attention}non-adjacent{} poker hands by {C:attention}one-tenth{}',
+				' ',
+				redeemprev
 			},
-			{
+			{ --3
 				'{C:attention}Specific-hand {C:planet}Planets{} will',
 				'{C:attention}repeat{} for every held {C:planet}Planet{} consumable',
-				'{C:inactive}(ex. using Mercury while there are 3 other Planet cards will level up Pair 3 extra times){}'
+				'{C:inactive}(ex. using Mercury while there are 3 other Planet cards will level up Pair 3 extra times){}',
+				' ',
+				redeemprev
 			},
-			{
+			{ --4
 				'{C:attention}Specific-hand {C:planet}Planets{} will',
 				'{C:attention}repeat at half strength{} for every held {C:attention}non-{C:planet}Planet{} consumable',
-				'{C:inactive}(ex. using Mercury while there are 3 Spectrals will level up Pair 1.5 extra times){}'
+				'{C:inactive}(ex. using Mercury while there are 3 Spectrals will level up Pair 1.5 extra times){}',
+				' ',
+				redeemprev
 			},
-			{
+			{ --5
 				'{C:money}Selling{} any {C:attention}non-{C:planet}Planet{} card will',
 				'generate a {C:planet}Planet{} card',
 				mayoverflow,
-				'{C:inactive}(Black Hole excluded){}'
+				'{C:inactive}(Black Hole excluded){}',
+				' ',
+				redeemprev
 			},
-			{
+			{ --6
 				'{C:money}Selling{} any card will',
 				'{C:planet}level up{} a {C:green}random',
 				'{C:attention}discovered poker hand{} by',
-				'a {C:attention}fourth{} of its {C:money}sell value'
+				'a {C:attention}fourth{} of its {C:money}sell value',
+				' ',
+				redeemprev
 			},
-			{
-				'{C:attention}Tähtitiede VI{} will now',
-				'{C:attention}trigger Tähtitiede I, II, III and IV'
+			{ --7
+				'Hand levelups are {C:attention}twice as strong',
+				'{C:inactive}(ex. what would be 3 level-ups is now 6)',
+				' ',
+				redeemprev
 			},
-			{
-				'{C:attention}Removing{} a card in most ways',
+			{ --8
+				'{C:attention}Removing face-up cards{} in most ways',
 				'will {C:planet}level up{} a {C:green}random',
 				'{C:attention}discovered poker hand{} by',
 				'an {C:attention}eighth{} of its {C:money}sell value',
-				'{C:inactive}(Applies on top of Tähtitiede VI)'
+				'{C:inactive}(Applies on top of Tähtitiede VI)',
+				' ',
+				redeemprev
 			},
-			{
+			{ --9
 				'If a hand {C:red}levels down{} from a card that has an {C:dark_edition}edition{},',
 				'that edition\'s effect is applied by the {C:attention}absolute value{} of the level change',
-				'{C:inactive}(ex. if a Polychrome levels down a hand, it will still give {X:mult,C:white}x1.5{C:inactive} Mult instead of {X:mult,C:white}/1.5{C:inactive})'
+				'{C:inactive}(ex. if a Polychrome levels down a hand, it will still give {X:mult,C:white}x1.5{C:inactive} Mult instead of {X:mult,C:white}/1.5{C:inactive})',
+				' ',
+				redeemprev
 			},
-			{
-				'{C:attention}Tähtitiede VIII{} will now',
-				'{C:attention}trigger Tähtitiede I, II, III and IV'
+			{ --10
+				'Hand levelups are {C:attention}five times as strong',
+				'{C:inactive}(ex. what would be 3 level-ups is now 15)',
+				' ',
+				redeemprev
 			},
-			{
+			{ --11
 				'Whenever hand levels are {C:red}lost{},',
 				'{C:attention}25% of those levels{} are',
-				'instead {C:attention}redirected to the most played hand'
+				'instead {C:attention}redirected to the most played hand',
+				'{C:inactive}(Does not trigger joker effects or Tähtitiede)',
+				' ',
+				redeemprev
 			},
-			{
-				'{C:attention}Tähtitiede XI{} will now',
-				'{C:attention}trigger Tähtitiede I, II, III and IV',
+			{ --12
+				'{C:attention}Most-played hand{} gains a {C:attention}10% dividend',
+				'whenever {C:attention}any other hand{} levels up',
+				'{C:inactive}(Does not trigger joker effects or Tähtitiede)',
 				'{C:attention}Tähtitiede I and II{} now also',
-				'extend to {C:attention}second-adjacent{} hands'
+				'extend to {C:attention}second-adjacent{} hands',
+				' ',
+				redeemprev
 			},
-			{
+			{ --Omega
 				'Whenever a hand {C:attention}gains levels{},',
 				'the hand that comes {C:attention}before{} it',
-				'will {C:attention}upgrade by half of that amount'
+				'will {C:attention}upgrade by half of that amount',
+				'if the amount is {C:attention}at least 1 or more',
+				'{C:inactive}(ex. if Straight leveled up 4 times,',
+				'{C:inactive}then Three of a Kind levels up 2 times, which',
+				'{C:inactive}then levels up Two Pair 1 time, which',
+				'{C:inactive}then levels up Pair 0.5 times, and stops there)',
+				' ',
+				redeemprev
 			},
 		}
 	}
@@ -17004,7 +17953,7 @@ for k, v in pairs(vchrs) do
 			SMODS.Voucher {
 				key = k .. (i == 13 and '_omega' or i),
 				loc_txt = {
-					name = v.n .. ' ' .. (i == 13 and '{C:edition}Omega' or roman(i)),
+					name = v.n .. ' ' .. (i == 13 and 'Omega' or roman(i)),
 					text = v.tiers_desc[i]
 				},
 				pos = { x = 0, y = i == 13 and 14 or 0 },
@@ -17056,29 +18005,57 @@ local omegas_found = 0
 function create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
 	local card = ccr(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
 	if G.STAGE ~= G.STAGES.MAIN_MENU and card.gc and card:gc() then
-			for k, v in ipairs(omegaconsumables) do
-				if card:gc().key == ('c_' .. v) and G.P_CENTERS['c_jen_' .. v .. '_omega'] and not G.GAME.banned_keys['c_jen_' .. v .. '_omega'] and jl.chance('omega_replacement', chance_for_omega(v), true) then
-					G.E_MANAGER:add_event(Event({trigger = 'after', blockable = false, blocking = false, func = function()
-						if card and not card.no_omega then
-							card:set_ability(G.P_CENTERS['c_jen_' .. v .. '_omega'])
-							card:set_cost()
-							play_sound('jen_omegacard', 1, 0.75)
-							card:juice_up(1.5, 1.5)
-							if omegas_found <= 0 then
-								Q(function() play_sound('jen_chime', 1, 0.65) jl.a('O M E G A   f o u n d ! !' .. (omegas_found > 1 and (' x ' .. number_format(omegas_found)) or ''), G.SETTINGS.GAMESPEED, 1, G.C.DARK_EDITION); jl.rd(1); omegas_found = 0; return true end)
-							end
-							omegas_found = omegas_found + 1
+		for k, v in ipairs(omegaconsumables) do
+			if card:gc().key == ('c_' .. v) and G.P_CENTERS['c_jen_' .. v .. '_omega'] and not G.GAME.banned_keys['c_jen_' .. v .. '_omega'] and jl.chance('omega_replacement', chance_for_omega(v), true) then
+				G.E_MANAGER:add_event(Event({trigger = 'after', blockable = false, blocking = false, func = function()
+					if card and not card.no_omega then
+						card:set_ability(G.P_CENTERS['c_jen_' .. v .. '_omega'])
+						card:set_cost()
+						play_sound('jen_omegacard', 1, 0.75)
+						card:juice_up(1.5, 1.5)
+						if omegas_found <= 0 then
+							Q(function() play_sound('jen_chime', 1, 0.65) jl.a('O M E G A   f o u n d ! !' .. (omegas_found > 1 and (' x ' .. number_format(omegas_found)) or ''), G.SETTINGS.GAMESPEED, 1, G.C.DARK_EDITION); jl.rd(1); omegas_found = 0; return true end)
 						end
-						return true
-					end }))
-					break
-				end
+						omegas_found = omegas_found + 1
+					end
+					return true
+				end }))
+				break
 			end
+		end
 	end
 	return card
 end
 
+local csa = Card.set_ability
+
+function Card:set_ability(center,initial,delay_sprites)
+	csa(self,center,initial,delay_sprites)
+	if #SMODS.find_card('j_jen_ratau') > 0 and self.gc and string.sub(self:gc().key, 1, 2) == 'c_' then
+		local mod = 1
+		for k, ratsmakemecrazy in pairs(SMODS.find_card('j_jen_ratau')) do
+			mod = mod * (ratsmakemecrazy.ability.modifier or 3)
+		end
+		local tbl = {min= mod, max = mod}
+		cry_misprintize(self, tbl, nil, true)
+	end
+end
+
 --OVERRIDES AND OTHER FUNCTIONS
+local uhtr = update_hand_text
+function update_hand_text(config, vals)
+	if vals and vals.level and type(vals.level) == 'number' and vals.level < 7 and not G.C.HAND_LEVELS[vals.level] then
+		if not G.GAME.hand_cols then G.GAME.hand_cols = {} end
+		if math.abs(vals.level) ~= vals.level then
+			G.C.HAND_LEVELS[vals.level] = G.C.RED
+			G.GAME.hand_cols[vals.level] = G.C.RED
+		elseif math.floor(vals.level) ~= vals.level then
+			decimal_hand_colour(vals.level)
+		end
+	end
+	uhtr(config, vals)
+end
+
 local copyref = copy_card
 function copy_card(card, a, b, c, d)
 	local dupe = copyref(card, a, b, c, d)
@@ -17235,7 +18212,7 @@ function get_blind_amount(ante)
 		if overante >= Jen.config.ante_polytate then
 			local arrows = 4 + math.floor((overante - Jen.config.ante_polytate + 1) / Jen.config.polytate_factor)
 			local operand = 2 + math.max(0, arrows - 4 - Jen.config.polytate_factor)
-			amnt = amnt:arrow(math.min(1e3, arrows), operand)
+			amnt = amnt:arrow(math.min(maxArrow, arrows), operand)
 		end
 	end
 	return amnt
@@ -17346,7 +18323,7 @@ if SMODS.BlindEdition then
 		contrast = 3,
 		set_blind = function(self, blind_on_deck)
 			play_sound_q('polychrome1', 0.9)
-			ease_hands_played(-1)
+			Q(function() Q(function() if G.GAME.current_round.hands_left > 1 then ease_hands_played(-1) end return true end) return true end)
 		end
 	})
 	SMODS.BlindEdition:take_ownership('ble_negative', {
@@ -17534,7 +18511,7 @@ SMODS.Blind	{
     pos = {x = 0, y = 0},
     vars = {},
     dollars = 15,
-    mult = 1/1.5,
+    mult = .5,
     defeat = function(self)
         if not G.GAME.blind.disabled and get_final_operator_offset() < 0 then
 			offset_final_operator(1)
@@ -17954,7 +18931,7 @@ SMODS.Blind	{
 SMODS.Blind	{
     loc_txt = {
         name = 'Ruttoklubi',
-        text = { 'If played hand contains', 'no Clubs (ignoring Wilds), instantly lose' }
+        text = { 'If played hand contains', 'no Clubs (ignoring suit modifiers), instantly lose' }
     },
     key = 'epicclub',
     config = {},
@@ -17978,7 +18955,8 @@ SMODS.Blind	{
 				break
 			end
 		end
-		if not safe then gameover() return 0, 0, true end
+		if not safe then gameover() return to_big(0), to_big(0), true end
+		return hand_chips, mult, false
 	end
 }
 
@@ -18030,7 +19008,7 @@ SMODS.Blind	{
 SMODS.Blind	{
     loc_txt = {
         name = 'Epätoivonikkuna',
-        text = { 'If played hand contains', 'no Diamonds (ignoring Wilds), instantly lose' }
+        text = { 'If played hand contains', 'no Diamonds (ignoring suit modifiers), instantly lose' }
     },
     key = 'epicwindow',
     config = {},
@@ -18054,7 +19032,8 @@ SMODS.Blind	{
 				break
 			end
 		end
-		if not safe then gameover() return 0, 0, true end
+		if not safe then gameover() return to_big(0), to_big(0), true end
+		return hand_chips, mult, false
 	end
 }
 
