@@ -461,3 +461,5 @@
 [submodule "Mods/Balatro-Donuts-Mod"]
 	path = Mods/Balatro-Donuts-Mod
 	url = https://github.com/BDonutGLXY/Balatro-Donuts-Mod
+[submodule "Mods\\circus"]
+	url = https://gitlab.com/infinite_jesters/circus
