@@ -350,9 +350,6 @@
 [submodule "Mods/D6Jokers"]
 	path = Mods/D6Jokers
 	url = https://github.com/GauntletGames-2086/D6-Jokers
-[submodule "Mods/Malverk"]
-	path = Mods/Malverk
-	url = https://github.com/Eremel/Malverk
 [submodule "Mods/Multipack"]
 	path = Mods/Multipack
 	url = https://github.com/snowylight/Multipack
