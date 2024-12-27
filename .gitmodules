@@ -461,3 +461,6 @@
 [submodule "Mods/Balatro-Donuts-Mod"]
 	path = Mods/Balatro-Donuts-Mod
 	url = https://github.com/BDonutGLXY/Balatro-Donuts-Mod
+[submodule "Mods/balatro-plus"]
+	path = Mods/balatro-plus
+	url = https://github.com/SomeCoder99/balatro-plus
