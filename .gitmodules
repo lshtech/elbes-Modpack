@@ -476,3 +476,18 @@
 [submodule "Mods/Cosmos"]
 	path = Mods/Cosmos
 	url = https://github.com/neatoqueen/Cosmos
+[submodule "Mods/AmazinStuff"]
+	path = Mods/AmazinStuff
+	url = https://github.com/AmazinDooD/AmazinStuff
+[submodule "Mods/H1DROmod-balatro"]
+	path = Mods/H1DROmod-balatro
+	url = https://github.com/Michael540coder/H1DROmod-balatro
+[submodule "Mods/UnStable"]
+	path = Mods/UnStable
+	url = https://github.com/kirbio/UnStable
+[submodule "Mods/UnStableEX"]
+	path = Mods/UnStableEX
+	url = https://github.com/kirbio/UnStableEX
+[submodule "Mods/RandomJokerDice"]
+	path = Mods/RandomJokerDice
+	url = https://github.com/CharaMaster/RandomJokerDice
