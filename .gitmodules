@@ -491,3 +491,6 @@
 [submodule "Mods/Ro-Balatro-Reborn"]
 	path = Mods/Ro-Balatro-Reborn
 	url = https://github.com/AlexZGreat/Ro-Balatro-Reborn
+[submodule "Mods/PrinterJokers---Balatro-Mod"]
+	path = Mods/PrinterJokers---Balatro-Mod
+	url = https://github.com/Cdrvo/PrinterJokers---Balatro-Mod
