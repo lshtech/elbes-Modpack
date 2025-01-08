@@ -494,3 +494,18 @@
 [submodule "Mods/PrinterJokers---Balatro-Mod"]
 	path = Mods/PrinterJokers---Balatro-Mod
 	url = https://github.com/Cdrvo/PrinterJokers---Balatro-Mod
+[submodule "Mods/Zeros-Assortment"]
+	path = Mods/Zeros-Assortment
+	url = https://github.com/Zero4793/Zeros-Assortment
+[submodule "Mods/Balatro-Aikoyoris-Shenanigans"]
+	path = Mods/Balatro-Aikoyoris-Shenanigans
+	url = https://github.com/Aikoyori/Balatro-Aikoyoris-Shenanigans
+[submodule "Mods/AdAbsurdum"]
+	path = Mods/AdAbsurdum
+	url = https://github.com/7f-galaxii/AdAbsurdum
+[submodule "Mods/Emporium"]
+	path = Mods/Emporium
+	url = https://github.com/krokshut/Emporium
+[submodule "Mods/nofantasyJokers"]
+	path = Mods/nofantasyJokers
+	url = https://github.com/fantasygone/nofantasyJokers
