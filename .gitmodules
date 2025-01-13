@@ -509,3 +509,21 @@
 [submodule "Mods/nofantasyJokers"]
 	path = Mods/nofantasyJokers
 	url = https://github.com/fantasygone/nofantasyJokers
+[submodule "Mods/Balatro-SusMod"]
+	path = Mods/Balatro-SusMod
+	url = https://github.com/AstroLightz/Balatro-SusMod
+[submodule "Mods/Isaactro"]
+	path = Mods/Isaactro
+	url = https://github.com/WilliamFlinchbaugh/Isaactro
+[submodule "Mods/Fortlatro"]
+	path = Mods/Fortlatro
+	url = https://github.com/EricTheToon/Fortlatro
+[submodule "Mods/JimboRecords"]
+	path = Mods/JimboRecords
+	url = https://github.com/TherkLe/JimboRecords
+[submodule "Mods/Dungeon"]
+	path = Mods/Dungeon
+	url = https://github.com/Mathguy23/Dungeon
+[submodule "Mods/lady-luck-mod"]
+	path = Mods/lady-luck-mod
+	url = https://github.com/bakunyuunoyume/lady-luck-mod
