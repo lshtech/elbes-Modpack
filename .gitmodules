@@ -296,9 +296,6 @@
 [submodule "Mods/balatro-shenanigans-mod"]
 	path = Mods/balatro-shenanigans-mod
 	url = https://github.com/lshtech/balatro-shenanigans-mod
-[submodule "Mods/SixSuits"]
-	path = Mods/SixSuits
-	url = https://github.com/lshtech/SixSuits
 [submodule "Mods/TarotPlus"]
 	path = Mods/TarotPlus
 	url = https://github.com/nhhvhy/TarotPlus
@@ -527,3 +524,6 @@
 [submodule "Mods/lady-luck-mod"]
 	path = Mods/lady-luck-mod
 	url = https://github.com/bakunyuunoyume/lady-luck-mod
+[submodule "Mods/CelesteCardCollection"]
+	path = Mods/CelesteCardCollection
+	url = https://github.com/AuroraKy/CelesteCardCollection
