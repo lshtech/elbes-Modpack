@@ -527,3 +527,6 @@
 [submodule "Mods/CelesteCardCollection"]
 	path = Mods/CelesteCardCollection
 	url = https://github.com/AuroraKy/CelesteCardCollection
+[submodule "SixSuits"]
+	path = SixSuits
+	url = https://github.com/Aurelius7309/SixSuits
