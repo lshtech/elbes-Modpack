@@ -506,9 +506,6 @@
 [submodule "Mods/nofantasyJokers"]
 	path = Mods/nofantasyJokers
 	url = https://github.com/fantasygone/nofantasyJokers
-[submodule "Mods/Balatro-SusMod"]
-	path = Mods/Balatro-SusMod
-	url = https://github.com/AstroLightz/Balatro-SusMod
 [submodule "Mods/Isaactro"]
 	path = Mods/Isaactro
 	url = https://github.com/WilliamFlinchbaugh/Isaactro
