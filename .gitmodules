@@ -148,7 +148,7 @@
 	url = https://github.com/lshtech/Balatro-HandPreview
 [submodule "Mods/Taikomochi"]
 	path = Mods/Taikomochi
-	url = https://github.com/larswijn/Taikomochi
+	url = https://github.com/Amvoled/Taikomochi
 [submodule "Mods/Themed_Jokers"]
 	path = Mods/Themed_Jokers
 	url = https://github.com/cerloCasa/Themed-Jokers
