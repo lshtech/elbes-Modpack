@@ -6,7 +6,7 @@ echo *******************************************************
 pause
 
 git clone --recurse-submodules --remote-submodules https://github.com/lshtech/elbes-Modpack
-xcopy .\elbes-Modpack\Submodules\Fortlatro\Fortlatro\* .\elbes-Modpack\Mods\Fortlatro /E /Y
+xcopy .\elbes-Modpack\Submodules\Fortlatro\Fortlatro\* .\elbes-Modpack\Mods\Fortlatro\ /E /Y
 xcopy .\elbes-Modpack\Patches\* .\elbes-Modpack\Mods /E /Y
 
 rem echo Copying Mods folder to %appdata%\Balatro\Mods
