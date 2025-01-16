@@ -509,9 +509,6 @@
 [submodule "Mods/Isaactro"]
 	path = Mods/Isaactro
 	url = https://github.com/WilliamFlinchbaugh/Isaactro
-[submodule "Mods/Fortlatro"]
-	path = Mods/Fortlatro
-	url = https://github.com/EricTheToon/Fortlatro
 [submodule "Mods/JimboRecords"]
 	path = Mods/JimboRecords
 	url = https://github.com/TherkLe/JimboRecords
