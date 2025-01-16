@@ -530,3 +530,6 @@
 [submodule "SusMods"]
 	path = Mods/Balatro-SusMod
 	url = https://github.com/AstroLightz/Balatro-SusMod
+[submodule "Submodules/Fortlatro"]
+	path = Submodules/Fortlatro
+	url = https://github.com/EricTheToon/Fortlatro/
